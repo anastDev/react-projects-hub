@@ -2,11 +2,12 @@ import {useEffect} from "react";
 import {Link} from "react-router";
 
 const HomePage = () => {
-    const links = [{path: "/calculator-app", label: "Calculator App"},
-        {path: "/task-manager-app", label: "Task Manager App"},
-        {path: "/weather-app", label: "Weather App"},
-        {path: "/movie-search-app", label: "Movie Search App"},
-        {path: "/about-me", label: "About Me"}
+    const links = [
+        {path: "/projects/calculator-app", label: "Calculator App"},
+        {path: "/projects/task-manager-app", label: "Task Manager App"},
+        {path: "/projects/weather-app", label: "Weather App"},
+        {path: "/projects/movie-search-app", label: "Movie Search App"},
+        {path: "/projects/about-me", label: "About Me"}
 
     ]
 
