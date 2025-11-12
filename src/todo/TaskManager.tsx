@@ -49,13 +49,15 @@ const TaskManager = () => {
                         inputRef={inputRef}
                     />
                 </div>
-                <TasksList
-                tasks={tasks}
-                editTask={editTask}
-                toggleTask={toggleTask}
-                deleteTask={deleteTask}
-                />
                 {/*  Container of Tasks  */}
+                <div>
+                    <TasksList
+                        tasks={tasks}
+                        editTask={editTask}
+                        toggleTask={toggleTask}
+                        deleteTask={deleteTask}
+                    />
+                </div>
                 {/*  Status of Tasks  */}
 
             </div>

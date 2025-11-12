@@ -19,7 +19,7 @@ const TaskForm = ({addTask, inputRef} : TaskFormProps) => {
 
     return (
         <>
-            <form className="flex gap-4 mt-4" onSubmit={handleSubmit}>
+            <form className="flex gap-3 mt-4" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={text}
