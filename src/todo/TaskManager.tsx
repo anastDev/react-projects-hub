@@ -6,8 +6,13 @@ import TaskStatus from "./components/TaskStatus.tsx";
 import Button from "./ui/Button.tsx";
 import ShowDate from "./components/ShowDate.tsx";
 
+const getInitialState = (): TaskProps[] => {
+    const stored = localStorage.getItem("tasks");
+    return stored ? JSON.parse(stored) : [];
+}
+
 const TaskManager = () => {
-    const [tasks, setTasks] = useState<TaskProps[]>([]);
+    const [tasks, setTasks] = useState<TaskProps[]>(getInitialState());
     const inputRef = useRef<HTMLInputElement | null>(null);
 
 
@@ -47,6 +52,7 @@ const TaskManager = () => {
     const completedTasks = totalTasks - activeTasks;
 
     useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
         inputRef.current?.focus();
     }, [tasks]);
 
