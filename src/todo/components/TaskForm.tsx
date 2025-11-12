@@ -11,7 +11,6 @@ const TaskForm = ({addTask, inputRef} : TaskFormProps) => {
 
     const handleSubmit = (e : FormEvent) => {
         e.preventDefault();
-
         if(text.trim() !== "") {
             addTask(text);
             setText("");
