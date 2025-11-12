@@ -3,10 +3,13 @@ import {useEffect, useRef, useState} from "react";
 import type {TaskProps} from "../types.tsx";
 import TasksList from "./components/TasksList.tsx";
 import TaskStatus from "./components/TaskStatus.tsx";
+import Button from "./ui/Button.tsx";
+import ShowDate from "./components/ShowDate.tsx";
 
 const TaskManager = () => {
     const [tasks, setTasks] = useState<TaskProps[]>([]);
     const inputRef = useRef<HTMLInputElement | null>(null);
+
 
     const addTask = (text: string) => {
         setTasks(prev => [
@@ -35,10 +38,13 @@ const TaskManager = () => {
             prev.filter(task => task.id !== id));
     }
 
-    const totalTasks = tasks.length;
-    const activeTasks = tasks.filter(task => task.completed).length;
-    const completedTasks = totalTasks - activeTasks;
+    const clearTasks = () => {
+        setTasks([]);
+    }
 
+    const totalTasks = tasks.length;
+    const activeTasks = tasks.filter(task => !task.completed).length;
+    const completedTasks = totalTasks - activeTasks;
 
     useEffect(() => {
         inputRef.current?.focus();
@@ -46,33 +52,48 @@ const TaskManager = () => {
 
     return (
         <>
-            <div className="container border-1 h-[32rem] max-w-md px-4 py-6 mt-28 mx-auto overflow-hidden rounded-xl">
-                <div>
-                    <h1 className="text-black text-2xl">Your Personal Task Manager</h1>
-                    {/*    Input Form  */}
-                    <TaskForm
-                        addTask={addTask}
-                        inputRef={inputRef}
-                    />
+            <header>
+               <ShowDate />
+            </header>
+            <main>
+                <div className="container border-1 h-[32rem] max-w-md px-4 py-6 mt-8 mx-auto overflow-hidden rounded-xl">
+                    <div>
+                        <h1 className="text-black text-2xl">Your Personal Task Manager</h1>
+                        {/*    Input Form  */}
+                        <TaskForm
+                            addTask={addTask}
+                            inputRef={inputRef}
+                        />
+                    </div>
+                    {/*  Container of Tasks  */}
+                    <div>
+                        <TasksList
+                            tasks={tasks}
+                            editTask={editTask}
+                            toggleTask={toggleTask}
+                            deleteTask={deleteTask}
+                        />
+                    </div>
                 </div>
-                {/*  Container of Tasks  */}
-                <div>
-                    <TasksList
-                        tasks={tasks}
-                        editTask={editTask}
-                        toggleTask={toggleTask}
-                        deleteTask={deleteTask}
-                    />
-                </div>
-            </div>
+            </main>
             {/*  Status of Tasks  */}
-            <div className="container mx-auto max-w-md">
-                <TaskStatus
-                    total={totalTasks}
-                    active={activeTasks}
-                    completed={completedTasks}
-                />
-            </div>
+            {totalTasks > 0 && (
+               <footer>
+                   <div className="container mx-auto max-w-md">
+                       <TaskStatus
+                           total={totalTasks}
+                           active={activeTasks}
+                           completed={completedTasks}
+                       />
+                       <div className="text-end mt-4">
+                           <Button
+                               label="Clear All"
+                               onClick={clearTasks}
+                           />
+                       </div>
+                   </div>
+               </footer>
+            )}
         </>
     )
 }
