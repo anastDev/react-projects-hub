@@ -31,3 +31,9 @@ export type TaskFormProps = {
     addTask: (text: string) => void;
     inputRef: RefObject<HTMLInputElement | null>;
 }
+
+export type TaskStatusProps = {
+    total: number;
+    active: number;
+    completed: number;
+}

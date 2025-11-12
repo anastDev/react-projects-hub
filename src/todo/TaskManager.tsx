@@ -2,6 +2,7 @@ import TaskForm from "./components/TaskForm.tsx";
 import {useEffect, useRef, useState} from "react";
 import type {TaskProps} from "../types.tsx";
 import TasksList from "./components/TasksList.tsx";
+import TaskStatus from "./components/TaskStatus.tsx";
 
 const TaskManager = () => {
     const [tasks, setTasks] = useState<TaskProps[]>([]);
@@ -34,6 +35,11 @@ const TaskManager = () => {
             prev.filter(task => task.id !== id));
     }
 
+    const totalTasks = tasks.length;
+    const activeTasks = tasks.filter(task => task.completed).length;
+    const completedTasks = totalTasks - activeTasks;
+
+
     useEffect(() => {
         inputRef.current?.focus();
     }, [tasks]);
@@ -58,8 +64,14 @@ const TaskManager = () => {
                         deleteTask={deleteTask}
                     />
                 </div>
-                {/*  Status of Tasks  */}
-
+            </div>
+            {/*  Status of Tasks  */}
+            <div className="container mx-auto max-w-md">
+                <TaskStatus
+                    total={totalTasks}
+                    active={activeTasks}
+                    completed={completedTasks}
+                />
             </div>
         </>
     )
