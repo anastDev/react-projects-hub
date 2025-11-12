@@ -48,7 +48,7 @@ const TaskList = ({editTask, toggleTask, deleteTask, tasks} : TaskListProps) => 
                                     />
                                     <IconButton
                                         icon={<X size={18}/>}
-                                        addClasses="border p-1 rounded"
+                                        addClasses="border p-1 rounded hover:bg-gray-600 hover:text-white transition-colors"
                                         onClick={handleCancel}
                                     />
                                 </div>
