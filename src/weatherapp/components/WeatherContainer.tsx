@@ -96,10 +96,9 @@ const WeatherContainer = () => {
 
                     {/* Right Side */}
                     <div className="flex flex-col">
-                        <div className="mb-4 space-x-2">
-                            <Button variant="outline" > Today </Button>
-                            <span>/</span>
-                            <Button variant="outline" > Tomorrow </Button>
+                        <div className="mb-4 ml-2 space-x-2 flex flex-row gap-6">
+                            <Button variant="ghost" > Today </Button>
+                            <Button variant="ghost" > Tomorrow </Button>
                         </div>
                         <div className="grid gap-4 grid-cols-3 grid-rows-3">
                             {weatherConditions.map((weatherCondition) => (
