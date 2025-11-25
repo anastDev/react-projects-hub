@@ -1,14 +1,16 @@
-import Header from "@/weatherapp/components/layout/Header.tsx";
-import WeatherContainer from "@/weatherapp/components/layout/WeatherContainer.tsx";
+import SearchField from "@/weatherapp/components/SearchField.tsx";
+import WeatherContainer from "@/weatherapp/components/WeatherContainer.tsx";
+import DateTable from "@/weatherapp/components/DateTable.tsx";
 
 const WeatherApp = () => {
     return (
         <>
-        {/*  Header with search field  */}
-           <Header/>
+        {/*  SearchField with search field  */}
+           <SearchField/>
         {/*  Main Content  */}
             <WeatherContainer/>
-        {/*  Footer: data provided by*/}
+        {/*  Footer: Table containing dates */}
+            <DateTable/>
         </>
     )
 }
