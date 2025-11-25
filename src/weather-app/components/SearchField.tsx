@@ -9,7 +9,7 @@ const SearchField = () => {
     return (
         <>
             <header>
-                <div className="container mx-auto w-full mt-4 lg:rt-r-position-sticky">
+                <div className="container mx-auto w-full mt-4">
                     <InputGroup>
                         <InputGroupInput placeholder="Type to search..." />
                         <InputGroupAddon align="inline-start">
