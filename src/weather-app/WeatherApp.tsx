@@ -1,6 +1,6 @@
-import SearchField from "@/weatherapp/components/SearchField.tsx";
-import WeatherContainer from "@/weatherapp/components/WeatherContainer.tsx";
-import DateTable from "@/weatherapp/components/DateTable.tsx";
+import SearchField from "@/weather-app/components/SearchField.tsx";
+import WeatherContainer from "@/weather-app/components/WeatherContainer.tsx";
+import DateTable from "@/weather-app/components/DateTable.tsx";
 import {Theme} from "@radix-ui/themes";
 
 const WeatherApp = () => {
