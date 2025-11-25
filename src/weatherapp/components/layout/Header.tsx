@@ -8,7 +8,7 @@ import {
 const Header = () => {
     return (
         <>
-            <header className="lg:container mt-2 mx-2">
+            <header className="container mx-auto w-full mt-4">
                 <InputGroup>
                     <InputGroupInput placeholder="Type to search..." />
                     <InputGroupAddon align="inline-start">
