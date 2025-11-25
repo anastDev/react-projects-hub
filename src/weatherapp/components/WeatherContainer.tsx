@@ -68,7 +68,7 @@ const WeatherContainer = () => {
     return (
         <>
             <main>
-                <div className="mx-2 my-4 h-[90vh] flex md:flex-col md:space-y-4">
+                <div className="mx-2 my-4 min-h-screen flex md:flex-col md:space-y-4">
                     {/* Left Side */}
                     <div className="md:col-span-2">
                         <div className="md:h-60 border border-black flex md:flex-row md:justify-between rounded-lg overflow-hidden">
