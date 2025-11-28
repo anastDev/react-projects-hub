@@ -25,7 +25,7 @@ const SearchField = ({inputRef, searchInput} : WeatherInputProps) => {
     return (
         <>
             <header>
-                <div className="container mx-auto flex content-center w-full mt-4">
+                <div className="container mx-auto flex content-center xl:w-1/2 lg:1/2 md:w-xl mt-4">
                    <div className="flex-1 mr-2">
                        <InputGroup>
                            <InputGroupInput placeholder="Type to search..."
