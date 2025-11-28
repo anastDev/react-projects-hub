@@ -9,16 +9,16 @@ import { useState} from "react";
 import type {WeatherInputProps} from "@/types/typesWeather.ts";
 
 const SearchField = ({inputRef, searchInput} : WeatherInputProps) => {
-    const [inputValue, setInputValue] = useState("");
+    const [searchValue, setSearchValue] = useState("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.target.value);
+        setSearchValue(e.target.value);
     }
 
     const handleSearch = () => {
-        if (inputValue.trim() === "") {
-            searchInput(inputValue);
-            setInputValue("");
+        if (searchValue.trim() !== "") {
+            searchInput(searchValue);
+            setSearchValue("");
         }
     }
 
@@ -30,7 +30,7 @@ const SearchField = ({inputRef, searchInput} : WeatherInputProps) => {
                        <InputGroup>
                            <InputGroupInput placeholder="Type to search..."
                                             type="text"
-                                            value={inputValue}
+                                            value={searchValue}
                                             ref={inputRef}
                                             onChange={handleChange}
                                             onSubmit={handleSearch}
