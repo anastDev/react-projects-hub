@@ -1,4 +1,4 @@
-import type {IconButtonProps} from "../../types.tsx";
+import type {IconButtonProps} from "../../types/typesTodos.tsx";
 
 const IconButton = ({onClick, disabled = false, addClasses = "", icon} : IconButtonProps) => {
     return (

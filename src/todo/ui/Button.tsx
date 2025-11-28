@@ -1,4 +1,4 @@
-import type {ButtonProps} from "../../types.tsx";
+import type {ButtonProps} from "../../types/typesTodos.tsx";
 
 const Button = ({onClick, disabled=false, label, addClasses = ""} : ButtonProps) => {
     return (

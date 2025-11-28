@@ -1,4 +1,4 @@
-import type {TaskStatusProps} from "../../types.tsx";
+import type {TaskStatusProps} from "../../types/typesTodos.tsx";
 
 const TaskStatus = ({total, active, completed} : TaskStatusProps) => {
     return (

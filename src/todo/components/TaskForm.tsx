@@ -1,6 +1,6 @@
 import Button from "../ui/Button.tsx";
 import {type ChangeEvent, type FormEvent, useState} from "react";
-import type {TaskFormProps} from "../../types.tsx";
+import type {TaskFormProps} from "../../types/typesTodos.tsx";
 
 const TaskForm = ({addTask, inputRef} : TaskFormProps) => {
     const [text, setText] = useState("");

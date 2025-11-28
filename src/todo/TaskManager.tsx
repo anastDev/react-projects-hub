@@ -1,6 +1,6 @@
 import TaskForm from "./components/TaskForm.tsx";
 import {useEffect, useRef, useState} from "react";
-import type {TaskProps} from "../types.tsx";
+import type {TaskProps} from "../types/typesTodos.tsx";
 import TasksList from "./components/TasksList.tsx";
 import TaskStatus from "./components/TaskStatus.tsx";
 import Button from "./ui/Button.tsx";
