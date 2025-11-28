@@ -1,24 +1,52 @@
 import {SearchIcon} from 'lucide-react'
 import {
     InputGroup,
-    InputGroupAddon, InputGroupButton,
+    InputGroupAddon,
     InputGroupInput,
 } from "@/components/ui/input-group.tsx"
+import {Button} from "@/components/ui/button.tsx"
+import { useState} from "react";
+import type {WeatherInputProps} from "@/types/typesWeather.ts";
 
-const SearchField = () => {
+const SearchField = ({inputRef, searchInput} : WeatherInputProps) => {
+    const [inputValue, setInputValue] = useState("");
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value);
+    }
+
+    const handleSearch = () => {
+        if (inputValue.trim() === "") {
+            searchInput(inputValue);
+            setInputValue("");
+        }
+    }
+
     return (
         <>
             <header>
-                <div className="container mx-auto w-full mt-4">
-                    <InputGroup>
-                        <InputGroupInput placeholder="Type to search..." />
-                        <InputGroupAddon align="inline-start">
-                            <SearchIcon size={18} />
-                        </InputGroupAddon>
-                        <InputGroupAddon align="inline-end">
-                            <InputGroupButton variant="secondary">Search</InputGroupButton>
-                        </InputGroupAddon>
-                    </InputGroup>
+                <div className="container mx-auto flex content-center w-full mt-4">
+                   <div className="flex-1 mr-2">
+                       <InputGroup>
+                           <InputGroupInput placeholder="Type to search..."
+                                            type="text"
+                                            value={inputValue}
+                                            ref={inputRef}
+                                            onChange={handleChange}
+                                            onSubmit={handleSearch}
+                           />
+                           <InputGroupAddon align="inline-start">
+                               <SearchIcon size={18} />
+                           </InputGroupAddon>
+                       </InputGroup>
+                   </div>
+                    <div>
+                        {/*TODO:Add spinner icon when loading*/}
+                        <Button
+                            variant="outline" className="bg-white text-blue-500 hover:bg-blue-500 hover:text-white"
+                            onClick={handleSearch}>
+                            Search</Button>
+                    </div>
                 </div>
             </header>
         </>
