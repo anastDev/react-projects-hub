@@ -69,12 +69,12 @@ const WeatherContainer = ( {temperature, description, name, country}: WeatherDet
     return (
         <>
             <main>
-                <div className="mx-2 my-4 min-h-screen flex md:flex-col md:space-y-4">
+                <div className="mx-4 my-6 min-h-screen flex flex-col md:space-y-4">
                     {/* Left Side */}
-                    <div className="md:col-span-2">
-                        <div className="md:h-60 border border-black flex md:flex-row md:justify-between rounded-lg overflow-hidden">
+                    <div className="col-span-4 flex-1">
+                        <div className="h-60 lg:w-3/4 md:w-3xl mx-auto border border-black flex flex-row justify-between rounded-lg overflow-hidden">
                             <div className="bg-gray-200 text-center flex-1 h-[1/2]">
-                                Picture
+                               <div className="mt-25"> icon placement</div>
                             </div>
                             <div className="flex-1">
                                 <div className="text-center py-6">
@@ -92,24 +92,22 @@ const WeatherContainer = ( {temperature, description, name, country}: WeatherDet
                                 </div>
                             </div>
                         </div>
-
+                        <div className="flex mt-4 justify-center">
+                            <div className="ml-2 space-x-2 flex flex-row gap-6">
+                                <Button variant="outline" > Today </Button>
+                                <Button variant="outline" > Tomorrow </Button>
+                            </div>
                     </div>
-
+                    </div>
                     {/* Right Side */}
-                    <div className="flex flex-col">
-                        <div className="mb-4 ml-2 space-x-2 flex flex-row gap-6">
-                            <Button variant="ghost" > Today </Button>
-                            <Button variant="ghost" > Tomorrow </Button>
-                        </div>
-                        <div className="grid gap-4 grid-cols-3 grid-rows-3">
-                            {weatherConditions.map((weatherCondition) => (
-                                <div className="md:w-full h-40 flex flex-col px-4 pt-4 border border-black rounded-lg">
-                                    <div className="text-lg font-light">{weatherCondition.label}</div>
-                                    <div className=" text-3xl font-medium">{weatherCondition.value}</div>
-                                    <div className="mt-2 text-sm">{weatherCondition.description}</div>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="grid gap-4 grid-cols-3 lg:grid-cols-4 grid-rows-2">
+                        {weatherConditions.map((weatherCondition) => (
+                            <div className="md:w-full lg:w-full md:h-40 lg:h-35 flex flex-col px-4 pt-4 border border-black rounded-lg">
+                                <div className="text-lg font-light">{weatherCondition.label}</div>
+                                <div className=" text-3xl font-medium">{weatherCondition.value}</div>
+                                <div className="mt-2 text-sm">{weatherCondition.description}</div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </main>
