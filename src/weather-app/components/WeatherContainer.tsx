@@ -1,6 +1,7 @@
 import {Button} from "@radix-ui/themes";
+import type {WeatherDetailsProps} from "@/types/typesWeather.ts";
 
-const WeatherContainer = () => {
+const WeatherContainer = ( {temperature, description, name, country}: WeatherDetailsProps) => {
     const weatherConditions = [
         {
             label: "UV Index",
@@ -77,16 +78,16 @@ const WeatherContainer = () => {
                             </div>
                             <div className="flex-1">
                                 <div className="text-center py-6">
-                                    <h1 className="text-5xl my-2">19 Temp</h1>
-                                    <p className="font-light">Mostly Cloudy</p>
+                                    <h1 className="text-5xl my-2">{temperature}</h1>
+                                    <p className="font-light">{description}</p>
                                 </div>
                                 <hr className="w-54 mx-auto border-none bg-gray-300 h-[2px]"/>
                                 <div className="flex flex-col text-center mt-6">
                                     <div>
-                                        21.11.2025
+                                        {name}
                                     </div>
                                     <div>
-                                        Athens, Greece
+                                        {country}
                                     </div>
                                 </div>
                             </div>
