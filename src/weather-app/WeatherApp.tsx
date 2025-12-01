@@ -4,7 +4,7 @@ import DateTable from "@/weather-app/components/DateTable.tsx";
 import {Theme} from "@radix-ui/themes";
 import {useEffect, useRef, useState} from "react";
 import {getCurrentWeather} from "@/weather-app/services/api.weather.ts";
-import type {WeatherDetailsProps} from "@/types/typesWeather.ts";
+import type {WeatherDetailsProps} from "@/types/typesWeather.tsx";
 
 const WeatherApp = () => {
     const inputRef = useRef<HTMLInputElement>(null);
