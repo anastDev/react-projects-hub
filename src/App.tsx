@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage.tsx";
 import TaskManager from "./todo/TaskManager.tsx";
 import WeatherApp from "@/weather-app/WeatherApp.tsx";
 import MovieSearch from "@/movie-search-app/MovieSearch.tsx";
-import HomePage2 from "@/pages/HomePage2.tsx";
+import Home from "./pages/Home";
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
                 <Route path="task-manager-app" element={<TaskManager/>}/>
                 <Route path="weather-app" element={<WeatherApp/>}/>
                 <Route path="movie-search-app" element={<MovieSearch/>}/>
-                <Route path="about-me" element={<HomePage2/>}/>
+                <Route path="about-me" element={<Home/>}/>
             </Route>
         </Routes>
     </BrowserRouter>
