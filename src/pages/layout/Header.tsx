@@ -1,20 +1,23 @@
-import {User} from "lucide-react";
-import {Button} from "../../components/ui/button";
+import {Menu} from "lucide-react";
+
 
 const Header = () => {
     return (
         <>
-            <header className="bg-gray-400 w-full h-14 position fixed top-0">
-               <div className="flex flex-row justify-end space-x-4 mx-2">
-                   <div className="flex flex-row mt-3 space-x-4">
-                       <Button size="sm" variant="outline">Projects</Button>
-                       <Button size="sm" variant="outline">About Me</Button>
-                   </div>
-                   <div className="flex flex-row mt-4 space-x-2">
-                       <div className=""><User size={24} className="text-white"/></div>
-                       {/*<div className=""><Menu size={24} className="text-white"/></div>*/}
-                   </div>
-               </div>
+            <header className="border-b border-black w-full h-14 fixed top-0 z-50 bg-white">
+             <div className="grid grid-cols-3 gap-4 mt-4 container mx-auto">
+                 <div className="w-xs">
+                     <Menu/>
+                 </div>
+                 <div className="flex flex-row space-x-4 flex-1 justify-center text-center">
+                     <div>Projects</div>
+                     <div>About Me</div>
+                 </div>
+                 <div className="flex flex-row justify-end space-x-2">
+                     <div>GR</div>
+                     <div>EN</div>
+                 </div>
+             </div>
             </header>
         </>
     )
