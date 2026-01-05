@@ -2,6 +2,8 @@ import Header from "@/pages/layout/Header.tsx";
 import Footer from "@/pages/layout/Footer.tsx";
 import {ArrowDown} from "lucide-react";
 import {useRef} from "react";
+import ProjectCard from "@/project-hub-web/components/ProjectCard.tsx";
+import {Button} from "@/components/ui/button"
 
 const HEADER_H = 56;
 const FOOTER_H = 72;
@@ -15,7 +17,7 @@ const Home = () => {
 
     return (
         <>
-            <div className="h-screen">
+            <div className="h-screen relative">
                 <Header/>
                 <main
                     className="overflow-y-auto snap-y snap-mandatory"
@@ -24,7 +26,7 @@ const Home = () => {
                     }}
                 >
                     {/* Hero Section/ Intro */}
-                    <div className="h-[65%] mt-38">
+                    <div className="h-[45vh] mt-38">
                         <div className="container mx-auto">
                             <div className="flex flex-col justify-center items-center space-y-4">
                                 <h1 className="text-2xl">Welcome to my Project Hub 👋</h1>
@@ -45,14 +47,43 @@ const Home = () => {
 
                     {/* Mini Preview of Projects */}
                     <div
-                        className="h-[55vh]"
+                        className="h-[82vh]"
                         ref={projectsRef}
                     >
-                        <div>
-                            <div className="flex flex-row justify-center space-x-6 mt-8 text-center">
-                                <div>Projects</div>
-                                <div>About Me</div>
+                        <div className="container mx-auto space-y-4 flex flex-col">
+                            {/* Title of the page with the button for More */}
+                            <div className="flex flex-row justify-center relative">
+                                <div className="">
+                                    <div className="p-2">Projects</div>
+                                </div>
+                                <div className="absolute right-0">
+                                    <Button variant="outline">More</Button>
+                                </div>
                             </div>
+                           {/* Container of Project Cards - Mini Previews */}
+                           <div className="flex flex-row gap-8 py-4 md:overflow-auto md:scroll-smooth md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
+                              <div>
+                                  <ProjectCard
+                                      img="../../public/doodle.jpg"
+                                      projectName="Todo App Manager"
+                                      description="lorem ipsum dolor sit amet"
+                                  />
+                              </div>
+                               <div>
+                                   <ProjectCard
+                                       img="../../public/doodle.jpg"
+                                       projectName="Todo App Manager"
+                                       description="lorem ipsum dolor sit amet"
+                                   />
+                               </div>
+                               <div>
+                                   <ProjectCard
+                                       img="../../public/doodle.jpg"
+                                       projectName="Todo App Manager"
+                                       description="lorem ipsum dolor sit amet"
+                                   />
+                               </div>
+                           </div>
                         </div>
                     </div>
                 </main>
