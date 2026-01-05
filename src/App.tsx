@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage.tsx";
 import TaskManager from "./todo/TaskManager.tsx";
 import WeatherApp from "@/weather-app/WeatherApp.tsx";
 import MovieSearch from "@/movie-search-app/MovieSearch.tsx";
-import Home from "./pages/Home";
+import Home from "./project-hub-web/Home.tsx";
 
 function App() {
 
