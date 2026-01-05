@@ -4,7 +4,7 @@ import {Menu} from "lucide-react";
 const Header = () => {
     return (
         <>
-            <header className="border-b border-black w-full h-14 fixed top-0 z-50 bg-white">
+            <header className="border-b shadow-sm w-full h-14 fixed top-0 bg-white">
              <div className="grid grid-cols-3 gap-4 mt-4 container mx-auto">
                  <div className="w-xs">
                      <Menu/>
