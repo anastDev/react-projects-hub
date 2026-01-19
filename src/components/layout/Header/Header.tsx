@@ -1,6 +1,6 @@
-import {NavDesktop} from "@/components/layout/Header/NavDesktop.tsx";
+import {NavDesktop} from "@/components/layout/Header/components/NavDesktop.tsx";
 import {IoPerson} from "react-icons/io5";
-import {NavMobile} from "@/components/layout/Header/NavMobile.tsx";
+import {NavMobile} from "@/components/layout/Header/components/NavMobile.tsx";
 
 
 const Header = () => {
