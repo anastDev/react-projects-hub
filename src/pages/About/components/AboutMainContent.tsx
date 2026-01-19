@@ -15,35 +15,49 @@ const AboutMainContent = () => {
 
     return (
         <>
-            <div className="h-screen relative">
-                <main className="container mx-auto mt-30">
-                    <h1 className="text-3xl mb-4">Hi!</h1>
-                    <div className="flex flex-row w-full space-x-6 h-full">
-                        <div className="w-xs h-80 flex-1">
-                            <div className="w-xs">
-                                <img src="../../../../public/doodle.jpg" alt="doodle of working on the computer"/>
-                            </div>
+            <div className="h-1vh">
+                <main className=" container mx-auto mt-20">
+                    <div className="flex flex-col w-full">
+                        <div className="w-xs h-80 flex-1 mx-auto">
+                            <img src="../../../../public/doodle.jpg" alt="doodle of working on the computer"/>
                         </div>
-                        <div className="flex-1">
-                            <div className="flex flex-col flex-wrap">
-                                <h1 className="text-xl ">My name is Anastasia :)</h1>
-                                <p className="mt-4">
-                                    This project hub was developed as part of a full-stack coding seminar at the Athens University of Economics and Business and brings together small projects that demonstrate the skills and concepts covered during the program.
-                                    The project is designed to grow further, with planned additions such as backend functionality, user authentication, database integration, and REST API documentation using Swagger.
-                                </p>
-                                <p className="mt-2">
-                                    With a Bachelor’s degree in Translation and Foreign Languages, I transitioned into software development after discovering a strong interest in coding and problem-solving.
-                                    I enjoy working through complex challenges, learning new technologies, and turning ideas into functional applications.
-                                    While the process can be demanding, I find that it can also be highly rewarding.
-                                </p>
-                                <p className="mt-2">
-                                    Languages I work with: {codingLanguages.map((language) => (
-                                    <span className={language.style + "mr-2"}>{language.language}</span>
+                        <div className="flex flex-col flex-wrap">
+                            <h1 className="mt-2 text-xl">Hi, I’m Anastasia!</h1>
+
+                            <p className="mt-4">
+                                A Junior Software Engineer with a background in Translation and Foreign Languages.
+                                I transitioned into software development through a full-stack coding seminar at the
+                                Athens University of Economics and Business, focusing on practical, hands-on projects.
+                            </p>
+
+                            <p className="mt-2">
+                                This hub features projects that demonstrate my full-stack development skills.
+                                I have built and deployed a complete backend using Node.js, Express and MongoDB on Render
+                                with a Domain Model-driven database, REST APIs, Swagger documentation and a full authentication & role-based authorization system.
+                                The frontend is built with React to interact seamlessly with the backend.
+                            </p>
+
+                            <p className="mt-2">
+                                Tech stack:
+                                {codingLanguages.map((language) => (
+                                    <span
+                                        key={language.language}
+                                        className={language.style + " mr-2"}
+                                    >
+        {language.language}
+      </span>
                                 ))}
-                                </p>
-                                <p className="mt-2">Bonus fact: My native language is Greek, but I also know English, German and Russian.</p>
+                            </p>
+
+                            <p className="mt-2">
+                                Languages: Greek (native), English, German, Russian.
+                            </p>
+
+                            <div className="mt-2 space-x-2 flex flex-row gap-4">
+                                <a href="">View CV</a>
                             </div>
                         </div>
+
                     </div>
                 </main>
             </div>
