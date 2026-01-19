@@ -1,5 +1,5 @@
 import {Button} from "@radix-ui/themes";
-import type {WeatherDetailsProps} from "@/types/typesWeather.tsx";
+import type {WeatherDetailsProps} from "@/projects/weather-app/types/typesWeather.tsx";
 
 const WeatherContainer = ( {temperature, description, name, country}: WeatherDetailsProps) => {
     const weatherConditions = [

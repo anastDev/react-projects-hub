@@ -1,7 +1,7 @@
 import IconButton from "../ui/IconButton.tsx";
 import {CheckSquare, Edit, Save, Square, Trash2, X} from "lucide-react";
 import {useState} from "react";
-import type {TaskListProps} from "../../types/typesTodos.tsx";
+import type {TaskListProps} from "../types/typesTodos.tsx";
 
 const TaskList = ({editTask, toggleTask, deleteTask, tasks} : TaskListProps) => {
     const [editId, setEditId] = useState<number | null>(null);

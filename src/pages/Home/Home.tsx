@@ -1,9 +1,10 @@
-import Header from "@/pages/layout/Header.tsx";
-import Footer from "@/pages/layout/Footer.tsx";
+import Header from "@/components/layout/Header/Header.tsx";
+import Footer from "@/components/layout/Footer.tsx";
 import {ArrowDown} from "lucide-react";
 import {useRef} from "react";
-import ProjectCard from "@/project-hub-web/components/ProjectCard.tsx";
-import {Button} from "@/components/ui/button"
+import ProjectCard from "@/components/shared/ProjectCard.tsx";
+import {Button} from "@/components/ui/button.tsx"
+import {Link} from "react-router";
 
 const HEADER_H = 56;
 const FOOTER_H = 72;
@@ -29,7 +30,7 @@ const Home = () => {
                     <div className="h-[45vh] mt-38">
                         <div className="container mx-auto">
                             <div className="flex flex-col justify-center items-center space-y-4">
-                                <h1 className="text-2xl">Welcome to my Project Hub 👋</h1>
+                                <h1 className="text-2xl">Welcome to my Projects Hub 👋</h1>
                                 <p className="text-center">This website is a collection of small projects I’ve built while learning and exploring React and modern web development.
                                     Each project focuses on a specific idea, feature or concept and together they reflect how I approach building applications.</p>
                             </div>
@@ -57,7 +58,11 @@ const Home = () => {
                                     <div className="p-2">Projects</div>
                                 </div>
                                 <div className="absolute right-0">
-                                    <Button variant="outline">More</Button>
+                                    <Link
+                                        to="/projects/projects-page"
+                                    >
+                                        <Button variant="outline">More</Button>
+                                    </Link>
                                 </div>
                             </div>
                            {/* Container of Project Cards - Mini Previews */}

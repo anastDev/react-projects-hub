@@ -1,6 +1,6 @@
 import {SearchIcon} from "lucide-react";
 import {InputGroup, InputGroupAddon, InputGroupInput} from "@/components/ui/input-group.tsx";
-import {Button} from "@/components/ui/button"
+import {Button} from "@/components/ui/button.tsx"
 
 const TextFieldSearchMovie = () => {
 

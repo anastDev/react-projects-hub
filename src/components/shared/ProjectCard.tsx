@@ -1,5 +1,5 @@
 import type {ProjectCardTypes} from "@/types/typesProjectCard.tsx";
-import {Button} from "@/components/ui/button"
+import {Button} from "@/components/ui/button.tsx"
 
 const ProjectCard = ({projectName, description, img}: ProjectCardTypes) => {
     return (

@@ -1,10 +1,10 @@
-import SearchField from "@/weather-app/components/SearchField.tsx";
-import WeatherContainer from "@/weather-app/components/WeatherContainer.tsx";
-import DateTable from "@/weather-app/components/DateTable.tsx";
+import SearchField from "@/projects/weather-app/components/SearchField.tsx";
+import WeatherContainer from "@/projects/weather-app/components/WeatherContainer.tsx";
+import DateTable from "@/projects/weather-app/components/DateTable.tsx";
 import {Theme} from "@radix-ui/themes";
 import {useEffect, useRef, useState} from "react";
-import {getCurrentWeather} from "@/weather-app/services/api.weather.ts";
-import type {WeatherDetailsProps} from "@/types/typesWeather.tsx";
+import {getCurrentWeather} from "@/projects/weather-app/services/api.weather.ts";
+import type {WeatherDetailsProps} from "@/projects/weather-app/types/typesWeather.tsx";
 
 const WeatherApp = () => {
     const inputRef = useRef<HTMLInputElement>(null);

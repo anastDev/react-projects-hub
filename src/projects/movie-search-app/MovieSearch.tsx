@@ -1,5 +1,5 @@
-import TextFieldSearchMovie from "@/movie-search-app/components/TextFieldSearchMovie.tsx";
-import MovieContainer from "@/movie-search-app/components/MovieContainer.tsx";
+import TextFieldSearchMovie from "@/projects/movie-search-app/components/TextFieldSearchMovie.tsx";
+import MovieContainer from "@/projects/movie-search-app/components/MovieContainer.tsx";
 import {useEffect} from "react";
 
 const MovieSearch = () => {
