@@ -1,8 +1,8 @@
 import Header from "@/components/layout/Header/Header.tsx";
 import Footer from "@/components/layout/Footer.tsx";
-import AboutMainContent from "@/pages/About/AboutMainContent.tsx";
+import AboutMainContent from "@/pages/About/components/AboutMainContent.tsx";
 
-const HomePage2 = () => {
+const AboutMePage = () => {
     return (
         <>
            <div className="relative h-screen">
@@ -14,4 +14,4 @@ const HomePage2 = () => {
     )
 }
 
-export default HomePage2;
+export default AboutMePage;
