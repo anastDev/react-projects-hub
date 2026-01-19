@@ -4,17 +4,17 @@ import {IoHome} from "react-icons/io5";
 export const routes = [
     {
         title: "Home",
-        path: "/projects/about-me",
+        path: "/",
         Icon: IoHome,
     },
     {
         title: "My Projects",
-        path: "/projects/projects-page",
+        path: "/projects/",
         Icon: FaFolder,
     },
     {
         title: "About Me",
-        path: "",
+        path: "/about-me",
         Icon: FaBookOpen,
     }
 ]
