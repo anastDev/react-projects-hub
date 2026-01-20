@@ -1,5 +1,6 @@
 import {NavDesktop} from "@/components/layout/Header/components/NavDesktop.tsx";
 import {NavMobile} from "@/components/layout/Header/components/NavMobile.tsx";
+import {Link} from "react-router";
 
 
 const Header = () => {
@@ -9,7 +10,7 @@ const Header = () => {
              <div className="grid grid-cols-2 container mx-auto">
                  <div className="mt-4">
                     <div className="hover:underline">
-                        Login
+                        <Link to="/auth/register">Register</Link>
                     </div>
                  </div>
                  <div className="flex flex-row justify-end mt-1">
