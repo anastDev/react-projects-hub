@@ -15,8 +15,8 @@ const AboutMainContent = () => {
 
     return (
         <>
-            <div className="h-1vh">
-                <main className=" container mx-auto mt-20">
+            <div className="h-full">
+                <main className="container mx-auto">
                     <div className="flex flex-col w-full">
                         <div className="w-xs h-80 flex-1 mx-auto">
                             <img src="../../../../public/doodle.jpg" alt="doodle of working on the computer"/>

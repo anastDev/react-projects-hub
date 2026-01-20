@@ -5,9 +5,11 @@ import ProjectMainContent from "@/pages/Projects/components/ProjectMainContent.t
 const ProjectsPage = () => {
     return (
         <>
-           <div className="relative h-screen">
+           <div className="relative min-h-screen flex flex-col">
                <Header/>
+               <div className="h-14"></div>
                <ProjectMainContent/>
+               <div className="h-28"></div>
                <Footer/>
            </div>
         </>
