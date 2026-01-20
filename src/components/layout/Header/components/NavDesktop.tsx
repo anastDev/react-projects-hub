@@ -3,7 +3,7 @@ import {Link} from "react-router";
 
 export const NavDesktop = () => {
     return (
-        <ul className="hidden lg:flex lg:flex-row gap-5">
+        <ul className="hidden lg:flex lg:flex-row gap-5 mt-2">
             {routes.map((route) => {
                 const {title, path, Icon} = route;
                 return (

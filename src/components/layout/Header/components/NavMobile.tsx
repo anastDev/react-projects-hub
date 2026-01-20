@@ -9,7 +9,7 @@ export const NavMobile = () => {
     const ref = useRef<HTMLDivElement>(null);
     return (
         <div ref={ref} className="lg:hidden">
-            <Hamburger direction="left" toggled={isOpen} size={24} rounded toggle={setOpen} />
+            <Hamburger direction="left" toggled={isOpen} size={22} rounded toggle={setOpen} />
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
