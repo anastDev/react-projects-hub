@@ -42,7 +42,7 @@ export const HomeMainContent = () => {
                     <div className="container mx-auto">
 
                         {/* Title of the page with the button for More */}
-                        <div className="grid grid-cols-3">
+                        <div className="grid grid-cols-3 mb-6">
                             <div></div>
                            <div className="text-center">
                                <div className="p-2 text-lg font-medium">Projects</div>
