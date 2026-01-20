@@ -5,6 +5,7 @@ import MovieSearch from "@/projects/movie-search-app/MovieSearch.tsx";
 import Home from "./pages/Home/Home.tsx";
 import ProjectsPage from "@/pages/Projects/ProjectsPage.tsx";
 import AboutMe from "@/pages/About/AboutMe.tsx";
+import {RegisterPage} from "@/pages/Auth/RegisterPage.tsx";
 
 function App() {
 
@@ -27,6 +28,11 @@ function App() {
 
             {/* About Route */}
             <Route path="about-me" element={<AboutMe/>}/>
+
+            {/* Auth Route */}
+            <Route path="auth">
+                <Route path="register" element={<RegisterPage/>}/>
+            </Route>
         </Routes>
     </BrowserRouter>
     </>
