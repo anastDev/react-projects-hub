@@ -1,4 +1,5 @@
-import type {ChangeEvent} from "react";
+import type {UseFormRegister} from "react-hook-form";
+import type {UserValues} from "@/schemas/user.schema.ts";
 
 export type FormErrors = {
     username?: string;
@@ -23,10 +24,9 @@ export type Options = {
 export type FormInputProps = {
     type: string;
     label: string;
-    name: string;
-    value: string | undefined;
+    name: keyof UserValues;
     placeholder: string;
-    onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     options?: Options[];
     required: boolean;
+    register: UseFormRegister<UserValues>;
 }

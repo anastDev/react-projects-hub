@@ -3,9 +3,8 @@ import type {FormInputProps} from "@/pages/Auth/types/typesForm.ts";
 export const FormInput = ({
                               type,
                               name,
-                              value,
                               placeholder,
-                              onChange,
+                              register,
                               label,
                               options = [],
                           }: FormInputProps) => {
@@ -17,9 +16,7 @@ export const FormInput = ({
                     {label}
                 </label>
                 <select
-                    name={name}
-                    value={value}
-                    onChange={onChange}
+                    {...register(name)}
                     className="w-full border rounded-md px-4 py-2"
                 >
                     <option value="">{placeholder || 'Select an option'}</option>
@@ -39,9 +36,7 @@ export const FormInput = ({
             </label>
             <input
                 type={type}
-                name={name}
-                value={value}
-                onChange={onChange}
+                {...register(name)}
                 placeholder={placeholder}
                 className="w-full border rounded-md px-4 py-2"
             />
