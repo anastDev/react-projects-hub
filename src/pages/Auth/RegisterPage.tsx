@@ -2,27 +2,35 @@ import Header from "@/components/layout/Header/Header.tsx";
 import Footer from "@/components/layout/Footer.tsx";
 import {type ChangeEvent, type FormEvent, useState} from "react";
 import {Button} from "@/components/ui/button.tsx"
-import {registerFields} from "@/pages/Auth/utils/formFields.ts";
+import {formFields} from "@/pages/Auth/utils/formFields.ts";
 import FormInput from "./components/FormInput.tsx";
-import {formSchema, type FormValues} from "@/schemas/auth.schema.ts";
+import {userSchema, type UserValues} from "@/schemas/user.schema.ts";
 import type {FormErrors} from "@/pages/Auth/types/typesForm.ts";
 
-const initialValues: FormValues = {
+const initialValues: UserValues = {
     username: "",
     password: "",
     firstname:"",
     lastname:"",
     email: "",
+    area: "",
+    street: "",
+    number: "",
+    po: "",
+    municipality: "",
+    phoneType: "",
+    phoneNumber: "",
 }
 
 export const RegisterPage = () => {
-    const [values, setValues] = useState<FormValues>(initialValues);
-    const [submittedData, setSubmittedData] = useState<FormValues | null>(null);
-    const [errors, setErrors] = useState<FormErrors | null>({});
+    const [values, setValues] = useState<UserValues>(initialValues);
+    const [submittedData, setSubmittedData] = useState<UserValues | null>(null);
+    const [errors, setErrors] = useState<FormErrors | null>(null);
 
     const validateFrom = (): boolean => {
-        const result = formSchema.safeParse(values);
+        const result = userSchema.safeParse(values);
 
+        console.log(result.error?.issues);
         if(!result.success){
             const newErrors: FormErrors = {};
             result.error?.issues.forEach((issue) => {
@@ -33,12 +41,11 @@ export const RegisterPage = () => {
             setErrors(newErrors);
             return false;
         }
-        console.log(">>>Values>>>", values)
         setErrors({});
         return true;
     }
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const {name, value} = e.target;
 
         setValues((prev) => {
@@ -58,8 +65,9 @@ export const RegisterPage = () => {
         e.preventDefault();
         const isValid = validateFrom();
         if(isValid){
-            setSubmittedData(values);
-            setValues(initialValues);
+            setSubmittedData(initialValues);
+            setValues(values);
+            setErrors({});
         }
     }
 
@@ -68,21 +76,25 @@ export const RegisterPage = () => {
             <Header/>
             <div className="h-14"></div>
             <form onSubmit={handleSubmit} action="" className="max-w-md mx-auto space-y-4 mt-12">
-                {registerFields.map((field) => {
-                    const fieldKey = field.name.toLowerCase() as keyof FormValues;
+                {formFields.map((field) => {
+                    const fieldKey = field.name as keyof UserValues;
                     return (
-                       <div key={fieldKey}>
-                           <label htmlFor={field.name}>{field.name}</label>
+                       <>
                            <FormInput
-                               key={field.name}
+                               key={fieldKey}
                                type={field.type}
+                               label={field.displayName}
                                name={field.name}
-                               value={values[fieldKey || ""]}
+                               value={values[fieldKey] || ""}
                                placeholder={field.placeholder}
+                               options={field.options}
                                onChange={handleChange}
-                               error={errors?.[fieldKey]}
+                               required={field.required}
                            />
-                       </div>
+                           {errors?.[fieldKey] && (
+                               <p className="text-red-600 text-sm">{errors?.[fieldKey]}</p>
+                           )}
+                       </>
                     )
                 })}
                 <div className="flex space-x-4">
@@ -94,7 +106,7 @@ export const RegisterPage = () => {
                     </div>
                 </div>
             </form>
-            <div className="h-18"></div>
+            <div className="h-32"></div>
             <Footer/>
         </>
     )
