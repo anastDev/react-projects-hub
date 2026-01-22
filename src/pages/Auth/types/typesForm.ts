@@ -1,5 +1,5 @@
 import type {UseFormRegister} from "react-hook-form";
-import type {UserValues} from "@/schemas/user.schema.ts";
+import type {User} from "@/schemas/user.schema.ts";
 
 export type FormErrors = {
     username?: string;
@@ -24,9 +24,9 @@ export type Options = {
 export type FormInputProps = {
     type: string;
     label: string;
-    name: keyof UserValues;
+    name: keyof User;
     placeholder: string;
     options?: Options[];
     required: boolean;
-    register: UseFormRegister<UserValues>;
+    register: UseFormRegister<User>;
 }

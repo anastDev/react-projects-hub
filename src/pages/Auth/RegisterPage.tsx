@@ -3,11 +3,11 @@ import Footer from "@/components/layout/Footer.tsx";
 import {Button} from "@/components/ui/button.tsx"
 import FormInput from "./components/FormInput.tsx";
 import {formFields} from "@/pages/Auth/utils/formFields.ts";
-import {userSchema, type UserValues} from "@/schemas/user.schema.ts";
+import {userSchema, type User} from "@/schemas/user.schema.ts";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 
-const initialValues: UserValues = {
+const initialValues: User = {
     username: '',
     email: '',
     password: '',
@@ -29,7 +29,7 @@ export const RegisterPage = () => {
         formState: {errors, isSubmitting},
         reset,
         watch
-    } = useForm<UserValues>({
+    } = useForm<User>({
         resolver: zodResolver(userSchema),
         defaultValues:initialValues,
     });
@@ -48,14 +48,14 @@ export const RegisterPage = () => {
         <>
             <Header/>
             <div className="h-14"></div>
-            <form onSubmit={handleSubmit(onSubmit)} action="" className="max-w-md mx-auto space-y-4 mt-12">
+            <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto space-y-4 mt-12">
                 {formFields.map((field) => {
-                    const fieldKey = field.name as keyof UserValues;
-                    const error = errors?.[field.name as keyof UserValues];
+                    const fieldKey = field.name as keyof User;
+                    const error = errors?.[field.name as keyof User];
                     return (
                        <>
                            <FormInput
-                               name={field.name as keyof UserValues}
+                               name={field.name as keyof User}
                                key={fieldKey}
                                type={field.type}
                                label={field.displayName}
@@ -72,13 +72,28 @@ export const RegisterPage = () => {
                 })}
                 <div className="flex space-x-4">
                     <div>
-                        <Button variant="outline">{isSubmitting ? 'Submitting': 'Submit'}</Button>
+                        <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            variant="outline">
+                            {isSubmitting ? 'Submitting': 'Submit'}
+                        </Button>
                     </div>
                     <div>
                         <Button onClick={onClear} variant="outline">Clear</Button>
                     </div>
                 </div>
             </form>
+
+            {watchedValues && (
+                <>
+                    <div>
+                        {watchedValues.username}
+                        {watchedValues.password}
+                        {watchedValues.email}
+                    </div>
+                </>
+            )}
             <div className="h-32"></div>
             <Footer/>
         </>

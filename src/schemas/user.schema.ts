@@ -15,4 +15,4 @@ export const userSchema = z.object({
     phoneNumber: z.string().optional(),
 });
 
-export type UserValues = z.infer<typeof userSchema>;
+export type User = z.infer<typeof userSchema>;
