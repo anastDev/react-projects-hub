@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from "react-router";
+import {HashRouter as Router, Routes, Route} from "react-router";
 import TaskManager from "@/projects/todo/TaskManager.tsx";
 import WeatherApp from "@/projects/weather-app/WeatherApp.tsx";
 import MovieSearch from "@/projects/movie-search-app/MovieSearch.tsx";
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
+    <Router>
         <Routes>
             {/* Home Route*/}
             <Route index element={<Home/>} />
@@ -34,7 +34,7 @@ function App() {
                 <Route path="register" element={<RegisterPage/>}/>
             </Route>
         </Routes>
-    </BrowserRouter>
+    </Router>
     </>
   )
 }
