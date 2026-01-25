@@ -23,7 +23,7 @@ export type Options = {
 
 export type FormInputProps = {
     type: string;
-    label: string;
+    label?: string;
     name: keyof User;
     placeholder: string;
     options?: Options[];

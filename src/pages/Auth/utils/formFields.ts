@@ -74,6 +74,7 @@ export const formFields = [
         displayName: 'Phone Type',
         type: 'select',
         options: [
+            {value: "", label: ""},
             { value: 'mobile', label: 'Mobile' },
             { value: 'home', label: 'Home' },
             { value: 'work', label: 'Work' },
