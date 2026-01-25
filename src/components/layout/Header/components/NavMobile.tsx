@@ -7,6 +7,8 @@ import {Link} from "react-router";
 export const NavMobile = () => {
     const [isOpen, setOpen] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
+
+
     return (
         <div ref={ref} className="lg:hidden">
             <Hamburger direction="left" toggled={isOpen} size={22} rounded toggle={setOpen} />

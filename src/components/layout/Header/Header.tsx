@@ -1,17 +1,29 @@
 import {NavDesktop} from "@/components/layout/Header/components/NavDesktop.tsx";
 import {NavMobile} from "@/components/layout/Header/components/NavMobile.tsx";
-import {Link} from "react-router";
+import {Link, useParams} from "react-router";
+import {useEffect} from "react";
+import {getUserById} from "@/services/api.users.ts";
+import {LoginAlertDialog} from "@/pages/Auth/components/LoginAlertDialog.tsx";
 
 
 const Header = () => {
+    const {userId} = useParams();
+
+    useEffect(()=> {
+        getUserById(userId!)
+            .then()
+    });
     return (
         <>
             <header className="border-b shadow-sm w-full h-14 fixed top-0 bg-white">
              <div className="grid grid-cols-2 container mx-auto">
-                 <div className="mt-4">
+                 <div className="flex flex-row space-x-2 mt-4">
                     <div className="hover:underline">
                         <Link to="/auth/register">Register</Link>
                     </div>
+                     <div>
+                         <LoginAlertDialog/>
+                     </div>
                  </div>
                  <div className="flex flex-row justify-end mt-1">
                     <NavDesktop/>
