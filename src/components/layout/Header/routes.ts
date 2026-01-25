@@ -1,5 +1,5 @@
 import {FaBookOpen, FaFolder} from "react-icons/fa";
-import {IoHome} from "react-icons/io5";
+import {IoHome, IoPerson} from "react-icons/io5";
 
 export const routes = [
     {
@@ -16,5 +16,10 @@ export const routes = [
         title: "About Me",
         path: "/about-me",
         Icon: FaBookOpen,
+    },
+    {
+        title: "Profile",
+        path:"/auth/register",
+        Icon: IoPerson
     }
 ]
