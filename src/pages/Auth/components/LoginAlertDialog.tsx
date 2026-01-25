@@ -25,7 +25,7 @@ export const LoginAlertDialog = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting, isLoading },
+        formState: { errors, isSubmitting},
         reset,
     } = useForm<LoginFields>({
         resolver: zodResolver(loginSchema),
@@ -61,7 +61,7 @@ export const LoginAlertDialog = () => {
                             Enter your credentials to access your account
                         </AlertDialogDescription>
                     </AlertDialogHeader>
-                    <div className="space-y-8">
+                    <div>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div>
                                 <label htmlFor="username">Username</label>
