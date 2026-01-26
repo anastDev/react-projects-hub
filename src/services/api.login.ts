@@ -8,12 +8,15 @@ export async function login({username, password}: LoginFields): Promise<LoginRes
     form.append('username', username);
     form.append('password', password);
 
-    const res = await fetch(VITE_BASE_URL + "/auth/login/access-token", {
+    const res = await fetch(VITE_BASE_URL + "/auth/login", {
         method: "POST",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
         },
-        body: form.toString(),
+        body: JSON.stringify({
+            username,
+            password,
+        }),
     });
 
     if(!res.ok) {

@@ -1,5 +1,3 @@
-import type {User} from "@/schemas/user.schema.ts";
-
 export type RegisterData = {
     username: string;
     password: string;
@@ -16,16 +14,6 @@ export type RegisterData = {
 }
 
 export type LoginResponse = {
-   access_token: string;
-   token_type: string;
-}
-
-export interface AuthResponse {
-    user: User;
-    token: string;
-    expiresIn: string;
-}
-
-export interface RegisterResponse extends AuthResponse {
-    message: string;
+   token: string;
+   expiresIn: string;
 }

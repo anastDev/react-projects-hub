@@ -9,51 +9,59 @@ type JwtPayload = {
     username?: string;
     tenant_id?: string;
 }
+
 export const AuthProvider = ({children}: {children: React.ReactNode}) => {
     const [accessToken, setAccessToken] = useState<string | null>(null);
-    const [tenant_id, setTenant_id] = useState<string | null>(null);
+    const [tenantId, setTenantId] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const token = getCookie("access_token");
+
         setAccessToken(token ?? null);
         if (token){
             try{
                 const decoded = jwtDecode<JwtPayload>(token);
-                setTenant_id(decoded.tenant_id ?? null)
+                setTenantId(decoded.tenant_id ?? null)
             } catch {
-                setTenant_id(null);
+                setTenantId(null);
             }
         } else {
-            setTenant_id(null);
+            setTenantId(null);
         }
         setLoading(false);
     }, []);
 
     const loginUser = async (fields: LoginFields) => {
         const res = await login(fields);
+        console.log('🔐 loginUser called with:', fields);
 
-        setCookie( "access_token", res.access_token, {
+        console.log('✅ Login response:', res);
+        console.log('🔑 Access token received:', res.token);
+
+        setCookie( "access_token", res.token, {
             expires: 1,
-            sameSite: "Lax", // Strict on production env
-            secure: false, // true (HTTPS)
+            sameSite: "Strict", // Strict on production env
+            secure: true,
             path: "/",
         });
 
-        setAccessToken(res.access_token);
+        setAccessToken(res.token);
 
         try{
-            const decoded = jwtDecode<JwtPayload>(res.access_token);
-            setTenant_id(decoded.tenant_id ?? null)
+            const decoded = jwtDecode<JwtPayload>(res.token);
+            setTenantId(decoded.tenant_id ?? null)
         } catch {
-            setTenant_id(null);
+            setTenantId(null);
         }
     };
 
     const logoutUser = () => {
+        console.log("🚪 Logging out...");
         deleteCookie("access_token");
         setAccessToken(null);
-        setTenant_id(null);
+        setTenantId(null);
+        console.log('✅ Logout complete');
     };
 
     return (
@@ -62,7 +70,7 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
                 value={{
                     isAuthenticated: !!accessToken,
                     accessToken,
-                    tenant_id,
+                    tenantId,
                     loginUser,
                     logoutUser,
                     loading,
