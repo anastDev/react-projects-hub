@@ -9,7 +9,6 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
 import {Input} from "@/components/ui/input.tsx";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -17,10 +16,12 @@ import {type LoginFields, loginSchema} from "@/schemas/auth.schema.ts";
 import {useNavigate} from "react-router";
 import {toast} from "sonner";
 import {useAuth} from "@/hooks/useAuth.ts";
+import {useState} from "react";
 
 export const LoginAlertDialog = () => {
     const navigate = useNavigate();
     const {loginUser} = useAuth();
+    const [isOpen, setIsOpen] = useState(false);
 
     const {
         register,
@@ -38,21 +39,26 @@ export const LoginAlertDialog = () => {
     const onSubmit = async  (data: LoginFields) => {
         try{
             await loginUser(data);
-            toast.success("Login successful");
-            navigate("/projects");
+            navigate("/");
             reset();
         } catch(err) {
            toast.error(
                err instanceof Error ? err.message : "Login failed"
            )
         }
-    }
+    };
+
+    const handleOpenChange = (open: boolean) => {
+        setIsOpen(open);
+    };
 
     return (
         <>
-            <AlertDialog>
+            <AlertDialog open={isOpen} onOpenChange={handleOpenChange}>
                 <AlertDialogTrigger asChild>
-                    <Button variant="outline">Show Dialog</Button>
+                    <div className="hover:underline cursor-pointer">
+                        Login
+                    </div>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
@@ -89,7 +95,10 @@ export const LoginAlertDialog = () => {
                     </div>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction>{isSubmitting ? 'Loading' : 'Continue'}</AlertDialogAction>
+                        <AlertDialogAction
+                            onClick={handleSubmit(onSubmit)}>
+                            {isSubmitting ? 'Loading' : 'Continue'}
+                        </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
