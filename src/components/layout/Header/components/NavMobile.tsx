@@ -10,7 +10,7 @@ export const NavMobile = () => {
 
 
     return (
-        <div ref={ref} className="lg:hidden">
+        <div ref={ref} className="lg:hidden mt-1">
             <Hamburger direction="left" toggled={isOpen} size={22} rounded toggle={setOpen} />
             <AnimatePresence>
                 {isOpen && (
