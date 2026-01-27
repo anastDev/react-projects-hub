@@ -19,7 +19,7 @@ const Footer = () => {
 
     return (
         <>
-            <footer className="bg-white border-t shadow-sm w-full h-20 fixed bottom-0">
+            <footer className="bg-white border-t shadow-sm w-full h-22 fixed bottom-0">
                 <div className="flex flex-col mt-3">
                    <div className="flex flex-row justify-center space-x-10">
                        {routes.map((route) => {
