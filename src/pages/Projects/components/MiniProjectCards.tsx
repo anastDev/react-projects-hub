@@ -1,5 +1,5 @@
 import {Button} from "@/components/ui/button.tsx";
-import type { ProjectCardTypes} from "@/types/typesProjectCard.tsx";
+import type { ProjectCardTypes} from "@/pages/Projects/types/typesProjectCard.tsx";
 import {Link} from "react-router";
 
 export const MiniProjectCards = ({projectName, description, path}: ProjectCardTypes) => {
