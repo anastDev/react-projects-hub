@@ -1,3 +1,5 @@
+import {Button} from "@/components/ui/button.tsx";
+
 const AboutMainContent = () => {
 
     const codingLanguages  = [
@@ -25,20 +27,27 @@ const AboutMainContent = () => {
                             <h1 className="mt-2 text-xl">Hi, I’m Anastasia!</h1>
 
                             <p className="mt-4">
-                                A Junior Software Engineer with a background in Translation and Foreign Languages.
-                                I transitioned into software development through a full-stack coding seminar at the
-                                Athens University of Economics and Business, focusing on practical, hands-on projects.
+                                I’m a Junior Software Engineer with a background in Translation and Foreign Languages, now focused on building clean, reliable full-stack applications.
+                            </p>
+                            <p className="mt-1">
+                                I transitioned into software development through a full-stack coding seminar at the Athens University of Economics and Business, where I worked on hands-on, production-style projects that mirror real-world development workflows.
                             </p>
 
                             <p className="mt-2">
-                                This hub features projects that demonstrate my full-stack development skills.
-                                I have built and deployed a complete backend using Node.js, Express and MongoDB on Render
-                                with a Domain Model-driven database, REST APIs, Swagger documentation and a full authentication & role-based authorization system.
-                                The frontend is built with React to interact seamlessly with the backend.
+                                This portfolio showcases projects where I’ve designed and implemented end-to-end systems:
                             </p>
 
-                            <p className="mt-2">
-                                Tech stack:
+                            <ul className="list-disc list-inside">
+                                <li>A Node.js & Express backend deployed on Render</li>
+                                <li>MongoDB with a domain-model–driven schema design</li>
+                                <li>RESTful APIs documented with Swagger</li>
+                                <li>Authentication & role-based authorization</li>
+                                <li>A React frontend that integrates seamlessly with the backend</li>
+                            </ul>
+                            <p>I enjoy working across the stack, with a strong focus on clear APIs, maintainable code, and smooth user experience.</p>
+
+                            <div className="my-2">
+                                <div className="mb-2 font-medium">Tech stack:</div>
                                 {codingLanguages.map((language) => (
                                     <span
                                         key={language.language}
@@ -47,17 +56,17 @@ const AboutMainContent = () => {
         {language.language}
       </span>
                                 ))}
-                            </p>
+                            </div>
 
-                            <p className="mt-2">
-                                Languages: Greek (native), English, German, Russian.
-                            </p>
+                            <div className="mt-2">
+                                <div className="font-medium"> Languages:</div>
+                               <div> Greek (native), English, German, Russian.</div>
+                            </div>
 
-                            <div className="mt-2 space-x-2 flex flex-row gap-4">
-                                <a href="">View CV</a>
+                            <div className="mt-4">
+                               <Button variant="outline">View CV</Button>
                             </div>
                         </div>
-
                     </div>
                 </main>
             </div>
