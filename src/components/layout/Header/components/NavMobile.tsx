@@ -1,10 +1,9 @@
 import Hamburger from 'hamburger-react'
 import {useRef, useState} from "react";
-import {routes} from "@/components/layout/Header/routes.ts";
 import {AnimatePresence, motion} from "framer-motion";
 import {Link} from "react-router";
 
-export const NavMobile = () => {
+export const NavMobile = ({ routes }: { routes: Array<{title: string, path: string, Icon: any}> }) => {
     const [isOpen, setOpen] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -24,27 +23,25 @@ export const NavMobile = () => {
                             {routes.map((route, idx) => {
                                 const {Icon} = route;
                                 return (
-                                    <>
-                                        <motion.li
-                                            initial={{ scale: 0, opacity: 0 }}
-                                            animate={{ scale: 1, opacity: 1 }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 260,
-                                                damping: 20,
-                                                delay: 0.1 + idx / 10,
-                                            }}
-                                            className="w-full p-[0.08rem] rounded-xl bg-gradient-to-tr from-neutral-600 via-neutral-800 to-neutral-700"
-                                            key={route.title}>
-                                            <Link
-                                                onClick={() => setOpen((prev) => !prev)}
-                                                className="flex items-center justify-between w-full p-5 rounded-xl bg-neutral-400"
-                                                to={route.path}>
-                                                <span className="flex gap-1 text-md" >{route.title}</span>
-                                                <Icon className="text-xl"/>
-                                            </Link>
-                                        </motion.li>
-                                    </>
+                                    <motion.li
+                                        initial={{ scale: 0, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 260,
+                                            damping: 20,
+                                            delay: 0.1 + idx / 10,
+                                        }}
+                                        className="w-full p-[0.08rem] rounded-xl bg-gradient-to-tr from-neutral-600 via-neutral-800 to-neutral-700"
+                                        key={route.title}>
+                                        <Link
+                                            onClick={() => setOpen((prev) => !prev)}
+                                            className="flex items-center justify-between w-full p-5 rounded-xl bg-neutral-400"
+                                            to={route.path}>
+                                            <span className="flex gap-1 text-md" >{route.title}</span>
+                                            <Icon className="text-xl"/>
+                                        </Link>
+                                    </motion.li>
                                 )
                             })}
                         </ul>

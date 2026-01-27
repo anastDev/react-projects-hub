@@ -4,10 +4,21 @@ import {Link} from "react-router";
 import {useAuth} from "@/hooks/useAuth.ts";
 import {LoginAlertDialog} from "@/pages/Auth/components/LoginAlertDialog.tsx";
 import LogoutButton from "@/pages/Auth/components/LogoutButton.tsx";
+import {staticRoutes} from "@/components/layout/Header/staticRoutes.ts";
+import {IoPerson} from "react-icons/io5";
 
 
 const Header = () => {
-    const {isAuthenticated} = useAuth();
+    const {isAuthenticated, userId} = useAuth();
+
+    const routes = [
+        ...staticRoutes,
+        ...(isAuthenticated? [{
+            title: "Profile",
+            path: `/profile/:${userId}`,
+            Icon: IoPerson
+        }] : [])
+    ];
 
     return (
         <>
@@ -34,8 +45,8 @@ const Header = () => {
                         )}
                     </div>
                     <div className="flex flex-row justify-end mt-1">
-                        <NavDesktop/>
-                        <NavMobile/>
+                        <NavDesktop routes={routes}/>
+                        <NavMobile routes={routes} />
                     </div>
                 </div>
             </header>
