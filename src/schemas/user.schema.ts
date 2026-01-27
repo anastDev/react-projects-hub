@@ -27,7 +27,7 @@ export const updateUserSchema = z.object({
     password: z.string()
         .min(5, "Password must be at least 5 characters")
         .optional()
-        .or(z.literal('')), // Allow empty string
+        .or(z.literal('')),
 
     firstname: z.string().optional(),
     lastname: z.string().optional(),

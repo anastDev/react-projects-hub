@@ -11,6 +11,7 @@ export async function getUserById(id: string): Promise<User> {
             "Authorization": `Bearer ${token}`,
         }
     });
+
     if (!res.ok) throw new Error(`Unable to find user with id ${id}`);
     return await res.json();
 }
@@ -34,7 +35,6 @@ export async function updateUser(id:string, data: Partial<UpdateUser>): Promise<
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
-            "Cache-Control": "no-cache",
         },
         body: JSON.stringify(data),
     });
