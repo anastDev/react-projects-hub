@@ -5,11 +5,10 @@ import {UnauthorizedPage} from "@/components/loading-screens/UnauthorizedPage.ts
 const ProtectedRoute = () => {
     const {isAuthenticated} = useAuth();
 
-    if (isAuthenticated)  {
-        return <Outlet />
+    if(!isAuthenticated){
+        return <UnauthorizedPage/>
     }
-
-    return <UnauthorizedPage/>
+    return <Outlet/>
 }
 
 export default ProtectedRoute;
