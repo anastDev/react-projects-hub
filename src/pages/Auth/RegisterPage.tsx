@@ -6,6 +6,10 @@ import {formFields} from "@/pages/Auth/utils/formFields.ts";
 import {userSchema, type User} from "@/schemas/user.schema.ts";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
+import {createUser} from "@/services/api.users.ts";
+import {useNavigate} from "react-router";
+import {toast} from "sonner";
+import {useAuth} from "@/hooks/useAuth.ts";
 
 const initialValues: User = {
     username: '',
@@ -23,26 +27,44 @@ const initialValues: User = {
 }
 
 export const RegisterPage = () => {
+    const navigate = useNavigate();
+    const {loginUser} = useAuth();
+
     const {
         register,
         handleSubmit,
         formState: {errors, isSubmitting},
         reset,
-        watch
+
     } = useForm<User>({
         resolver: zodResolver(userSchema),
         defaultValues:initialValues,
     });
 
-    const watchedValues = watch();
-
     const onClear = () => {
         reset();
     }
 
-    const onSubmit = () => {
-        reset();
+    const onSubmit = async(data: User) => {
+        try{
+            await createUser(data);
+            try {
+                await loginUser({
+                    username: data.username,
+                    password: data.password,
+                });
+                navigate("/");
+                reset();
+            } catch (err) {
+               console.warn(err);
+            }
+        } catch (err)  {
+            toast.error(
+                err instanceof Error ? err.message : "Error creating user",
+            )
+        }
     }
+
 
     return (
         <>
@@ -84,16 +106,6 @@ export const RegisterPage = () => {
                     </div>
                 </div>
             </form>
-
-            {watchedValues && (
-                <>
-                    <div>
-                        {watchedValues.username}
-                        {watchedValues.password}
-                        {watchedValues.email}
-                    </div>
-                </>
-            )}
             <div className="h-32"></div>
             <Footer/>
         </>
