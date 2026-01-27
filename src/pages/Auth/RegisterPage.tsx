@@ -53,6 +53,7 @@ export const RegisterPage = () => {
                     username: data.username,
                     password: data.password,
                 });
+                toast.success("User created successfully.");
                 navigate("/");
                 reset();
             } catch (err) {

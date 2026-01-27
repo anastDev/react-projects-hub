@@ -9,6 +9,7 @@ import {RegisterPage} from "@/pages/Auth/RegisterPage.tsx";
 import ProtectedRoute from "@/components/ProtectedRoute.tsx"
 import {AuthProvider} from "@/context/AuthProvider.tsx";
 import ProfileEditPage from "@/pages/profile/ProfileEditPage.tsx";
+import {Toaster} from "sonner";
 
 function App() {
 
@@ -45,6 +46,13 @@ function App() {
                     </Route>
                 </Routes>
             </Router>
+            <Toaster
+                richColors
+                position="top-center"
+                toastOptions={{
+                    className: 'z-[80]',
+                }}
+            />
         </AuthProvider>
     </>
   )

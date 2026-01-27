@@ -12,8 +12,8 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
 import {useEffect, useState} from "react";
 import {getUserById, updateUser} from "@/services/api.users.ts";
-import {toast} from "sonner";
 import {useAuth} from "@/hooks/useAuth.ts";
+import {toast} from "sonner";
 
 const initialValues: UpdateUser = {
     username: '',
@@ -72,7 +72,6 @@ export const ProfileEditPage = () => {
             })
             .catch((error) => {
                 console.log("Error getting user:", error);
-                toast.error("Failed loading user data");
             })
         }, [isEdit,userId, reset, navigate]);
 
@@ -88,11 +87,10 @@ export const ProfileEditPage = () => {
             } else {
                 navigate("/auth/register");
             }
-            navigate("/");
-        } catch (error) {
+        } catch (err) {
             toast.error(
-                error instanceof Error ? error.message : "Something went wrong",
-            );
+                err instanceof Error ? err.message : "Something went wrong",
+            )
         }
     }
 
@@ -109,59 +107,61 @@ export const ProfileEditPage = () => {
         <>
             <Header/>
             <div className="h-14"></div>
-            <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto space-y-4 mt-8">
-                <div className="max-w-4xl mx-auto">
-                    <div className="mb-6">
-                        <h1 className="text-xl font-bold text-gray-900">
-                            Hi,
-                            <span className="ml-2 mr-1">{userData.username || 'there'}
+            <div className="w-lg lg:w-2xl mx-auto mt-8 p-6 rounded-lg shadow-lg/20">
+                <form onSubmit={handleSubmit(onSubmit)} className="w-md lg:w-xl mx-auto space-y-4 mt-4">
+                    <div className="max-w-2xl mx-auto">
+                        <div className="mb-6">
+                            <h1 className="text-xl font-bold text-gray-900">
+                                Hi,
+                                <span className="ml-2 mr-1">{userData.username || 'there'}
                             </span>!
-                        </h1>
-                        <p className="text-gray-600 mt-2b text-sm">
-                            You can update your profile information below.
-                        </p>
+                            </h1>
+                            <p className="text-gray-600 mt-2b text-sm">
+                                You can update your profile information below.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <Separator/>
-                {formFields.map((field) => {
-                    const fieldKey = field.name as keyof UpdateUser;
-                    const error = errors[fieldKey];
-                    return (
-                        <>
-                            <div key={field.name} className="space-y-2">
-                                <Label htmlFor={field.name}>{field.displayName}</Label>
-                                <Input
-                                    type={field.type}
-                                    placeholder={field.placeholder}
-                                    {...register(fieldKey)}
-                                />
-                                {error && (
-                                    <div className="text-red-600 text-sm">
-                                        {error?.message}
-                                    </div>
-                                )}
-                            </div>
-                        </>
-                    )
-                })}
-                <div className="flex space-x-4">
-                    <div>
-                        <Button
-                            type="submit"
-                            disabled={isSubmitting}
-                            variant="outline">
-                            {isSubmitting ? 'Updating': 'Update Profile'}
-                        </Button>
+                    <Separator/>
+                    {formFields.map((field) => {
+                        const fieldKey = field.name as keyof UpdateUser;
+                        const error = errors[fieldKey];
+                        return (
+                            <>
+                                <div key={field.name} className="space-y-2">
+                                    <Label htmlFor={field.name}>{field.displayName}</Label>
+                                    <Input
+                                        type={field.type}
+                                        placeholder={field.placeholder}
+                                        {...register(fieldKey)}
+                                    />
+                                    {error && (
+                                        <div className="text-red-600 text-sm">
+                                            {error?.message}
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        )
+                    })}
+                    <div className="flex space-x-4 ">
+                        <div>
+                            <Button
+                                type="submit"
+                                disabled={isSubmitting}
+                                variant="default">
+                                {isSubmitting ? 'Updating': 'Update Profile'}
+                            </Button>
+                        </div>
+                        <div>
+                            <Button
+                                onClick={onClear}
+                                variant="outline">
+                                Clear
+                            </Button>
+                        </div>
                     </div>
-                    <div>
-                        <Button
-                            onClick={onClear}
-                            variant="outline">
-                            Clear
-                        </Button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
             <div className="h-32"></div>
             <Footer/>
         </>

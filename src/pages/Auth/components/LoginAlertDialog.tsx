@@ -38,14 +38,10 @@ export const LoginAlertDialog = () => {
 
     const onSubmit = async  (data: LoginFields) => {
         try{
-            console.log('🔄 Calling loginUser...');
             await loginUser(data);
-            console.log('Form state:', {
-                isSubmitting,
-                errors,
+            toast.success("Login successful", {
+                duration: 1500,
             });
-            console.log('✅ loginUser completed');
-            toast.success("Login successful");
             navigate("/");
             reset();
         } catch(err) {
