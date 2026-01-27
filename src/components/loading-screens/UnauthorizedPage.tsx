@@ -7,7 +7,7 @@ interface UnauthorizedScreenProps {
     message?: string;
 }
 
-export const UnauthorizedScreen = ({title = "Access Denied", message = "You need to be logged in to access this page"}: UnauthorizedScreenProps) => {
+export const UnauthorizedPage = ({title = "Access Denied", message = "You need to be logged in to access this page"}: UnauthorizedScreenProps) => {
     const navigate = useNavigate();
 
     return (
