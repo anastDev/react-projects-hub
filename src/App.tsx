@@ -8,9 +8,9 @@ import AboutMe from "@/pages/About/AboutMe.tsx";
 import {RegisterPage} from "@/pages/Auth/RegisterPage.tsx";
 import ProtectedRoute from "@/components/ProtectedRoute.tsx"
 import {AuthProvider} from "@/context/AuthProvider.tsx";
+import ProfileEditPage from "@/pages/profile/ProfileEditPage.tsx";
 
 function App() {
-
 
   return (
     <>
@@ -36,6 +36,12 @@ function App() {
                     {/* Auth Route */}
                     <Route path="auth">
                         <Route path="register" element={<RegisterPage/>}/>
+                    </Route>
+
+                     {/*  Profile Route  */}
+                    <Route path="profile" element={<ProtectedRoute/>}>
+                        <Route index element={<ProfileEditPage/>}/>
+                        <Route path=":userId" element={<ProfileEditPage/>} />
                     </Route>
                 </Routes>
             </Router>

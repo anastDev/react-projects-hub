@@ -1,6 +1,6 @@
 import {Outlet, } from "react-router";
 import {useAuth} from "@/hooks/useAuth.ts";
-import {UnauthorizedScreen} from "@/components/loading-screens/UnauthorizedScreen.tsx";
+import {UnauthorizedPage} from "@/components/loading-screens/UnauthorizedPage.tsx";
 
 const ProtectedRoute = () => {
     const {isAuthenticated} = useAuth();
@@ -9,7 +9,7 @@ const ProtectedRoute = () => {
         return <Outlet />
     }
 
-    return <UnauthorizedScreen/>
+    return <UnauthorizedPage/>
 }
 
 export default ProtectedRoute;
