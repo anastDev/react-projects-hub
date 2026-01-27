@@ -4,10 +4,10 @@ import type {LoginFields} from "@/schemas/auth.schema.ts";
 type AuthContextProps = {
     isAuthenticated: boolean;
     accessToken: string | null;
-    tenantId: string | null;
+    userId: string | null;
     loginUser: (fields: LoginFields) => Promise<void>;
-    logoutUser: () => void;
     loading: boolean;
+    logoutUser: () => void;
 }
 
 export const AuthContext = createContext<AuthContextProps | undefined>(undefined);
