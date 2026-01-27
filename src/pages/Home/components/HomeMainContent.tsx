@@ -1,4 +1,4 @@
-import ProjectCard from "@/components/shared/ProjectCard.tsx";
+import ProjectCard from "@/pages/Projects/components/ProjectCard.tsx";
 import {Button} from "@/components/ui/button.tsx"
 import {Link} from "react-router";
 import {ArrowDown} from "lucide-react";
