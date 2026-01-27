@@ -6,7 +6,7 @@ const Home = () => {
 
     return (
         <>
-            <div className="h-screen relative">
+            <div className="h-screen relative bg-gray-900">
                 <Header/>
                 <div className="h-14"></div>
                 <HomeMainContent/>

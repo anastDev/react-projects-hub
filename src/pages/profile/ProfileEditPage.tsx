@@ -96,76 +96,92 @@ export const ProfileEditPage = () => {
 
     if(loading) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center">
+            <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center text-gray-600">
                 <Spinner className="size-8" />
                 <p className="mt-4">Loading authentication...</p>
             </div>
         );
     }
-
     return (
         <>
-            <Header/>
-            <div className="h-14"></div>
-            <div className="w-lg lg:w-2xl mx-auto mt-8 p-6 rounded-lg shadow-lg/20">
-                <form onSubmit={handleSubmit(onSubmit)} className="w-md lg:w-xl mx-auto space-y-4 mt-4">
-                    <div className="max-w-2xl mx-auto">
-                        <div className="mb-6">
-                            <h1 className="text-xl font-bold text-gray-900">
-                                Hi,
-                                <span className="ml-2 mr-1">{userData.username || 'there'}
-                            </span>!
-                            </h1>
-                            <p className="text-gray-600 mt-2b text-sm">
-                                You can update your profile information below.
-                            </p>
-                        </div>
-                    </div>
-                    <Separator/>
-                    {formFields.map((field) => {
-                        const fieldKey = field.name as keyof UpdateUser;
-                        const error = errors[fieldKey];
-                        return (
-                            <>
-                                <div key={field.name} className="space-y-2">
-                                    <Label htmlFor={field.name}>{field.displayName}</Label>
-                                    <Input
-                                        type={field.type}
-                                        placeholder={field.placeholder}
-                                        {...register(fieldKey)}
-                                    />
-                                    {error && (
-                                        <div className="text-red-600 text-sm">
-                                            {error?.message}
-                                        </div>
-                                    )}
-                                </div>
-                            </>
-                        )
-                    })}
-                    <div className="flex space-x-4 ">
-                        <div>
-                            <Button
-                                type="submit"
-                                disabled={isSubmitting}
-                                variant="default">
-                                {isSubmitting ? 'Updating': 'Update Profile'}
-                            </Button>
-                        </div>
-                        <div>
-                            <Button
-                                onClick={onClear}
-                                variant="outline">
-                                Clear
-                            </Button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div className="h-32"></div>
-            <Footer/>
+           <div className="bg-gray-900">
+               <Header />
+               <div className="h-14" />
+               <div className="max-w-xl lg:max-w-2xl xl:max-w-4xl mx-auto mt-10 px-4">
+                   <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-8">
+                       <div className="mb-8">
+                           <h1 className="text-xl font-medium text-gray-800">
+                               Hi,
+                               <span className="ml-1 font-semibold text-gray-900">
+                                {userData.username || "there"}
+                            </span>
+                               !
+                           </h1>
+                           <p className="text-sm text-gray-700 mt-1">
+                               You can update your profile information below.
+                           </p>
+                       </div>
+
+                       <Separator className="mb-6" />
+
+                       {/* Form */}
+                       <form
+                           onSubmit={handleSubmit(onSubmit)}
+                           className="space-y-5"
+                       >
+                           {formFields.map((field) => {
+                               const fieldKey = field.name as keyof UpdateUser;
+                               const error = errors[fieldKey];
+
+                               return (
+                                   <div key={field.name} className="space-y-1.5">
+                                       <Label htmlFor={field.name}>
+                                           {field.displayName}
+                                       </Label>
+
+                                       <Input
+                                           id={field.name}
+                                           type={field.type}
+                                           placeholder={field.placeholder}
+                                           {...register(fieldKey)}
+                                           aria-invalid={!!error}
+                                       />
+
+                                       {error && (
+                                           <p className="text-sm text-red-600">
+                                               {error.message}
+                                           </p>
+                                       )}
+                                   </div>
+                               );
+                           })}
+
+                           <div className="flex gap-4 pt-4">
+                               <Button
+                                   type="submit"
+                                   disabled={isSubmitting}
+                                   className="bg-orange-500 text-gray-900 hover:bg-orange-400 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                               >
+                                   {isSubmitting ? "Updating…" : "Update Profile"}
+                               </Button>
+
+                               <Button
+                                   type="button"
+                                   onClick={onClear}
+                                   className="border-gray-600 text-gray-300hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                               >
+                                   Clear
+                               </Button>
+                           </div>
+                       </form>
+                   </div>
+               </div>
+
+               <div className="h-32" />
+               <Footer />
+           </div>
         </>
-    )
+    );
 }
 
 export default ProfileEditPage;

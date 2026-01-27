@@ -5,7 +5,7 @@ import AboutMainContent from "@/pages/About/components/AboutMainContent.tsx";
 const AboutMePage = () => {
     return (
         <>
-           <div className="relative h-screen">
+           <div className="relative h-screen bg-gray-900">
                <Header />
                <div className="h-26"></div>
                <AboutMainContent />

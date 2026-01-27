@@ -5,7 +5,7 @@ import ProjectMainContent from "@/pages/Projects/components/ProjectMainContent.t
 const ProjectsPage = () => {
     return (
         <>
-           <div className="relative min-h-screen flex flex-col">
+           <div className="relative bg-gray-900 min-h-screen flex flex-col">
                <Header/>
                <div className="h-14"></div>
                <ProjectMainContent/>

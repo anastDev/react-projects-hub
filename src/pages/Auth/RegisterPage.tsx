@@ -71,7 +71,7 @@ export const RegisterPage = () => {
         <>
             <Header/>
             <div className="h-14"></div>
-            <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto space-y-4 mt-12">
+            <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto  space-y-4 mt-12">
                 {formFields.map((field) => {
                     const fieldKey = field.name as keyof User;
                     const error = errors?.[field.name as keyof User];
@@ -88,7 +88,7 @@ export const RegisterPage = () => {
                                required={field.required}
                            />
                            {error && (
-                               <p className="text-red-600 text-sm">{error.message}</p>
+                               <p className="text-red-400  text-sm">{error.message}</p>
                            )}
                        </>
                     )
@@ -98,12 +98,18 @@ export const RegisterPage = () => {
                         <Button
                             type="submit"
                             disabled={isSubmitting}
-                            variant="outline">
+                            className="bg-orange-500 text-gray-900 hover:bg-orange-400 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                        >
                             {isSubmitting ? 'Submitting': 'Submit'}
                         </Button>
                     </div>
                     <div>
-                        <Button onClick={onClear} variant="outline">Clear</Button>
+                        <Button
+                            type="button"
+                            onClick={onClear}
+                            className="border-gray-600 text-gray-300hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                        >Clear
+                        </Button>
                     </div>
                 </div>
             </form>

@@ -22,13 +22,13 @@ const Header = () => {
 
     return (
         <>
-            <header className="border-b shadow-sm w-full h-14 fixed top-0 bg-white">
+            <header className="bg-gray-900 border-b-2 border-gray-800 text-gray-100 w-full h-14 fixed top-0 ">
                 <div className="grid grid-cols-2 container mx-auto">
                     <div className="flex flex-row space-x-2 mt-4">
                         {!isAuthenticated && (
                             <>
                                 <div className="flex space-x-2">
-                                    <div className="hover:underline cursor-pointer">
+                                    <div className="hover:underline hover:text-orange-400 cursor-pointer">
                                         <Link to="/auth/register">Register</Link>
                                     </div>
                                     <div>/</div>
