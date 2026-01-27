@@ -6,13 +6,38 @@ export const userSchema = z.object({
     firstname: z.string().optional(),
     lastname: z.string().optional(),
     email: z.email('Invalid email address').min(1, {error: "Email is required"}),
-    area: z.string(),
-    street: z.string(),
-    number: z.string(),
-    po: z.string(),
-    municipality: z.string(),
+    area: z.string().optional(),
+    street: z.string().optional(),
+    number: z.string().optional(),
+    po: z.string().optional(),
+    municipality: z.string().optional(),
     phoneType: z.enum(['phone', 'home', 'work']).optional().or(z.literal("")),
     phoneNumber: z.string().optional(),
 });
 
 export type User = z.infer<typeof userSchema>;
+
+export const updateUserSchema = z.object({
+    username: z.string()
+        .min(3, "Username must be at least 3 characters")
+        .optional(),
+
+    email: z.email('Invalid email address').min(1, {error: "Email is required"}).optional(),
+
+    password: z.string()
+        .min(5, "Password must be at least 5 characters")
+        .optional()
+        .or(z.literal('')), // Allow empty string
+
+    firstname: z.string().optional(),
+    lastname: z.string().optional(),
+    area: z.string().optional(),
+    street: z.string().optional(),
+    number: z.string().optional(),
+    po: z.string().optional(),
+    municipality: z.string().optional(),
+    phoneType: z.enum(['phone', 'home', 'work']).optional().or(z.literal("")),
+    phoneNumber: z.string().optional(),
+});
+
+export type UpdateUser = z.infer<typeof updateUserSchema>;
