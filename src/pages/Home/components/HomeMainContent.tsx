@@ -66,6 +66,7 @@ export const HomeMainContent = () => {
                                             img={project.img}
                                             projectName={project.projectName}
                                             description={project.description}
+                                            path={project.path}
                                         />
                                     </div>
                                 )
