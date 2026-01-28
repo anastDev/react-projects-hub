@@ -1,4 +1,4 @@
-# React Project Hub
+****# React Project Hub
 
 **React Project Hub** is a full-stack single-page web application designed to showcase projects and demonstrate real-world frontend and backend architecture, authentication, and deployment workflows.
 
@@ -30,6 +30,7 @@
 - [React Project Hub](#react-project-hub)
     - [🚀 Deployment](#deployment)
     - [🛠️ Installation & Setup](#installation--setup)
+    - [🏗️ Build - Production](#-build-production)
     - [🧱 Architecture](#architecture)
     - [🔐 Authentication & Authorization](#authentication--authorization)
     - [📌 Key Learning Outcomes](#key-learning-outcomes)
@@ -96,7 +97,7 @@ To run this project locally, you’ll need:
    
 3. Create a .env file in the project root with the backend API URL:
     ```
-    VITE_API_URL=https://project-hub-backend-uc39.onrender.com
+    VITE_API_URL=https://yourproject.onrender.com
     ```
    
 > **Windows users (PowerShell/CMD):**
@@ -106,6 +107,25 @@ To run this project locally, you’ll need:
     ```bash
    npm run dev
    ```
+The application will be available at: 
+http://localhost:5173
+
+> You can also find the Swagger documentation on: **http://localhost:5173/api/docs**
+
+
+## 🏗️ Build (Production)
+
+To create a production-ready build of the frontend:
+   ```bash
+   npm run build
+   ```
+
+This command executes:
+
+- TypeScript compilation **(tsc -b)**
+- Vite production build **(vite build)**
+
+The optimized output is generated in the dist/ directory.
 
 ## 🧱 Architecture
 
