@@ -25,9 +25,17 @@ const TaskForm = ({addTask, inputRef} : TaskFormProps) => {
                     value={text}
                     ref={inputRef}
                     onChange={handleChange}
-                    className="flex-1 border p-2 rounded-md"
+                    className="flex-1 p-2
+                    rounded-md border
+                    border-gray-300
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-sky-400
+                    focus:border-sky-600"
                     placeholder="Enter your task here..."/>
-                <Button label="Add"/>
+                <Button
+                    label="Add"
+                />
             </form>
         </>
     )

@@ -31,7 +31,7 @@ const TaskList = ({editTask, toggleTask, deleteTask, tasks} : TaskListProps) => 
             <div className="overflow-auto max-h-[30rem]">
                 <ul className="space-y-1">
                     {tasks.map(task => (
-                        <li key={task.id} className={`flex items-center justify-between my-4 border border-black pl-2 py-2 rounded-md 
+                        <li key={task.id} className={`flex items-center justify-between my-4  border border-gray-300 hover:border-gray-500 pl-2 py-2 rounded-md 
                     ${task.completed ? "opacity-70 line-through" : "" }`}>
                             {editId === task.id ? (
                                 <div className="flex flex-1 gap-2 mr-2">
@@ -39,34 +39,41 @@ const TaskList = ({editTask, toggleTask, deleteTask, tasks} : TaskListProps) => 
                                         type="text"
                                         value={editText}
                                         onChange={(e) => setEditText(e.target.value)}
-                                        className="flex-1 p-1 border rounded-md"
+                                        className="flex-1 pl-3 py-1 rounded-md
+                                            border border-gray-300
+                                            focus:outline-none
+                                            focus:ring-2
+                                            focus:ring-sky-400
+                                            focus:border-sky-600"
                                     />
                                     <IconButton
-                                        icon={<Save size={18}/>}
-                                        addClasses="border p-1 gap-1 text-green-700 rounded"
+                                        icon={<Save size={19}/>}
+                                        addClasses="gap-1 text-green-700 rounded"
                                         onClick={() => handleSave(task.id)}
                                     />
                                     <IconButton
-                                        icon={<X size={18}/>}
-                                        addClasses="border p-1 rounded hover:bg-gray-600 hover:text-white transition-colors"
+                                        icon={<X size={19}/>}
+                                        addClasses="
+                                        rounded hover:text-gray-900
+                                        transition-colors"
                                         onClick={handleCancel}
                                     />
                                 </div>
                             ) : (
                                 <div className="flex flex-1 items-center mr-2 gap-2">
                                     <IconButton
-                                        addClasses="border p-1 text-sky-700 rounded"
+                                        addClasses="border p-2 text-sky-800 rounded"
                                         onClick={() => toggleTask(task.id)}
                                         icon={task.completed ? <CheckSquare size={18}/> : <Square size={18}/>}
                                     />
                                     <span className="flex-1">{task.text}</span>
                                     <IconButton
-                                        addClasses="flex gap-1 border p-1 text-green-700 rounded"
+                                        addClasses="flex gap-1 border p-2 text-green-800 rounded"
                                         onClick={() => handleEdit(task.id, task.text)}
                                         icon={<Edit size={18}/>}
                                     />
                                     <IconButton
-                                        addClasses="border p-1 text-red-700 rounded"
+                                        addClasses="border p-2 text-red-800 rounded"
                                         onClick={() => deleteTask(task.id)}
                                         icon={<Trash2 size={18}/>}
                                     />

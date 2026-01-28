@@ -26,8 +26,13 @@ const ShowDate = () => {
 
     return (
         <>
-            <div className="container max-w-md mx-auto flex flex-col text-center mt-5">
-               {formattedDate} <span>{formattedTime}</span>
+            <div className="container max-w-md mx-auto flex flex-col text-center text-gray-300 ">
+             <div className="mt-4">
+                 <div className="font-medium text-lg">{formattedDate}</div>
+                 <div className="font-semibold mt-1">
+                     {formattedTime}
+                 </div>
+             </div>
             </div>
 
         </>

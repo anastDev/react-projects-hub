@@ -4,7 +4,7 @@ const IconButton = ({onClick, disabled = false, addClasses = "", icon} : IconBut
     return (
         <>
             <button
-                className={` ` + addClasses}
+                className={`border border-gray-300 hover:border-gray-500 p-2 ` + addClasses}
                 onClick={onClick}
                 disabled={disabled}
             >

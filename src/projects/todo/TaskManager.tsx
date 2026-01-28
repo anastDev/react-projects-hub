@@ -58,48 +58,50 @@ const TaskManager = () => {
 
     return (
         <>
-            <header>
-               <ShowDate />
-            </header>
-            <main>
-                <div className="container border-1 h-[32rem] max-w-md px-4 py-6 mt-8 mx-auto overflow-hidden rounded-xl">
-                    <div>
-                        <h1 className="text-black text-2xl">Your Personal Task Manager</h1>
-                        {/*    Input Form  */}
-                        <TaskForm
-                            addTask={addTask}
-                            inputRef={inputRef}
-                        />
+            <div className="h-screen bg-gray-900">
+                <header>
+                    <ShowDate />
+                </header>
+                <main>
+                    <div className="container bg-gray-100 shadow-sm shadow-gray-300 h-[32rem] max-w-md px-4 py-6 mt-8 mx-auto overflow-hidden  rounded-xl">
+                        <div>
+                            <h1 className="text-2xl font-semibold text-gray-900">Your Personal Task Manager</h1>
+                            {/*    Input Form  */}
+                            <TaskForm
+                                addTask={addTask}
+                                inputRef={inputRef}
+                            />
+                        </div>
+                        {/*  Container of Tasks  */}
+                        <div>
+                            <TasksList
+                                tasks={tasks}
+                                editTask={editTask}
+                                toggleTask={toggleTask}
+                                deleteTask={deleteTask}
+                            />
+                        </div>
                     </div>
-                    {/*  Container of Tasks  */}
-                    <div>
-                        <TasksList
-                            tasks={tasks}
-                            editTask={editTask}
-                            toggleTask={toggleTask}
-                            deleteTask={deleteTask}
-                        />
-                    </div>
-                </div>
-            </main>
-            {/*  Status of Tasks  */}
-            {totalTasks > 0 && (
-               <footer>
-                   <div className="container mx-auto max-w-md">
-                       <TaskStatus
-                           total={totalTasks}
-                           active={activeTasks}
-                           completed={completedTasks}
-                       />
-                       <div className="text-end mt-4">
-                           <Button
-                               label="Clear All"
-                               onClick={clearTasks}
-                           />
-                       </div>
-                   </div>
-               </footer>
-            )}
+                </main>
+                {/*  Status of Tasks  */}
+                {totalTasks > 0 && (
+                    <footer>
+                        <div className="container mx-auto max-w-md">
+                            <TaskStatus
+                                total={totalTasks}
+                                active={activeTasks}
+                                completed={completedTasks}
+                            />
+                            <div className="text-end mt-4">
+                                <Button
+                                    label="Clear All"
+                                    onClick={clearTasks}
+                                />
+                            </div>
+                        </div>
+                    </footer>
+                )}
+            </div>
         </>
     )
 }
