@@ -1,6 +1,6 @@
 import {Outlet, } from "react-router";
 import {useAuth} from "@/hooks/useAuth.ts";
-import {UnauthorizedPage} from "@/components/loading-screens/UnauthorizedPage.tsx";
+import {UnauthorizedPage} from "@/pages/loading-screens/UnauthorizedPage.tsx";
 
 const ProtectedRoute = () => {
     const {isAuthenticated} = useAuth();

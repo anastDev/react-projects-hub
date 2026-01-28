@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button.tsx"
 import {FaLock} from "react-icons/fa";
 
 interface UnauthorizedScreenProps {
