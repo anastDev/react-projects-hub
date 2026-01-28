@@ -1,73 +1,150 @@
-# React + TypeScript + Vite
+# React Project Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**React Project Hub** is a full-stack single-page web application designed to showcase projects and demonstrate real-world frontend and backend architecture, authentication, and deployment workflows.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+![Radix UI](https://img.shields.io/badge/radix%20ui-161618.svg?style=for-the-badge&logo=radix-ui&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+<div style="text-align: center;">
+<img alt="Cat Coding" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzIzMzR0c2tnODl2bzh3ZDFrNjNscmN6bWp2bGQ0NmYwNG8wejJtdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7NoNw4pMNTvgc/giphy.gif" width="300" height="250">
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<div style="text-align: center;">*Even cats need to debug sometimes!*</div>
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🌐 Live Demo
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [Project link](https://anastdev.github.io/react-projects-hub/)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- [Swagger API Documentation](https://project-hub-backend-uc39.onrender.com/api/docs/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+- [React Project Hub](#react-project-hub)
+    - [🚀 Deployment](#deployment)
+    - [🛠️ Installation & Setup](#installation--setup)
+    - [🧱 Architecture](#architecture)
+    - [🔐 Authentication & Authorization](#authentication--authorization)
+    - [📌 Key Learning Outcomes](#key-learning-outcomes)
+    - [👤 Author](#author)
+    - [ 📄 License](#-license)
+---
+
+## 🚀 Deployment
+
+The frontend is deployed on **GitHub Pages**. Follow these steps to deploy your own Vite React project:
+
+1. **Set the base path**  
+   Open `vite.config.js` and add the `base` option, pointing to your repo name:
+
+    ```js
+   export default defineConfig({
+     base: '/yourrepo/', // replace with your repo name
+     plugins: [react()],
+   })
+    ```
+
+2. **Install gh-pages**
+    ```bash
+   npm install gh-pages --save-dev
+    ```
+
+3. **Add deployment scripts**: 
+In your package.json, add the following inside the "scripts" section:
+  
+    ```
+    "scripts": {
+     "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+    }
+    ```
+
+4. **Set the homepage field**:
+   Also in package.json, add:
+    ```
+    "homepage":"https://yourusername.github.io/projectname"
+    ```
+
+5. **Deploy your project**
+    ```bash
+    npm run deploy
+    ```
+
+## 🛠️ Installation & Setup
+
+To run this project locally, you’ll need:
+
+- **Node.js** >= 24.10.1
+- **npm** >= 11.6.2
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/anastDev/react-projects-hub.git
+   cd react-projects-hub
+    ```
+2. Install dependencies:
+    ```bash
+   npm install
+    ```
+   
+3. Create a .env file in the project root with the backend API URL:
+    ```
+    VITE_API_URL=https://project-hub-backend-uc39.onrender.com
+    ```
+   
+> **Windows users (PowerShell/CMD):**
+> Create .env file the same way using Notepad or VSCode. No need to export.
+
+4. Start the development server:
+    ```bash
+   npm run dev
+   ```
+
+## 🧱 Architecture
+
+```
+src/
+ ├── components/      # Reusable UI components (e.g. ProtectedRoute)
+ ├── layout/          # Layout components shared across pages (Header, Footer, Nav)
+ ├── pages/           # Main application pages
+ │    ├── about/      # About page and components
+ │    ├── auth/       # Authentication pages and components
+ │    ├── home/       # Home page and components
+ │    ├── profile/    # Profile page (protected)
+ │    └── screens/    # Feedback / error pages (Unauthorized, UserNotFound)
+ ├── projects/        # Mini-projects with their own components, types, and utils
+ ├── context/         # Global React context (e.g. AuthContext)
+ ├── hooks/           # Custom hooks (useAuth)
+ └── services/        # Business logic and API communication
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔐 Authentication & Authorization
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **JWT**-based authentication
+- **Role**-based authorization
+- Protected routes on both frontend and backend
+- Authentication state handled on the frontend using secure **token** handling
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📌 Key Learning Outcomes
+
+- Built as part of a full-stack seminar at the Athens University of Economics and Business
+- Focused on modern frontend (React + Vite + TypeScript) and backend (Node.js + Express + MongoDB)
+
+## 👤 Author
+
+[anastDev](#react-project-hub)
+
+## 📄 License
+
+This project is licensed under the MIT License.
