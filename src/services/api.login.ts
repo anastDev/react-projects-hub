@@ -1,5 +1,5 @@
 import type {LoginFields} from "@/schemas/auth.schema.ts";
-import type {LoginResponse} from "@/pages/Auth/types/typesAuth.ts";
+import type {LoginResponse} from "@/pages/auth/types/typesAuth.ts";
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 

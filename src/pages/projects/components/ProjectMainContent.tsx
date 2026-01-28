@@ -1,5 +1,5 @@
-import MiniProjectCards from "@/pages/Projects/components/MiniProjectCards.tsx";
-import {projectData} from "@/pages/Projects/data/projects.ts";
+import MiniProjectCards from "@/pages/projects/components/MiniProjectCards.tsx";
+import {projectData} from "@/pages/projects/data/projects.ts";
 
 export const ProjectMainContent = () => {
     return (

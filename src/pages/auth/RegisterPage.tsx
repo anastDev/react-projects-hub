@@ -1,8 +1,8 @@
-import Header from "@/components/layout/Header/Header.tsx";
+import Header from "@/components/layout/header/Header.tsx";
 import Footer from "@/components/layout/Footer.tsx";
 import {Button} from "@/components/ui/button.tsx"
 import FormInput from "./components/FormInput.tsx";
-import {formFields} from "@/pages/Auth/utils/formFields.ts";
+import {formFields} from "@/pages/auth/utils/formFields.ts";
 import {userSchema, type User} from "@/schemas/user.schema.ts";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";

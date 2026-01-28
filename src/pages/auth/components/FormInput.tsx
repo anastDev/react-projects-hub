@@ -1,4 +1,4 @@
-import type {FormInputProps} from "@/pages/Auth/types/typesForm.ts";
+import type {FormInputProps} from "@/pages/auth/types/typesForm.ts";
 
 export const FormInput = ({
                               type,

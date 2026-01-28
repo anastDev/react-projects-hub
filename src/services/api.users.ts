@@ -1,5 +1,5 @@
 import type {UpdateUser, User} from "@/schemas/user.schema.ts";
-import {getCookie} from "@/pages/Auth/utils/cookies.ts";
+import {getCookie} from "@/pages/auth/utils/cookies.ts";
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 

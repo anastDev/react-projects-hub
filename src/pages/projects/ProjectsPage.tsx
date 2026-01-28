@@ -1,6 +1,6 @@
 import Footer from "@/components/layout/Footer.tsx";
-import Header from "@/components/layout/Header/Header.tsx";
-import ProjectMainContent from "@/pages/Projects/components/ProjectMainContent.tsx";
+import Header from "@/components/layout/header/Header.tsx";
+import ProjectMainContent from "@/pages/projects/components/ProjectMainContent.tsx";
 
 const ProjectsPage = () => {
     return (

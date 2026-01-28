@@ -1,7 +1,7 @@
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import {Link} from "react-router";
-import {staticRoutes} from "@/components/layout/Header/staticRoutes.ts";
+import {staticRoutes} from "@/components/layout/header/staticRoutes.ts";
 import {useAuth} from "@/hooks/useAuth.ts";
 import {IoPerson} from "react-icons/io5";
 

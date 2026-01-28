@@ -1,6 +1,6 @@
-import Header from "@/components/layout/Header/Header.tsx";
+import Header from "@/components/layout/header/Header.tsx";
 import Footer from "@/components/layout/Footer.tsx";
-import {HomeMainContent} from "@/pages/Home/components/HomeMainContent.tsx";
+import {HomeMainContent} from "@/pages/home/components/HomeMainContent.tsx";
 
 const Home = () => {
 

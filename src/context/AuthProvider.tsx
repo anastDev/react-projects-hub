@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import type {LoginFields} from "@/schemas/auth.schema.ts";
-import type {JwtPayload} from "@/pages/Auth/types/typesAuth.ts"
+import type {JwtPayload} from "@/pages/auth/types/typesAuth.ts"
 import {login} from "@/services/api.login.ts";
-import {deleteCookie, getCookie, setCookie} from "@/pages/Auth/utils/cookies.ts";
+import {deleteCookie, getCookie, setCookie} from "@/pages/auth/utils/cookies.ts";
 import {AuthContext} from "@/context/AuthContext.ts";
 import {jwtDecode} from "jwt-decode";
 

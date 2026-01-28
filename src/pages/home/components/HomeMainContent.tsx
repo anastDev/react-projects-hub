@@ -1,9 +1,9 @@
-import ProjectCard from "@/pages/Projects/components/ProjectCard.tsx";
+import ProjectCard from "@/pages/projects/components/ProjectCard.tsx";
 import {Button} from "@/components/ui/button.tsx"
 import {Link} from "react-router";
 import {ArrowDown} from "lucide-react";
 import {useRef} from "react";
-import {projectData} from "@/pages/Projects/data/projects.ts";
+import {projectData} from "@/pages/projects/data/projects.ts";
 
 export const HomeMainContent = () => {
     const projectsRef = useRef<HTMLDivElement | null>(null);
@@ -36,7 +36,7 @@ export const HomeMainContent = () => {
                     </div>
                 </div>
 
-                {/* Mini Preview of Projects */}
+                {/* Mini Preview of projects */}
                 <div className="min-h-[50vh] px-[1.6rem] pb-14"
                      ref={projectsRef}>
                     <div className="container mx-auto">

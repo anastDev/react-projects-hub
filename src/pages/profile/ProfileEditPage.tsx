@@ -1,11 +1,11 @@
-import Header from "@/components/layout/Header/Header.tsx";
+import Header from "@/components/layout/header/Header.tsx";
 import Footer from "@/components/layout/Footer.tsx";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {Button} from "@/components/ui/button.tsx";
 import { Separator } from "@/components/ui/separator"
 import { Spinner } from "@/components/ui/spinner.tsx"
-import {formFields} from "@/pages/Auth/utils/formFields.ts";
+import {formFields} from "@/pages/auth/utils/formFields.ts";
 import {type UpdateUser, updateUserSchema} from "@/schemas/user.schema.ts";
 import {useNavigate} from "react-router";
 import {zodResolver} from "@hookform/resolvers/zod";

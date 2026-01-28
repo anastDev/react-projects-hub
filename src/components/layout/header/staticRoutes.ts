@@ -9,12 +9,12 @@ export const staticRoutes= [
         Icon: IoHome,
     },
     {
-        title: "My Projects",
+        title: "My projects",
         path: "/projects",
         Icon: FaFolder,
     },
     {
-        title: "About Me",
+        title: "about Me",
         path: "/about-me",
         Icon: FaBookOpen,
     },

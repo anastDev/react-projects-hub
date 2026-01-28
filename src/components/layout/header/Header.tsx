@@ -1,10 +1,10 @@
-import {NavDesktop} from "@/components/layout/Header/components/NavDesktop.tsx";
-import {NavMobile} from "@/components/layout/Header/components/NavMobile.tsx";
+import {NavDesktop} from "@/components/layout/header/components/NavDesktop.tsx";
+import {NavMobile} from "@/components/layout/header/components/NavMobile.tsx";
 import {Link} from "react-router";
 import {useAuth} from "@/hooks/useAuth.ts";
-import {LoginAlertDialog} from "@/pages/Auth/components/LoginAlertDialog.tsx";
-import LogoutButton from "@/pages/Auth/components/LogoutButton.tsx";
-import {staticRoutes} from "@/components/layout/Header/staticRoutes.ts";
+import {LoginAlertDialog} from "@/pages/auth/components/LoginAlertDialog.tsx";
+import LogoutButton from "@/pages/auth/components/LogoutButton.tsx";
+import {staticRoutes} from "@/components/layout/header/staticRoutes.ts";
 import {IoPerson} from "react-icons/io5";
 
 

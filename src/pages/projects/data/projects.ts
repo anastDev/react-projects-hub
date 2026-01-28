@@ -1,4 +1,4 @@
-import type { ProjectCardTypes} from "@/types/typesProjectCard.tsx";
+import type { ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.tsx";
 
 export const projectData:  ProjectCardTypes[] = [
     {
@@ -11,12 +11,12 @@ export const projectData:  ProjectCardTypes[] = [
         projectName: "Weather App",
         description: "A responsive React app that fetches weather data from an open API, displaying temperature, humidity, UV index and forecasts with a structured and interactive UI.",
         path: "/projects/weather-app",
-        img: ""
+        img: "TBA"
     },
     {
         projectName: "Movie Search App",
         description: "TBA",
         path: "/projects/movie-search-app",
-        img: ""
-    }
+        img: "TBA"
+    },
 ]
