@@ -86,11 +86,11 @@ const AboutMainContent = () => {
 
                             {/* CTA */}
                             <div className="mt-4">
-                                <Button
+                                <Button asChild
                                     variant="outline"
                                     className="border-2 border-orange-500 text-orange-400 bg-gray-800 hover:bg-orange-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200"
                                 >
-                                    View CV
+                                    <a href="https://anastdev.github.io/my-cv/"> View CV</a>
                                 </Button>
                             </div>
                         </div>
