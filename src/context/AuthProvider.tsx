@@ -19,12 +19,6 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         if (token){
             try{
                 const decoded = jwtDecode<JwtPayload>(token);
-                console.log("🔑 Decoded JWT:", decoded);
-                console.log("- sub:", decoded.id);
-
-                const extractedUserId = decoded.id;
-                console.log("🔍 Extracted userId:", extractedUserId);
-
                 setUserId(decoded.id || null)
             } catch {
                 setUserId(null);
