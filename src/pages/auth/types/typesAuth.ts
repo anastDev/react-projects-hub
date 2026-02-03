@@ -1,10 +1,10 @@
-export type LoginResponse = {
+export interface LoginResponse {
    token: string;
    expiresIn: string;
 }
 
 
-export type JwtPayload = {
+export interface JwtPayload {
     id?: string,
     username?: string;
     email?:string;

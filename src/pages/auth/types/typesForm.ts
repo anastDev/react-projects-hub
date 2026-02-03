@@ -1,7 +1,7 @@
 import type {UseFormRegister} from "react-hook-form";
 import type {User} from "@/schemas/user.schema.ts";
 
-export type FormErrors = {
+export interface FormErrors {
     username?: string;
     password?: string;
     firstname?:string;
@@ -16,12 +16,12 @@ export type FormErrors = {
     phoneNumber?: string;
 }
 
-export type Options = {
+export interface Options {
     value: string;
     label: string;
 }
 
-export type FormInputProps = {
+export interface FormInputProps {
     type: string;
     label?: string;
     name: keyof User;

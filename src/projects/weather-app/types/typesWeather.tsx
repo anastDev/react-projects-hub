@@ -5,7 +5,7 @@ export type WeatherInputProps = {
     onSearch: (text: string) => void;
 }
 
-export type WeatherApiResponse = {
+export interface WeatherApiResponse {
     coord: {
         lon: number;
         lat: number;
@@ -30,7 +30,7 @@ export type WeatherApiResponse = {
         deg: number;
         gust?: number;
     };
-    rain?: {x
+    rain?: {
         "1h": number;
     },
     snow?: {
