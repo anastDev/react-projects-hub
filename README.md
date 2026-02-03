@@ -1,4 +1,4 @@
-****# React Project Hub
+# React Project Hub
 
 **React Project Hub** is a full-stack single-page web application designed to showcase projects and demonstrate real-world frontend and backend architecture, authentication, and deployment workflows.
 
@@ -28,13 +28,13 @@
 ---
 
 - [React Project Hub](#react-project-hub)
-    - [🚀 Deployment](#deployment)
-    - [🛠️ Installation & Setup](#installation--setup)
+    - [🚀 Deployment](#-deployment)
+    - [🛠️ Installation & Setup](#-installation--setup)
     - [🏗️ Build - Production](#-build-production)
-    - [🧱 Architecture](#architecture)
-    - [🔐 Authentication & Authorization](#authentication--authorization)
-    - [📌 Key Learning Outcomes](#key-learning-outcomes)
-    - [👤 Author](#author)
+    - [🧱 Architecture](#-architecture)
+    - [🔐 Authentication & Authorization](#-authentication--authorization)
+    - [📌 Key Learning Outcomes](#-key-learning-outcomes)
+    - [👤 Author](#-author)
     - [ 📄 License](#-license)
 ---
 
