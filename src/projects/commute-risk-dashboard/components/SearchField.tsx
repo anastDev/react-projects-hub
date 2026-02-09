@@ -7,9 +7,11 @@ import {
 import {Button} from "@/components/ui/button.tsx"
 import {useState} from "react";
 import type {WeatherInputProps} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
+import {useNavigate} from "react-router";
 
 const SearchField = ({inputRef, onSearch} : WeatherInputProps) => {
     const [searchValue, setSearchValue] = useState("");
+    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
@@ -31,8 +33,16 @@ const SearchField = ({inputRef, onSearch} : WeatherInputProps) => {
     return (
         <>
             <header>
-                <div className="container mx-auto flex content-center xl:w-1/2 lg:1/2 md:w-xl mt-4">
-                   <div className="flex-1 mr-2">
+                <div className="container mx-auto flex content-center xl:w-1/2 md:w-2xl mt-4">
+                    <div className="mr-2">
+                        <Button
+                            variant="ghost"
+                            onClick={()=> navigate("/projects")}
+                            className="bg-sky-600 hover:bg-sky-800 text-gray-100 hover:text-gray-300"
+                        > Back
+                        </Button>
+                    </div>
+                    <div className="flex-1 mr-2">
                        <InputGroup>
                            <InputGroupInput
                                placeholder="Type to search..."
