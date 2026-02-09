@@ -1,11 +1,10 @@
-import SearchField from "@/projects/weather-app/components/SearchField.tsx";
-import DateTable from "@/projects/weather-app/components/DateTable.tsx";
+import SearchField from "@/projects/commute-risk-dashboard/components/SearchField.tsx";
 import {Theme} from "@radix-ui/themes";
 import {useEffect, useRef, useState} from "react";
-import WeatherContainer from "@/projects/weather-app/components/WeatherContainer.tsx";
-import {getCurrentWeather} from "@/projects/weather-app/services/api.weather.ts";
-import type {WeatherApiResponse} from "@/projects/weather-app/types/typesWeather.tsx";
-import CenterSearchField from "@/projects/weather-app/components/CenterSearchField.tsx";
+import WeatherContainer from "@/projects/commute-risk-dashboard/components/WeatherContainer.tsx";
+import {getCurrentWeather} from "@/projects/commute-risk-dashboard/services/api.weather.ts";
+import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
+import CenterSearchField from "@/projects/commute-risk-dashboard/components/CenterSearchField.tsx";
 
 const WeatherApp = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -24,15 +23,12 @@ const WeatherApp = () => {
 
     useEffect(() => {
         if (!city.trim()) {
-            console.log("City is empty")
             return;
         }
         async function fetchWeather() {
             try {
                 setLoading(true);
-                console.log("Fetching weather for:", city);
                 const data = await getCurrentWeather(city);
-                console.log("Weather data received:", data);
                 setWeather(data);
             } catch(err) {
                 console.error("Error:", err);
@@ -44,6 +40,10 @@ const WeatherApp = () => {
         fetchWeather().catch((err) => {throw Error("Error: ",err)});
         inputRef.current?.focus();
     }, [city]);
+
+    useEffect(() => {
+        document.title = "Commute Risk Dashboard";
+    });
 
     return (
         <>
@@ -58,7 +58,6 @@ const WeatherApp = () => {
                    <WeatherContainer
                        weatherData={weather}
                    />
-                   <DateTable/>
                </>
            ) : (
                <>
