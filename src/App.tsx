@@ -1,6 +1,6 @@
 import {HashRouter as Router, Routes, Route} from "react-router";
 import TaskManager from "@/projects/todo/TaskManager.tsx";
-import WeatherApp from "@/projects/weather-app/WeatherApp.tsx";
+import WeatherApp from "@/projects/commute-risk-dashboard/WeatherApp.tsx";
 import MovieSearch from "@/projects/movie-search-app/MovieSearch.tsx";
 import Home from "@/pages/home/Home.tsx";
 import ProjectsPage from "@/pages/projects/ProjectsPage.tsx";

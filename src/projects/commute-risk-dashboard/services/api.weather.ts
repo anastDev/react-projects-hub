@@ -1,4 +1,4 @@
-import type {WeatherApiResponse} from "@/projects/weather-app/types/typesWeather.tsx";
+import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
 
 const WEATHER_API = import.meta.env.VITE_WEATHER_API;
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;

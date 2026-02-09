@@ -8,9 +8,9 @@ export const projectData:  ProjectCardTypes[] = [
         img: ""
     },
     {
-        projectName: "Weather App",
-        description: "A responsive React app that fetches weather data from an open API, displaying temperature, humidity, UV index and forecasts with a structured and interactive UI.",
-        path: "/projects/weather-app",
+        projectName: "Winter Commute Risk Dashboard",
+        description: "A weather-driven commute risk dashboard that analyzes real-time conditions via the OpenWeather API and helps users make safer daily transport choices.",
+        path: "/projects/commute-risk-dashboard",
         img: "TBA"
     },
     {
