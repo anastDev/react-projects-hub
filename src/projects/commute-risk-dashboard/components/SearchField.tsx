@@ -5,8 +5,8 @@ import {
     InputGroupInput,
 } from "@/components/ui/input-group.tsx"
 import {Button} from "@/components/ui/button.tsx"
-import { useState} from "react";
-import type {WeatherInputProps} from "@/projects/weather-app/types/typesWeather.tsx";
+import {useState} from "react";
+import type {WeatherInputProps} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
 
 const SearchField = ({inputRef, onSearch} : WeatherInputProps) => {
     const [searchValue, setSearchValue] = useState("");
@@ -22,6 +22,12 @@ const SearchField = ({inputRef, onSearch} : WeatherInputProps) => {
         }
     }
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            handleSearch();
+        }
+    }
+
     return (
         <>
             <header>
@@ -33,6 +39,7 @@ const SearchField = ({inputRef, onSearch} : WeatherInputProps) => {
                                type="text"
                                value={searchValue}
                                ref={inputRef}
+                               onKeyDown={handleKeyDown}
                               onChange={handleChange}
                            />
                            <InputGroupAddon align="inline-start" className="mr-2">

@@ -6,22 +6,27 @@ import {
 } from "@/components/ui/input-group.tsx"
 import {Button} from "@/components/ui/button.tsx"
 import { useState} from "react";
-import type {WeatherInputProps} from "@/projects/weather-app/types/typesWeather.tsx";
+import type {WeatherInputProps} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
 import {useNavigate} from "react-router";
 
 const CenterSearchField = ({inputRef, onSearch} : WeatherInputProps) => {
     const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement> ) => {
         setSearchValue(e.target.value);
     }
 
     const handleSearch = () => {
         if (searchValue.trim() !== "") {
-        console.log(">>>Search Value>>>", searchValue);
         onSearch(searchValue.trim());
         setSearchValue("");
+        }
+    }
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            handleSearch();
         }
     }
 
@@ -37,6 +42,7 @@ const CenterSearchField = ({inputRef, onSearch} : WeatherInputProps) => {
                                 type="text"
                                 value={searchValue}
                                 ref={inputRef}
+                                onKeyDown={handleKeyDown}
                                 onChange={handleChange}
                                 className="bg-white border border-slate-200 text-gray-700 placeholder:text-slate-400 focus:ring-sky-400"
                             />
