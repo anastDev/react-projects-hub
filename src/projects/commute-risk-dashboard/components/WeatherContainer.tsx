@@ -111,7 +111,7 @@ const WeatherContainer = ({ weatherData }: WeatherContainerProps) => {
         <>
             <main>
                 <div className="mt-8 h-full">
-                    <div className="w-xl mx-auto">
+                    <div className="w-2xl mx-auto">
                         <div>
                             <Card>
                                 <CardHeader>
