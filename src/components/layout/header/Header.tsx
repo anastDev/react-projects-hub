@@ -22,9 +22,17 @@ const Header = () => {
 
     return (
         <>
-            <header className="bg-gray-900 border-b-2 border-gray-800 text-gray-100 w-full h-14 fixed top-0 ">
-                <div className="grid grid-cols-2 container mx-auto">
-                    <div className="flex flex-row space-x-2 mt-4">
+            <header className="bg-gray-900 border-gray-800 text-gray-100 w-full h-14 fixed top-0 z-50">
+                <div className="grid grid-cols-2 items-center container mx-auto h-14">
+                    {/* Left Side: Navigation */}
+                   <nav>
+                       <div className="flex items-center justify-start mt-2">
+                           <NavDesktop routes={routes}/>
+                           <NavMobile routes={routes} />
+                       </div>
+                   </nav>
+                    {/* Right Side: Auth Actions */}
+                    <div className="flex items-center justify-end space-x-2 mt-2">
                         {!isAuthenticated && (
                             <>
                                 <div className="flex space-x-2">
@@ -39,14 +47,8 @@ const Header = () => {
                             </>
                         )}
                         {isAuthenticated && (
-                            <div>
-                              <LogoutButton/>
-                            </div>
+                            <LogoutButton/>
                         )}
-                    </div>
-                    <div className="flex flex-row justify-end mt-1">
-                        <NavDesktop routes={routes}/>
-                        <NavMobile routes={routes} />
                     </div>
                 </div>
             </header>
