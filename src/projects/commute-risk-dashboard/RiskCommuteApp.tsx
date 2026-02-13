@@ -11,7 +11,7 @@ const RiskCommuteApp = () => {
     const {weather, loading} = useWeather(city);
 
     const handleSearch = useCallback((value: string) => {
-        if (value.trim() === "") {
+        if (value.trim() !== "") {
             setCity(value);
         }
     }, []);
