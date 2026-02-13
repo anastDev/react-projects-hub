@@ -4,12 +4,12 @@ import RiskCommuteApp from "@/projects/commute-risk-dashboard/RiskCommuteApp.tsx
 import MovieSearch from "@/projects/movie-search-app/MovieSearch.tsx";
 import Home from "@/pages/home/Home.tsx";
 import ProjectsPage from "@/pages/projects/ProjectsPage.tsx";
-import AboutMe from "@/pages/about/AboutPage.tsx";
 import {RegisterPage} from "@/pages/auth/RegisterPage.tsx";
 import ProtectedRoute from "@/components/ProtectedRoute.tsx"
 import {AuthProvider} from "@/context/AuthProvider.tsx";
 import ProfileEditPage from "@/pages/profile/ProfileEditPage.tsx";
 import {Toaster} from "sonner";
+import AboutPage from "@/pages/about/AboutPage.tsx";
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
                     </Route>
 
                     {/* about Route */}
-                    <Route path="about" element={<AboutMe/>}/>
+                    <Route path="about" element={<AboutPage/>}/>
 
                     {/* auth Route */}
                     <Route path="auth">
