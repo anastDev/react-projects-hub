@@ -9,8 +9,11 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
 
 
     return (
-        <div ref={ref} className="lg:hidden mt-1">
-            <Hamburger direction="left" toggled={isOpen} size={22} rounded toggle={setOpen} />
+        <div ref={ref} className="lg:hidden mt-2">
+            <div className="flex flex-row px-2 bg-gray-100 hover:bg-gray-300 text-gray-900 rounded-xl">
+                <div><Hamburger direction="right" toggled={isOpen} size={20} rounded toggle={setOpen} /></div>
+                <div className="content-center font-semibold mr-2 cursor-pointer">{isOpen ? "Close" : "Menu"}</div>
+            </div>
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -18,7 +21,7 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed left-0 shadow-3xl right-0 top-[3.5rem] p-5 pt-2 bg-gray-900 border-b-gray-700/40">
+                        className="fixed left-13 shadow-3xl right-13 top-[4rem] p-5 pt-4 bg-gray-900 border-b-gray-700/40">
                         <ul className="grid gap-2">
                             {routes.map((route, idx) => {
                                 const {Icon} = route;
