@@ -108,7 +108,7 @@ export const ProfileEditPage = () => {
                <Header />
                <div className="h-14 lg:h-20" />
                <div className="max-w-xl lg:max-w-2xl xl:max-w-4xl mx-auto mt-10 px-6 sm:px-6">
-                   <div className="bg-gray-200 border border-gray-200 rounded-xl shadow-sm p-4 sm:p-6 lg:p-8">
+                   <div className="bg-gray-300 border border-gray-200 rounded-xl shadow-sm p-4 sm:p-6 lg:p-8">
                        <div className="mb-6 lg:mb-8">
                            <h1 className="text-lg lg:text-xl font-medium text-gray-800">
                                Hi,
@@ -161,15 +161,16 @@ export const ProfileEditPage = () => {
                                <Button
                                    type="submit"
                                    disabled={isSubmitting}
-                                   className="w-full sm:w-auto bg-orange-500 text-gray-900 hover:bg-orange-400 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 text-sm lg:text-base"
+                                   className="w-full sm:w-auto border-2 border-orange-500 text-gray-900 bg-orange-500 hover:bg-gray-800 hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200 text-sm lg:text-base"
                                >
                                    {isSubmitting ? "Updating…" : "Update Profile"}
                                </Button>
 
                                <Button
                                    type="button"
+                                   variant="outline"
                                    onClick={onClear}
-                                   className="w-full sm:w-auto border-gray-600 text-gray-300 hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 text-sm lg:text-base"
+                                   className="w-full sm:w-auto border-2 border-orange-500 text-orange-400 bg-gray-800 hover:bg-orange-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200 text-sm lg:text-base"
                                >
                                    Clear
                                </Button>
