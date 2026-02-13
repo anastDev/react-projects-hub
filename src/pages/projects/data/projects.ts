@@ -3,29 +3,33 @@ import type { ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.ts
 export const projectData: ProjectCardTypes[] = [
     {
         projectName: "Portfolio Backend API",
-        description: "RESTful API with auth & testing",
+        description: "A production-ready RESTful API built with Node.js and Express, featuring MongoDB integration, JWT-based authentication, role-based authorization, and comprehensive test coverage with Jest. Includes Swagger documentation and follows domain-driven design principles.",
         tags: ["Node.js", "MongoDB", "JWT", "Zod", "Jest"],
         path: "/projects/portfolio-backend",
+        status: "Completed",
         img: ""
     },
     {
         projectName: "Commute Risk Dashboard",
-        description: "Weather-based commute safety tool",
+        description: "A weather-based decision tool that helps users assess commute safety by fetching real-time weather data from the OpenWeather API. Features responsive design, TypeScript for type safety, and dynamic risk calculations based on current conditions.",
         tags: ["React", "TypeScript", "OpenWeather API"],
         path: "/projects/commute-risk-dashboard",
+        status: "In Progress",
         img: "TBA"
     },
     {
         projectName: "Task Manager App",
-        description: "Full CRUD task management",
+        description: "A full-featured task management application with complete CRUD functionality and browser localStorage persistence. Users can create, edit, delete, and organize tasks with a clean interface built in React, demonstrating state management and local data handling.",
         tags: ["React", "localStorage", "CRUD"],
         path: "/projects/task-manager-app",
+        status: "Completed",
         img: "TBA"
     },
     {
         projectName: "Movie Search App",
-        description: "Dynamic movie database search",
+        description: "An interactive movie database that lets users search and explore films using a public API. Features dynamic search results, detailed movie information displays, and responsive design for seamless browsing across devices.",
         path: "/projects/movie-search-app",
+        status: "In Progress",
         img: "TBA"
     }
 ]
