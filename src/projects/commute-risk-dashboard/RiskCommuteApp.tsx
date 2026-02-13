@@ -18,7 +18,6 @@ const RiskCommuteApp = () => {
 
     useEffect(() => {
         inputRef.current?.focus();
-        document.title = "Commute Risk Dashboard";
     }, []);
 
     return (
