@@ -26,7 +26,7 @@ const Header = () => {
                 <div className="grid grid-cols-2 items-center container mx-auto h-14">
                     {/* Left Side: Navigation */}
                    <nav>
-                       <div className="flex items-center justify-start mt-2">
+                       <div className="flex items-center justify-start">
                            <NavDesktop routes={routes}/>
                            <NavMobile routes={routes} />
                        </div>
