@@ -7,9 +7,7 @@ const AboutPage = () => {
         <>
            <div className="relative h-screen bg-gray-900">
                <Header />
-               <div className="h-26"></div>
                <AboutMainContent />
-               <div className="h-12"></div>
                <Footer />
            </div>
         </>
