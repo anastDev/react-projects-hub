@@ -2,6 +2,10 @@ import Hamburger from 'hamburger-react'
 import {type ElementType,  useRef, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 import {Link} from "react-router";
+import {
+    ButtonGroup,
+} from "@/components/ui/button-group"
+import {Button} from "@radix-ui/themes";
 
 export const NavMobile = ({ routes }: { routes: Array<{title: string, path: string, Icon: ElementType}> }) => {
     const [isOpen, setOpen] = useState<boolean>(false);
@@ -10,10 +14,11 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
 
     return (
         <div ref={ref} className="lg:hidden mt-2">
-            <div className="flex flex-row px-2 bg-gray-100 hover:bg-gray-300 text-gray-900 rounded-xl">
-                <div><Hamburger direction="right" toggled={isOpen} size={20} rounded toggle={setOpen} /></div>
-                <div className="content-center font-semibold mr-2 cursor-pointer">{isOpen ? "Close" : "Menu"}</div>
-            </div>
+            <ButtonGroup onClick={() => {setOpen(!isOpen)}} className="px-2 bg-gray-100 hover:bg-gray-300 text-gray-900 rounded-xl">
+                <Button><Hamburger direction="right" toggled={isOpen} size={20} rounded /></Button>
+                <Button><div className="content-center font-semibold mx-2 cursor-pointer">{isOpen ? "Close" : "Menu"}</div></Button>
+            </ButtonGroup>
+
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
