@@ -22,7 +22,7 @@ function App() {
                     <Route index element={<Home/>} />
 
                     {/* Protected Routes */}
-                    <Route path="projects" element={<ProtectedRoute/>}>
+                    <Route path="projects" element={<ProjectsPage/>}>
                         <Route index element={<ProjectsPage/>}/>
 
                         {/* Individual projects*/}
