@@ -71,7 +71,7 @@ export const LoginAlertDialog = () => {
                             Enter your credentials to access your account
                         </AlertDialogDescription>
                     </AlertDialogHeader>
-                    <div>
+                    <div className="mb-2">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="mb-2">
                                 <label htmlFor="username" className="text-gray-200">Username</label>
