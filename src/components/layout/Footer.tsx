@@ -12,41 +12,67 @@ const Footer = () => {
         ...staticRoutes,
         ...(isAuthenticated ? [{
             title: "Profile",
-            path: `/profile/:${userId}`,
+            path: `/profile/${userId}`,
             Icon: IoPerson
         }] : [])
     ];
 
     return (
-        <>
-            <footer className=" bg-gray-900  border-t-2 border-gray-800 text-gray-100 w-full h-22 fixed bottom-0">
-                <div className="flex flex-col mt-3">
-                   <div className="flex flex-row justify-center space-x-10">
-                       {routes.map((route) => {
-                           const {title, path} = route;
-                           return (
-                               <div className="hover:underline hover:text-orange-400 px-2">
-                                   <Link to={path}>{title}</Link>
-                               </div>
-                           )
-                       })}
-                   </div>
-                    <div className="flex flex-row justify-center gap-4 mt-2">
-                       <div className="hover:text-orange-400">
-                           <a href="https://www.linkedin.com/in/anastasia-mourouzidou/">
-                               <FaLinkedin size="28px" />
-                           </a>
-                       </div>
-                        <div className="hover:text-orange-400">
-                            <a href="https://github.com/anastDev">
-                                <FaGithub size="28px"/>
+        <footer className="bg-gray-900 border-t border-gray-800 text-gray-100 w-full mt-auto">
+            <div className="container mx-auto px-6 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4 text-orange-400">Navigation</h3>
+                        <ul className="space-y-2">
+                            {routes.map((route) => (
+                                <li key={route.title}>
+                                    <Link
+                                        to={route.path}
+                                        className="text-gray-400 hover:text-orange-400 transition-colors"
+                                    >
+                                        {route.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4 text-orange-400">Connect</h3>
+                        <div className="flex gap-4">
+                            <a
+                                href="https://www.linkedin.com/in/anastasia-mourouzidou/"
+                                className="text-gray-400 hover:text-orange-400 transition-colors"
+                                aria-label="LinkedIn"
+                            >
+                                <FaLinkedin size={28} />
+                            </a>
+                            <a
+                                href="https://github.com/anastDev"
+                                className="text-gray-400 hover:text-orange-400 transition-colors"
+                                aria-label="GitHub"
+                            >
+                                <FaGithub size={28} />
                             </a>
                         </div>
-                        <div className="w-[10px]"></div>
+                    </div>
+
+
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4 text-orange-400">About</h3>
+                        <p className="text-gray-400 text-sm">
+                            Full-stack developer specializing in React & TypeScript.
+                            Building projects and learning along the way.
+                        </p>
                     </div>
                 </div>
-            </footer>
-        </>
+
+                <div className="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+                    <p>© {new Date().getFullYear()} Anastasia Mourouzidou. Built with React & TypeScript.</p>
+                </div>
+            </div>
+        </footer>
     )
 }
 
