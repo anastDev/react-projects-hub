@@ -13,11 +13,11 @@ export const LogoutButton = () => {
 
     return (
         <>
-            <div>
+            <div className="lg:mr-4 mr-2">
                 <Button
                     onClick={handleLogout}
                     variant="destructive"
-                    className="border-red-500/40 text-gray-900 hover:bg-red-500/10 hover:text-red-300 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900 lg:py-4 px-5 py-6 rounded-lg font-semibold"
+                    className="border-red-500/40 text-gray-900 hover:bg-red-500/10 hover:text-red-300 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900 px-5 py-6 rounded-md font-semibold"
                 >
                     Logout
                 </Button>

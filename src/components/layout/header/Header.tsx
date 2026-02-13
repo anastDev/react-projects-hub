@@ -22,7 +22,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="bg-gray-900 border-gray-800 text-gray-100 w-full h-14 fixed top-0 z-50">
+            <header className="bg-gray-900 border-gray-800 text-gray-100 w-full h-14 fixed top-0 z-50 pt-2">
                 <div className="grid grid-cols-2 items-center container mx-auto h-14">
                     {/* Left Side: Navigation */}
                    <nav>
@@ -32,7 +32,7 @@ const Header = () => {
                        </div>
                    </nav>
                     {/* Right Side: Auth Actions */}
-                    <div className="flex items-center justify-end space-x-2 mt-2">
+                    <div className="flex items-center justify-end space-x-2 mt-2 mr-4">
                         {!isAuthenticated && (
                             <>
                                 <div className="flex space-x-2">
