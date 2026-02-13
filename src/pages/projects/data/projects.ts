@@ -1,22 +1,31 @@
 import type { ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.tsx";
 
-export const projectData:  ProjectCardTypes[] = [
+export const projectData: ProjectCardTypes[] = [
     {
-        projectName: "Task Manager App",
-        description: "A web app for managing tasks with full CRUD functionality, using localStorage for persistent storage and a clean, interactive interface.",
-        path: "/projects/task-manager-app",
+        projectName: "Portfolio Backend API",
+        description: "RESTful API with auth & testing",
+        tags: ["Node.js", "MongoDB", "JWT", "Zod", "Jest"],
+        path: "/projects/portfolio-backend",
         img: ""
     },
     {
-        projectName: "Winter Commute Risk Dashboard",
-        description: "A weather-driven commute risk dashboard that analyzes real-time conditions via the OpenWeather API and helps users make safer daily transport choices.",
+        projectName: "Commute Risk Dashboard",
+        description: "Weather-based commute safety tool",
+        tags: ["React", "TypeScript", "OpenWeather API"],
         path: "/projects/commute-risk-dashboard",
         img: "TBA"
     },
     {
-        projectName: "Movie Search App",
-        description: "TBA",
-        path: "/projects/movie-search-app",
+        projectName: "Task Manager App",
+        description: "Full CRUD task management",
+        tags: ["React", "localStorage", "CRUD"],
+        path: "/projects/task-manager-app",
         img: "TBA"
     },
+    {
+        projectName: "Movie Search App",
+        description: "Dynamic movie database search",
+        path: "/projects/movie-search-app",
+        img: "TBA"
+    }
 ]
