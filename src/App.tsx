@@ -1,6 +1,6 @@
 import {HashRouter as Router, Routes, Route} from "react-router";
 import TaskManager from "@/projects/todo/TaskManager.tsx";
-import WeatherApp from "@/projects/commute-risk-dashboard/WeatherApp.tsx";
+import RiskCommuteApp from "@/projects/commute-risk-dashboard/RiskCommuteApp.tsx";
 import MovieSearch from "@/projects/movie-search-app/MovieSearch.tsx";
 import Home from "@/pages/home/Home.tsx";
 import ProjectsPage from "@/pages/projects/ProjectsPage.tsx";
@@ -27,12 +27,12 @@ function App() {
 
                         {/* Individual projects*/}
                         <Route path="task-manager-app" element={<TaskManager/>}/>
-                        <Route path="weather-app" element={<WeatherApp/>}/>
+                        <Route path="commute-risk-dashboard" element={<RiskCommuteApp/>}/>
                         <Route path="movie-search-app" element={<MovieSearch/>}/>
                     </Route>
 
                     {/* about Route */}
-                    <Route path="about-me" element={<AboutMe/>}/>
+                    <Route path="about" element={<AboutMe/>}/>
 
                     {/* auth Route */}
                     <Route path="auth">

@@ -14,8 +14,8 @@ export const staticRoutes= [
         Icon: FaFolder,
     },
     {
-        title: "About Me",
-        path: "/about-me",
+        title: "About",
+        path: "/about",
         Icon: FaBookOpen,
     },
 ]
