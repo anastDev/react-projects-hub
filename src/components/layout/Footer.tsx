@@ -18,9 +18,9 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-gray-900 border-t border-gray-800 text-gray-100 w-full mt-auto">
+        <footer className="bg-gray-900 border-t border-gray-800 text-gray-100 w-full mt-auto text-center lg:text-left">
             <div className="container mx-auto px-6 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
 
                     <div>
                         <h3 className="text-lg font-semibold mb-4 text-orange-400">Navigation</h3>
@@ -40,7 +40,7 @@ const Footer = () => {
 
                     <div>
                         <h3 className="text-lg font-semibold mb-4 text-orange-400">Connect</h3>
-                        <div className="flex gap-4">
+                        <div className="flex lg:justify-start justify-center gap-4">
                             <a
                                 href="https://www.linkedin.com/in/anastasia-mourouzidou/"
                                 className="text-gray-400 hover:text-orange-400 transition-colors"
@@ -62,13 +62,12 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-4 text-orange-400">About</h3>
                         <p className="text-gray-400 text-sm">
-                            Full-stack developer specializing in React & TypeScript.
-                            Building projects and learning along the way.
+                            A Full-stack developer building projects and learning along the way.
                         </p>
                     </div>
                 </div>
 
-                <div className="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+                <div className="border-t border-gray-800 mt-8 pt-4 text-center text-gray-500 text-sm">
                     <p>© {new Date().getFullYear()} Anastasia Mourouzidou. Built with React & TypeScript.</p>
                 </div>
             </div>
