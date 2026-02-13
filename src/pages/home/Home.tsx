@@ -8,9 +8,7 @@ const Home = () => {
         <>
             <div className="h-screen relative bg-gray-900">
                 <Header/>
-                <div className="h-14"></div>
                 <HomeMainContent/>
-                <div className="h-18"></div>
                 <Footer/>
             </div>
         </>

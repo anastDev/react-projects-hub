@@ -1,83 +1,216 @@
 import ProjectCard from "@/pages/projects/components/ProjectCard.tsx";
 import {Button} from "@/components/ui/button.tsx"
 import {Link} from "react-router";
-import {ArrowDown} from "lucide-react";
-import {useRef} from "react";
+import {ArrowDown, ArrowRight} from "lucide-react";
 import {projectData} from "@/pages/projects/data/projects.ts";
+import {ReactTyped} from "react-typed";
+import {motion, useTransform, useScroll} from "framer-motion";
 
 export const HomeMainContent = () => {
-    const projectsRef = useRef<HTMLDivElement | null>(null);
+    const { scrollY } = useScroll();
+    const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+    const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
 
-    const scrollToProjectSection = () => {
-        projectsRef.current?.scrollIntoView({behavior: "smooth", block: "start"});
-    }
 
     return (
         <>
-            <main className="flex-grow w-full bg-gray-900">
+            <main className="flex-grow w-full bg-gray-900 pt-50">
 
                 {/* Hero Section/ Intro */}
-                <div className="min-h-[65vh] pt-14 mt-18 px-[1.5rem]">
-                    <div className="container mx-auto">
-                        <div className="flex flex-col justify-center items-center space-y-4">
-                            <h1 className="text-3xl md:text-4xl font-medium text-center mb-6 text-gray-100">Welcome to my Projects Hub 👋</h1>
-                            <p className="text-center max-w-3xl mx-auto text-gray-400">This website is a collection of small projects I’ve built while learning and exploring React and modern web development.
-                                This page showcases small React projects built while learning modern web development. Each project explores a specific feature or idea, from CRUD actions to working with public APIs.
-                            </p>
-                        </div>
-                        <div className="flex flex-col justify-center mt-16 space-y-4">
-                            <div className="flex justify-center text-gray-400">
-                                Scroll to find more
+                <motion.section
+                    className="min-h-screen"
+                    style={{ y: heroY, opacity: heroOpacity }}
+                >
+                    <div className="px-[1.5rem]">
+                        <div className="container mx-auto">
+                            <div className="flex flex-col justify-center">
+                                <h1 className="text-gray-100 font-medium text-center text-4xl md:text-5xl">Hi, I'm {" "}
+                                    <span className="text-orange-400">
+                                        <ReactTyped
+                                            strings={["Anastasia"]}
+                                            typeSpeed={100}
+                                            backSpeed={20}
+                                            loop={true}
+                                        />
+                                    </span>
+                                </h1>
+                                <p className="text-xl md:text-2xl text-center text-gray-400 mt-2">
+                                    A <span className="font-medium">Full Stack Developer</span> building one component at a time
+                                </p>
+                                <p className="text-gray-500 max-w-2xl mx-auto text-center mt-4">
+                                    Specializing in React & TypeScript. Getting random ideas, testing them with small projects
+                                    and gradually stacking knowledge like books on a shelf.
+                                </p>
                             </div>
-                            <div className="flex justify-center">
-                                <ArrowDown onClick={scrollToProjectSection} size={32} className="rounded-full text-gray-400 border border-gray-400" />
+                            <div className="flex flex-col justify-center mt-50 space-y-4">
+                                <div className="flex justify-center text-gray-500">
+                                    scroll down
+                                </div>
+                                <div className="flex justify-center animate-bounce mt-5">
+                                    <ArrowDown size={32} className="rounded-full text-gray-400 border border-gray-400" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.section>
+
+                {/*  Bridge Section - What this site is */}
+                <motion.section
+                    className="py-24 border-y border-gray-700/50"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    <div className="container mx-auto px-6 max-w-3xl">
+                        <div className="space-y-4 text-center">
+                            <div className="py-15">
+                                <div className="w-24 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto"></div>
+                            </div>
+                            <p className="text-2xl text-gray-100 font-light leading-relaxed">
+                                This website is a collection of small projects I've built
+                                while learning and exploring React and modern web development.
+                            </p>
+                            <Link to="/about">
+                                <Button className="group mt-4 border-2 border-orange-500 text-orange-400 bg-transparent hover:bg-orange-500 hover:text-gray-900 transition-colors duration-300 cursor-pointer">
+                                    Learn more about my journey
+                                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </motion.section>
 
                 {/* Mini Preview of projects */}
-                <div className="min-h-[50vh] px-[1.6rem] pb-14"
-                     ref={projectsRef}>
-                    <div className="container mx-auto">
-
-                        {/* Title of the page with the button for More */}
-                        <div className="grid grid-cols-3 mb-6">
-                            <div></div>
-                           <div className="text-center">
-                               <div className="p-2 text-lg font-medium text-gray-100">Projects</div>
-                           </div>
-                            <div className="flex justify-end">
-                               <div>
-                                   <Link
-                                       to="/projects"
-                                   >
-                                       <Button variant="outline"
-                                               className="border-2 border-orange-500 text-orange-400 bg-gray-800 hover:bg-orange-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200"
-                                       >More
-                                       </Button>
-                                   </Link>
-                               </div>
+                <motion.section
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ amount: 0.3 }}
+                >
+                    <div className="px-[1.6rem] h-full mt-20 mb-10">
+                        <div className="container mx-auto">
+                            <div className="grid grid-cols-2 items-center mb-6">
+                                <div>
+                                    <h2 className="text-xl font-medium text-gray-100">Projects</h2>
+                                </div>
+                                <div className="flex justify-end">
+                                    <Link
+                                        to="/projects"
+                                    >
+                                        <Button variant="outline"
+                                                className="border-2 border-orange-500 text-orange-400 bg-gray-800 hover:bg-orange-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-300"
+                                        >More
+                                        </Button>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                        {/* Container of Project Cards - Mini Previews */}
-                        <div className="flex flex-row gap-8 py-4 overflow-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                            {projectData.map((project) => {
-                                return (
-                                    <div>
-                                        <ProjectCard
-                                            img={project.img}
-                                            projectName={project.projectName}
-                                            description={project.description}
-                                            path={project.path}
-                                        />
-                                    </div>
-                                )
-                            })}
+
+                            {/* Container of Project Cards - Mini Previews */}
+                            <motion.div
+                                className="flex flex-row gap-8 py-4 overflow-y-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={{
+                                    visible: {
+                                        transition: {
+                                            delay: 0.15
+                                        }
+                                    }
+                                }}
+                            >
+                                {projectData.map((project, index) => {
+                                    return (
+                                        <motion.div
+                                            key={index}
+                                            variants={{
+                                                hidden: { opacity: 0, y: 30 },
+                                                visible: {
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: { duration: 0.5, ease: "easeOut" }
+                                                }
+                                            }}
+                                        >
+                                            <ProjectCard {...project}/>
+                                        </motion.div>
+                                    )
+                                })}
+                            </motion.div>
                         </div>
                     </div>
+                </motion.section>
+
+                <div className="py-15">
+                    <div className="w-24 my-10 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto"></div>
                 </div>
-                <div className="h-14"></div>
+
+                {/* Tech Stack Section */}
+                <motion.section
+                    className="py-20 container mx-auto"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    <div className="container mx-auto max-w-4xl">
+                        <h2 className="text-xl font-semibold text-gray-100 mb-10">Technical Skills</h2>
+
+                        <motion.div
+                            className="grid md:grid-cols-2 gap-8"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={{
+                                visible: {
+                                    transition: {
+                                        delay: 0.2
+                                    }
+                                }
+                            }}
+                        >
+                            {/* Frontend */}
+                            <motion.div
+                                variants={{
+                                    hidden: { opacity: 0, y: 20 },
+                                    visible: { opacity: 1, y: 0 }
+                                }}
+                            >
+                                <h3 className="text-orange-400 font-medium mb-4">Frontend</h3>
+                                <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 transition-colors text-sm">
+                        React
+                    </span>
+                                    <span className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 transition-colors text-sm">
+                        TypeScript
+                    </span>
+                                </div>
+                            </motion.div>
+
+                            {/* Backend */}
+                            <motion.div
+                                variants={{
+                                    hidden: { opacity: 0, y: 20 },
+                                    visible: { opacity: 1, y: 0 }
+                                }}
+                            >
+                                <h3 className="text-orange-400 font-medium mb-4">Backend</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {["Node.js", "MongoDB", "REST APIs", "JWT Auth"].map(tech => (
+                                        <span key={tech} className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 transition-colors text-sm">
+                            {tech}
+                        </span>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        </motion.div>
+                    </div>
+                </motion.section>
+
+                <div className="py-15">
+                    <div className="w-24 mt-6 mb-10 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto"></div>
+                </div>
             </main>
         </>
     )
