@@ -12,6 +12,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {useState} from "react";
 import type {CommuteType, RiskResponse} from "@/projects/commute-risk-dashboard/types/typeRisk.ts";
 import RiskDisplay from "@/projects/commute-risk-dashboard/components/RiskDisplay.tsx";
+import {Button} from "@/components/ui/button.tsx";
+import {useNavigate} from "react-router";
+import { motion } from 'framer-motion';
 
 const WEATHER_ICON_API = import.meta.env.VITE_WEATHER_ICON_API;
 
@@ -22,6 +25,7 @@ interface WeatherContainerProps {
 
 const WeatherContainer = ({ weatherData }: WeatherContainerProps) => {
     const [commuteType, setCommuteType] = useState<CommuteType | "">("");
+    const navigate = useNavigate();
 
     if(!weatherData) {
         return (
@@ -109,79 +113,133 @@ const WeatherContainer = ({ weatherData }: WeatherContainerProps) => {
 
     return (
         <>
-            <main>
-                <div className="mt-8 h-full">
-                    <div className="w-2xl mx-auto">
-                        <div>
-                            <Card>
-                                <CardHeader>
-                                    <div className="flex flex-row justify-around space-x-6">
-                                        <div className="flex flex-col justify-center items-center">
-                                            <div className="text-2xl font-medium mb-2">{weatherData.name}</div>
-                                            <h1 className="text-5xl font-semibold mb-2">{formatTemp(weatherData.main.temp)}°C</h1>
-                                            <p className="font-light">{weatherData!.weather[0].description}</p>
+            <main className="min-h-screen bg-gradient-to-b from-sky-50 to-blue-50 py-8 px-4">
+                <div className="container mx-auto max-w-2xl">
+                    {/* Weather Information Card */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <Card className="shadow-lg">
+                            <CardHeader>
+                                <div className="flex flex-col sm:flex-row justify-around items-center gap-4 sm:gap-6">
+                                    <div className="flex flex-col justify-center items-center text-center">
+                                        <div className="text-2xl md:text-3xl font-medium mb-2 text-gray-800">
+                                            {weatherData.name}
                                         </div>
-                                        <div>
-                                            <img
-                                                src={getWeatherIconUrl(weatherData!.weather[0].icon)}
-                                                alt={weatherData!.weather[0].description}
-                                                className="h-32 mx-auto"
-                                            />
-                                        </div>
+                                        <h1 className="text-5xl md:text-6xl font-semibold mb-2 text-gray-900">
+                                            {formatTemp(weatherData.main.temp)}°C
+                                        </h1>
+                                        <p className="font-light text-slate-600 capitalize">
+                                            {weatherData.weather[0].description}
+                                        </p>
                                     </div>
-                                </CardHeader>
-                                <Separator/>
-                                <CardContent>
-                                    <div className="my-4">
-                                        <div>Please select a commute type:</div>
-                                        <div className="mt-4">
-                                            <RadioGroup
-                                                defaultValue={commuteType || ""}
-                                                onValueChange={(value)=> setCommuteType(value as CommuteType)}>
-                                                <div className="flex items-center gap-3">
-                                                    <RadioGroupItem value="walking" id="walking"/>
-                                                    <Label htmlFor="walking">Walking</Label>
-                                                </div>
-                                                <div className="flex items-center gap-3">
-                                                    <RadioGroupItem value="bike" id="bike" />
-                                                    <Label htmlFor="bike">Bike</Label>
-                                                </div>
-                                                <div className="flex items-center gap-3">
-                                                    <RadioGroupItem value="car" id="car" />
-                                                    <Label htmlFor="car">Car</Label>
-                                                </div>
-                                                <div className="flex items-center gap-3">
-                                                    <RadioGroupItem value="bus" id="bus" />
-                                                    <Label htmlFor="bus">Bus / Tram</Label>
-                                                </div>
-                                            </RadioGroup>
-                                        </div>
+                                    <div className="flex-shrink-0">
+                                        <img
+                                            src={getWeatherIconUrl(weatherData.weather[0].icon)}
+                                            alt={weatherData.weather[0].description}
+                                            className="h-24 sm:h-32 mx-auto"
+                                        />
                                     </div>
-                                </CardContent>
-                                <Separator/>
-                                <CardFooter>
-                                    {commuteType && risk && (
-                                        <>
-                                            <RiskDisplay
-                                                risk={risk}
-                                                commute={commuteType}
-                                            />
-                                        </>
-                                    )}
-                                </CardFooter>
-                            </Card>
-                        </div>
-                        <div className="w-xs mx-auto mt-4 flex justify-evenly">
-                            <div className="flex flex-row">
-                                <div className="mr-1">Sunrise: </div>
-                                <div className="font-medium">{formatTime(weatherData.sys.sunrise)}</div>
+                                </div>
+                            </CardHeader>
+
+                            <Separator />
+
+                            <CardContent className="pt-6">
+                                <div className="space-y-4">
+                                    <div className="text-base font-medium text-gray-800">
+                                        Select your commute method:
+                                    </div>
+                                    <RadioGroup
+                                        value={commuteType || ""}
+                                        onValueChange={(value) => setCommuteType(value as CommuteType)}
+                                        className="space-y-3"
+                                    >
+                                        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer">
+                                            <RadioGroupItem value="walking" id="walking" />
+                                            <Label htmlFor="walking" className="cursor-pointer flex-1">
+                                                🚶 Walking
+                                            </Label>
+                                        </div>
+                                        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer">
+                                            <RadioGroupItem value="bike" id="bike" />
+                                            <Label htmlFor="bike" className="cursor-pointer flex-1">
+                                                🚴 Bike
+                                            </Label>
+                                        </div>
+                                        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer">
+                                            <RadioGroupItem value="car" id="car" />
+                                            <Label htmlFor="car" className="cursor-pointer flex-1">
+                                                🚗 Car
+                                            </Label>
+                                        </div>
+                                        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer">
+                                            <RadioGroupItem value="bus" id="bus" />
+                                            <Label htmlFor="bus" className="cursor-pointer flex-1">
+                                                🚌 Bus / Tram
+                                            </Label>
+                                        </div>
+                                    </RadioGroup>
+                                </div>
+                            </CardContent>
+
+                            {commuteType && risk && (
+                                <>
+                                    <Separator />
+                                    <CardFooter className="pt-6">
+                                        <RiskDisplay risk={risk} commute={commuteType} />
+                                    </CardFooter>
+                                </>
+                            )}
+                        </Card>
+                    </motion.div>
+
+                    {/* Sun Times - Additional Weather Info */}
+                    <motion.div
+                        className="mt-6 bg-white rounded-lg shadow-md p-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        <div className="flex flex-col sm:flex-row justify-around items-center gap-4 text-center sm:text-left">
+                            <div className="flex items-center gap-2">
+                                <span className="text-2xl">🌅</span>
+                                <div>
+                                    <div className="text-sm text-slate-600">Sunrise</div>
+                                    <div className="font-semibold text-gray-800">
+                                        {formatTime(weatherData.sys.sunrise)}
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex flex-row">
-                                <div className="mr-1">Sunset:</div>
-                                <div className="font-medium">{formatTime(weatherData.sys.sunset)}</div>
+                            <div className="flex items-center gap-2">
+                                <span className="text-2xl">🌇</span>
+                                <div>
+                                    <div className="text-sm text-slate-600">Sunset</div>
+                                    <div className="font-semibold text-gray-800">
+                                        {formatTime(weatherData.sys.sunset)}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
+
+                    {/* Navigation - Back Button */}
+                    <motion.div
+                        className="mt-8 flex justify-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                        <Button
+                            variant="ghost"
+                            onClick={() => navigate("/projects")}
+                            className="bg-sky-500 text-gray-100 hover:bg-sky-600 active:bg-sky-600 border-sky-500  transition-colors w-full sm:w-auto cursor-pointer"
+                        >
+                            ← Back to Projects
+                        </Button>
+                    </motion.div>
                 </div>
             </main>
         </>
