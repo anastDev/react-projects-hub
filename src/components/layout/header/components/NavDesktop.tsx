@@ -4,7 +4,7 @@ import {Separator } from "@/components/ui/separator";
 
 export const NavDesktop = ({ routes }: { routes: Array<{title: string, path: string,  Icon: ElementType}> }) => {
     return (
-        <ul className="hidden lg:flex flex-row lg:ml-4 space-x-6 mt-2">
+        <ul className="hidden lg:flex flex-row space-x-6 mt-2">
             {routes.map((route , index) => {
                 const {title, path, Icon} = route;
                 return (

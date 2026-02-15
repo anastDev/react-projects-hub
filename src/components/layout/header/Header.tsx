@@ -32,7 +32,7 @@ const Header = () => {
                        </div>
                    </nav>
                     {/* Right Side: Auth Actions */}
-                    <div className="flex items-center justify-end space-x-2 mt-2 mr-6">
+                    <div className="flex items-center justify-end space-x-2 mt-2 ">
                         {!isAuthenticated && (
                             <>
                                 <div className="flex space-x-2">
