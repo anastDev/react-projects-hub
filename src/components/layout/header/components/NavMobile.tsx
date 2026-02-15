@@ -13,7 +13,7 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
 
 
     return (
-        <div ref={ref} className="lg:hidden mt-2 lg:ml-4 ml-6">
+        <div ref={ref} className="lg:hidden mt-2">
             <ButtonGroup onClick={() => setOpen((prev) => !prev)} className="px-2 bg-gray-100 hover:bg-gray-300 text-gray-900 rounded-md cursor-pointer">
                 <Button><Hamburger direction="right" toggled={isOpen} size={20} rounded /></Button>
                 <Button><div className="content-center font-semibold mx-2">{isOpen ? "Close" : "Menu"}</div></Button>
