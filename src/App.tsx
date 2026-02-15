@@ -18,11 +18,11 @@ function App() {
         <AuthProvider>
             <Router>
                 <Routes>
-                    {/* home Route*/}
+                    {/* Home Route*/}
                     <Route index element={<Home/>} />
 
-                    {/* Protected Routes */}
-                    <Route path="projects" element={<ProjectsPage/>}>
+                    {/* Project Section */}
+                    <Route path="projects">
                         <Route index element={<ProjectsPage/>}/>
 
                         {/* Individual projects*/}
@@ -31,10 +31,10 @@ function App() {
                         <Route path="movie-search-app" element={<MovieSearch/>}/>
                     </Route>
 
-                    {/* about Route */}
+                    {/* About Route */}
                     <Route path="about" element={<AboutPage/>}/>
 
-                    {/* auth Route */}
+                    {/* Auth Route */}
                     <Route path="auth">
                         <Route path="register" element={<RegisterPage/>}/>
                     </Route>
