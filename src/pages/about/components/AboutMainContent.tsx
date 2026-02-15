@@ -20,7 +20,7 @@ const AboutMainContent = () => {
                 {/* Right Column - Content */}
                 <div className="lg:w-2/3">
                     <h1 className="lg:text-4xl text-2xl font-semibold text-gray-100 mb-4">
-                        Hi, I'm Anastasia!
+                        Hi again, I'm Anastasia!
                     </h1>
 
                     <div className="space-y-4">
