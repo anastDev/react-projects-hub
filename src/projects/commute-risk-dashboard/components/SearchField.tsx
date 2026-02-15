@@ -7,11 +7,9 @@ import {
 import {Button} from "@/components/ui/button.tsx"
 import {useState} from "react";
 import type {WeatherInputProps} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
-import {useNavigate} from "react-router";
 
 const SearchField = ({inputRef, onSearch} : WeatherInputProps) => {
     const [searchValue, setSearchValue] = useState("");
-    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
@@ -32,40 +30,39 @@ const SearchField = ({inputRef, onSearch} : WeatherInputProps) => {
 
     return (
         <>
-            <header>
-                <div className="container mx-auto flex content-center xl:w-1/2 md:w-2xl mt-4">
-                    <div className="mr-2">
-                        <Button
-                            variant="ghost"
-                            onClick={()=> navigate("/projects")}
-                            className="bg-sky-600 hover:bg-sky-800 text-gray-100 hover:text-gray-300"
-                        > Back
-                        </Button>
-                    </div>
-                    <div className="flex-1 mr-2">
-                       <InputGroup>
-                           <InputGroupInput
-                               placeholder="Type to search..."
-                               type="text"
-                               value={searchValue}
-                               ref={inputRef}
-                               onKeyDown={handleKeyDown}
-                              onChange={handleChange}
-                           />
-                           <InputGroupAddon align="inline-start" className="mr-2">
-                               <SearchIcon size={18} />
-                           </InputGroupAddon>
-                       </InputGroup>
-                   </div>
-                    <div>
-                        <Button
-                            variant="outline"
-                            className="bg-white text-blue-500 hover:bg-blue-500 hover:text-white"
-                            type="button"
-                            onClick={handleSearch}
-                        >
-                            Search
-                        </Button>
+            <header className="bg-sky-50 border-b border-sky-200 py-4">
+                <div className="container mx-auto max-w-2xl">
+                    <div className="flex flex-col sm:flex-row items-center gap-3">
+
+                        {/* Search Input */}
+                        <div className="flex-1 w-full">
+                            <InputGroup>
+                                <InputGroupInput
+                                    placeholder="Search another city..."
+                                    type="text"
+                                    value={searchValue}
+                                    ref={inputRef}
+                                    onKeyDown={handleKeyDown}
+                                    onChange={handleChange}
+                                    className="bg-gray-50 border-sky-200 text-gray-700 placeholder:text-slate-400 focus:ring-sky-400 focus:border-sky-400 rounded-r-md overflow-hidden"
+                                />
+                                <InputGroupAddon align="inline-start" className="bg-gray-100">
+                                    <SearchIcon size={28} className="text-sky-500 mx-2" />
+                                </InputGroupAddon>
+                            </InputGroup>
+                        </div>
+
+                        {/* Search Button */}
+                        <div className="w-full sm:w-auto">
+                            <Button
+                                variant="outline"
+                                className="bg-sky-500 text-gray-100 hover:bg-sky-600 active:bg-sky-600 border-sky-500  transition-colors w-full sm:w-auto cursor-pointer"
+                                type="button"
+                                onClick={handleSearch}
+                            >
+                                Search
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </header>
