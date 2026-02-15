@@ -5,7 +5,7 @@ export const projectData: ProjectCardTypes[] = [
         projectName: "Portfolio Backend API",
         description: "A production-ready RESTful API built with Node.js and Express, featuring MongoDB integration, JWT-based authentication, role-based authorization, and comprehensive test coverage with Jest. Includes Swagger documentation and follows domain-driven design principles.",
         tags: ["Node.js", "MongoDB", "JWT", "Zod", "Jest"],
-        path: "/projects/portfolio-backend",
+        path: "https://github.com/anastDev/project-hub-backend",
         status: "Completed",
         img: ""
     },
