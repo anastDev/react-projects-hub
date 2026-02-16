@@ -1,11 +1,15 @@
 import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
 
-const WEATHER_API = import.meta.env.VITE_WEATHER_API;
-const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export async function getCurrentWeather(cityName: string) : Promise<WeatherApiResponse> {
     try {
-        const res = await fetch(`${WEATHER_API}weather?q=${cityName}&units=metric&appid=${API_KEY}`);
+        if(!cityName || cityName.trim() === "") {
+            throw new Error("City name is required");
+        }
+
+        const encodedCity = encodeURIComponent(cityName.trim());
+        const res = await fetch(`${VITE_BASE_URL}/${encodedCity}`);
         console.log("Response status", res.status);
 
         if (!res.ok) {
@@ -14,7 +18,7 @@ export async function getCurrentWeather(cityName: string) : Promise<WeatherApiRe
 
        return await res.json();
     } catch (err) {
-        console.log("Error fetching weather: ",err);
+        console.error("Error fetching weather: ",err);
         throw err;
     }
 }
