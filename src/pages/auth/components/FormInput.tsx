@@ -17,7 +17,7 @@ export const FormInput = ({
     if (type === 'select') {
         return (
             <div className="space-y-1">
-                <label htmlFor={label} className="block font-medium mb-2 text-gray-700">
+                <label htmlFor={label} className="block font-medium mb-2 text-gray-100">
                     {label}
                 </label>
                 <select
@@ -36,7 +36,7 @@ export const FormInput = ({
     }
     return (
         <div className="space-y-1">
-            <label htmlFor={label} className="block font-medium mb-2 text-gray-700">
+            <label htmlFor={label} className="block font-medium mb-2 text-gray-100">
                 {label}
             </label>
             <input
