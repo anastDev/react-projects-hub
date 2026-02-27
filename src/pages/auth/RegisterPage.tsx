@@ -71,49 +71,53 @@ export const RegisterPage = () => {
         <>
             <Header/>
             <div className="h-14"></div>
-            <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto  space-y-4 mt-12">
-                {formFields.map((field) => {
-                    const fieldKey = field.name as keyof User;
-                    const error = errors?.[field.name as keyof User];
-                    return (
-                       <>
-                           <FormInput
-                               name={field.name as keyof User}
-                               key={fieldKey}
-                               type={field.type}
-                               label={field.displayName}
-                               register={register}
-                               placeholder={field.placeholder}
-                               options={field.options}
-                               required={field.required}
-                           />
-                           {error && (
-                               <p className="text-red-400  text-sm">{error.message}</p>
-                           )}
-                       </>
-                    )
-                })}
-                <div className="flex space-x-4">
-                    <div>
-                        <Button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="bg-orange-500 text-gray-900 hover:bg-orange-400 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900"
-                        >
-                            {isSubmitting ? 'Submitting': 'Submit'}
-                        </Button>
-                    </div>
-                    <div>
-                        <Button
-                            type="button"
-                            onClick={onClear}
-                            className="border-gray-600 text-gray-300hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-                        >Clear
-                        </Button>
-                    </div>
+            <main className="w-full min-h-screen bg-gray-900">
+                <div>
+                    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto space-y-4 pt-12">
+                        {formFields.map((field) => {
+                            const fieldKey = field.name as keyof User;
+                            const error = errors?.[field.name as keyof User];
+                            return (
+                                <>
+                                    <FormInput
+                                        name={field.name as keyof User}
+                                        key={fieldKey}
+                                        type={field.type}
+                                        label={field.displayName}
+                                        register={register}
+                                        placeholder={field.placeholder}
+                                        options={field.options}
+                                        required={field.required}
+                                    />
+                                    {error && (
+                                        <p className="text-red-400  text-sm">{error.message}</p>
+                                    )}
+                                </>
+                            )
+                        })}
+                        <div className="flex space-x-4">
+                            <div>
+                                <Button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="bg-orange-500 text-gray-900 hover:bg-orange-400 focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                                >
+                                    {isSubmitting ? 'Submitting': 'Submit'}
+                                </Button>
+                            </div>
+                            <div>
+                                <Button
+                                    type="button"
+                                    onClick={onClear}
+                                    className=" text-orange-400 bg-gray-800 hover:bg-gray-700  transition-colors duration-300"
+                                >Clear
+                                </Button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
-            <div className="h-32"></div>
+            </main>
+            <div className="h-32 bg-gray-900"></div>
             <Footer/>
         </>
     )
