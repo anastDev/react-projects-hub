@@ -8,12 +8,10 @@ export async function getCurrentWeather(cityName: string) : Promise<WeatherApiRe
             throw new Error("City name is required");
         }
 
-        const encodedCity = encodeURIComponent(cityName.trim());
-        const res = await fetch(`${VITE_BASE_URL}/${encodedCity}`);
-        console.log("Response status", res.status);
+        const res = await fetch(`${VITE_BASE_URL}/weather/${cityName}`);
 
         if (!res.ok) {
-            throw new Error(`Failed to fetch weather ${res.status}`);
+            throw new Error(`Unable to get current weather for city ${cityName}`);
         }
 
        return await res.json();
