@@ -22,7 +22,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="bg-gray-900 border-gray-800 text-gray-100 w-full h-18 fixed top-0 z-50 pt-2">
+            <header className="bg-trasparent border-gray-800 text-gray-100 w-full h-18 fixed top-0 z-50 pt-2">
                 <div className="grid grid-cols-2 items-center container mx-auto h-14">
                     {/* Left Side: Navigation */}
                    <nav>
