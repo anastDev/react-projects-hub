@@ -51,7 +51,7 @@ const ProjectCard = ({projectName, img, path, tags}: ProjectCardTypes) => {
                         <Button
                             size="sm"
                             variant="outline"
-                            className="w-full border-orange-500 text-orange-400 bg-gray-900/50 hover:bg-orange-500 hover:text-gray-900 transition-all duration-300 text-xs lg:text-sm font-medium group-hover:shadow-lg group-hover:shadow-orange-500/20"
+                            className="w-full border-orange-500 text-orange-400 bg-gray-900/50 hover:bg-orange-500 hover:text-gray-900 transition-all duration-300 text-xs lg:text-sm font-medium group-hover:shadow-lg group-hover:shadow-orange-500/20 cursor-pointer"
                         >
                             View Project <span><ArrowRight/></span>
                         </Button>
