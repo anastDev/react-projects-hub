@@ -1,4 +1,4 @@
-import MiniProjectCards from "@/pages/projects/components/MiniProjectCards.tsx";
+import MiniProjectCard from "@/pages/projects/components/MiniProjectCard.tsx";
 import {projectData} from "@/pages/projects/data/projects.ts";
 
 export const ProjectMainContent = () => {
@@ -16,7 +16,7 @@ export const ProjectMainContent = () => {
                     <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 lg:auto-rows-fr">
                         {projectData.map((project) => {
                             return (
-                                <MiniProjectCards {...project} />
+                                <MiniProjectCard {...project} />
                             );
                         })}
                     </div>

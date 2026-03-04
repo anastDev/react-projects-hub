@@ -3,21 +3,21 @@ import type { ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.ts
 import {Link} from "react-router";
 import {Code2} from "lucide-react";
 
-export const MiniProjectCards = ({projectName, description, img, path, status="In Progress"}: ProjectCardTypes) => {
+export const MiniProjectCard = ({projectName, description, img, path, status="In Progress"}: ProjectCardTypes) => {
     return (
         <div className="flex flex-col space-x-6 lg:h-full border border-gray-700 bg-gray-800 py-8 px-6 shadow-md rounded-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-400/20 hover:border-orange-400">
             {img && img !== "TBA" && (
-                <div className="w-full lg:h-[15rem] h-32 overflow-hidden rounded-lg">
+                <div className="w-full lg:h-[15rem] h-60 overflow-hidden rounded-lg">
                     <img
                         src={img}
                         alt={`${projectName} preview`}
-                        className="w-full h-full object-cover blur-md group-hover:blur-none group-hover:scale-105 transition-all duration-500"
+                        className="w-full h-full object-cover group-hover:blur-none group-hover:scale-105 transition-all duration-500"
                     />
                 </div>
             )}
 
             {(!img || img === "TBA") && (
-                <div className="w-full lg:h-[15rem] h-32  flex items-center justify-center bg-gray-700/50 rounded-lg">
+                <div className="w-full lg:h-[15rem] h-60  flex items-center justify-center bg-gray-700/50 rounded-lg">
                     <Code2 className="w-16 h-16 text-orange-400/50" />
                 </div>
             )}
@@ -46,4 +46,4 @@ export const MiniProjectCards = ({projectName, description, img, path, status="I
     )
 }
 
-export default MiniProjectCards;
+export default MiniProjectCard;

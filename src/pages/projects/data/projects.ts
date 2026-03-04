@@ -7,7 +7,7 @@ export const projectData: ProjectCardTypes[] = [
         tags: ["Node.js", "MongoDB", "JWT", "Zod", "Jest"],
         path: "https://github.com/anastDev/project-hub-backend",
         status: "Completed",
-        img: ""
+        img: "projects/weather-backend.png",
     },
     {
         projectName: "Commute Risk Dashboard",
@@ -15,7 +15,7 @@ export const projectData: ProjectCardTypes[] = [
         tags: ["React", "TypeScript", "OpenWeather API"],
         path: "/projects/commute-risk-dashboard",
         status: "In Progress",
-        img: "TBA"
+        img: "projects/commute-risk-dashboard.png",
     },
     {
         projectName: "Task Manager App",
@@ -23,13 +23,13 @@ export const projectData: ProjectCardTypes[] = [
         tags: ["React", "localStorage", "CRUD"],
         path: "/projects/task-manager-app",
         status: "Completed",
-        img: "TBA"
+        img: "projects/task-manager.png",
     },
     {
         projectName: "Movie Search App",
         description: "An interactive movie database that lets users search and explore films using a public API. Features dynamic search results, detailed movie information displays, and responsive design for seamless browsing across devices.",
         path: "/projects/movie-search-app",
         status: "In Progress",
-        img: "TBA"
+        img: "projects/movie-search.png",
     }
 ]

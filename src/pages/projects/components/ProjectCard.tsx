@@ -18,7 +18,7 @@ const ProjectCard = ({projectName, img, path, tags}: ProjectCardTypes) => {
                         <img
                             src={img}
                             alt={`${projectName} preview`}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
+                            className="w-full h-full object-fit group-hover:scale-110 transition-all duration-500"
                         />
                     </div>
                 )}
