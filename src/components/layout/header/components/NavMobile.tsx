@@ -13,7 +13,7 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
 
 
     return (
-        <div ref={ref} className="lg:hidden mt-2">
+        <div ref={ref} className="lg:hidden mt-2 relative">
             <ButtonGroup onClick={() => setOpen((prev) => !prev)} className="px-2 bg-gray-100 hover:bg-gray-300 text-gray-900 rounded-md cursor-pointer">
                 <Button><Hamburger direction="right" toggled={isOpen} size={20} rounded /></Button>
                 <Button><div className="content-center font-semibold mx-2">{isOpen ? "Close" : "Menu"}</div></Button>
@@ -26,7 +26,8 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed lg:left-13 left-0 shadow-3xl lg:right-13 right-0 top-[4rem] p-5 pt-4 bg-gray-900 border-b-gray-700/40">
+                        className="fixed left-0 right-0 mx-auto container top-[5rem] shadow-xl p-3 pt-2 rounded-xl bg-transparent backdrop-blur-md z-50"
+                    >
                         <ul className="grid gap-2">
                             {routes.map((route, idx) => {
                                 const {Icon} = route;
@@ -40,14 +41,14 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
                                             damping: 20,
                                             delay: 0.1 + idx / 10,
                                         }}
-                                        className="w-full p-[0.08rem] rounded-xl bg-gradient-to-tr from-gray-800 via-gray-900 to-gray-800 over:from-blue-600 hover:via-orange-500 hover:to-orange-400 active:from-blue-600 active:via-orange-500 active:to-orange-400 transition-all duration-300"
+                                        className="group w-full p-[0.08rem] rounded-xl border border-white/10 hover:border-orange-400/50 transition-all duration-300"
                                         key={route.title}>
                                         <Link
                                             onClick={() => setOpen((prev) => !prev)}
-                                            className="flex items-center justify-between w-full p-5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-100 transition-colors duration-300"
+                                            className="flex items-center justify-between w-full p-5 rounded-xl bg-gray-800/60 hover:bg-orange-500/10 text-gray-300 hover:text-white transition-all duration-300"
                                             to={route.path}>
                                             <span className="flex gap-1 lg:text-sm" >{route.title}</span>
-                                            <Icon className="text-xl text-orange-400"/>
+                                            <Icon className="text-lg text-orange-400/70 group-hover:text-orange-400 transition-colors duration-300"/>
                                         </Link>
                                     </motion.li>
                                 )
