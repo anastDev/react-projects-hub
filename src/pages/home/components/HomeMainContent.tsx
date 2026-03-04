@@ -8,7 +8,7 @@ import {motion, useTransform, useScroll} from "framer-motion";
 
 export const HomeMainContent = () => {
     const { scrollY } = useScroll();
-    const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+    const heroY = useTransform(scrollY, [0, 300], [0, 150]);
     const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
 
 
@@ -18,7 +18,7 @@ export const HomeMainContent = () => {
 
                 {/* Hero Section/ Intro */}
                 <motion.section
-                    className="min-h-screen"
+                    className="h-full"
                     style={{ y: heroY, opacity: heroOpacity }}
                 >
                     <div className="lg:px-[1.5rem] px-6">
@@ -30,7 +30,6 @@ export const HomeMainContent = () => {
                                             strings={["Anastasia"]}
                                             typeSpeed={100}
                                             backSpeed={20}
-                                            loop={true}
                                         />
                                     </span>
                                 </h1>
@@ -42,11 +41,11 @@ export const HomeMainContent = () => {
                                     and gradually stacking knowledge like books on a shelf.
                                 </p>
                             </div>
-                            <div className="flex flex-col justify-center mt-30 lg:mt-50 space-y-4">
+                            <div className="flex flex-col justify-center mt-20 space-y-4">
                                 <div className="flex justify-center text-gray-500">
                                     scroll down
                                 </div>
-                                <div className="flex justify-center animate-bounce mt-5">
+                                <div className="flex justify-center animate-bounce mt-2 mb-28">
                                     <ArrowDown size={32} className="rounded-full text-gray-400 border border-gray-400" />
                                 </div>
                             </div>
@@ -56,15 +55,15 @@ export const HomeMainContent = () => {
 
                 {/*  Bridge Section - What this site is */}
                 <motion.section
-                    className="py-24 border-y border-gray-700/50"
-                    initial={{ opacity: 0, y: 50 }}
+                    className="py-10 border-y border-gray-700/50"
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     viewport={{ once: true, amount: 0.3 }}
                 >
-                    <div className="container mx-auto px-6 max-w-3xl">
+                    <div className="container mx-auto px-6  max-w-3xl">
                         <div className="space-y-4 text-center">
-                            <div className="py-15">
+                            <div className="py-12">
                                 <div className="w-24 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto"></div>
                             </div>
                             <p className="text-lg lg:text-2xl text-gray-100 font-light leading-relaxed">
@@ -72,7 +71,7 @@ export const HomeMainContent = () => {
                                 while learning and exploring React and modern web development.
                             </p>
                             <Link to="/about">
-                                <Button className="group mt-4 border-2 border-orange-500 text-orange-400 bg-transparent hover:bg-orange-500 active:bg-orange-500 hover:text-gray-900 active:text-gray-900 transition-colors duration-300 cursor-pointer text-sm lg:text-base">
+                                <Button className="group my-4 border-2 border-orange-500 text-orange-400 bg-transparent hover:bg-orange-500 active:bg-orange-500 hover:text-gray-900 active:text-gray-900 transition-colors duration-300 cursor-pointer text-sm lg:text-base">
                                     Learn more about my journey
                                     <ArrowRight className="ml-2 group-hover:translate-x-1 active:translate-x-1 transition-transform" />
                                 </Button>
@@ -83,7 +82,7 @@ export const HomeMainContent = () => {
 
                 {/* Mini Preview of projects */}
                 <motion.section
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     viewport={{ amount: 0.3 }}
@@ -148,7 +147,7 @@ export const HomeMainContent = () => {
 
                 {/* Tech Stack Section */}
                 <motion.section
-                    className="py-12 lg:py-20 container mx-auto px-6"
+                    className="py-12 lg:py-20 container mx-auto"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
