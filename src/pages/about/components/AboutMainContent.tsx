@@ -8,9 +8,9 @@ const AboutMainContent = () => {
 
                 {/* Left Column - Image */}
                 <div className="lg:w-1/3 flex-shrink-0">
-                    <div className="w-full h-64 lg:h-80 bg-gray-800 rounded-lg overflow-hidden">
+                    <div className="w-full h-84 bg-gray-800 rounded-lg overflow-hidden">
                         <img
-                            src=""
+                            src="public/profile-img.jpg"
                             alt="img"
                             className="w-full h-full object-cover rounded-lg text-center"
                         />
