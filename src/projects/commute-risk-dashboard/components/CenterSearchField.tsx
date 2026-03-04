@@ -37,15 +37,15 @@ const CenterSearchField = ({inputRef, onSearch} : WeatherInputProps) => {
 
                 {/* Welcome Message */}
                 <motion.div
-                    className="text-center mb-8 max-w-2xl"
+                    className="text-center mb-8 max-w-4xl"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
+                    <h1 className="text-3xl lg:text-5xl font-bold text-slate-800 mb-4">
                         Welcome to Commute Risk Dashboard
                     </h1>
-                    <p className="text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed">
+                    <p className="text-base lg:text-xl text-slate-600 leading-relaxed">
                         Check the weather conditions before you step outside. Whether you're walking,
                         biking, or taking transit, know what to expect and plan your commute with confidence.
                     </p>
@@ -70,7 +70,7 @@ const CenterSearchField = ({inputRef, onSearch} : WeatherInputProps) => {
                     className="w-full max-w-2xl"
                 >
                     <div className="text-center mb-4">
-                        <p className="text-lg md:text-xl text-slate-700 font-medium">
+                        <p className="text-lg lg:text-xl text-slate-700 font-medium">
                             Enter your city to get started
                         </p>
                     </div>
