@@ -4,7 +4,6 @@ import {Button} from "@/components/ui/button.tsx"
 
 const TextFieldSearchMovie = () => {
 
-    // TODO: Add focus to useEffect for the search field
     return (
         <>
             <header>
