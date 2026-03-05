@@ -48,10 +48,10 @@ export const HomeMainContent = () => {
                                 <div className="flex flex-col justify-center">
                                     <h1 className="text-gray-100 font-medium text-center mb-2 text-4xl lg:text-6xl">Hi, I'm Anastasia</h1>
                                     <p className="text-orange-400 text-center text-2xl">
-                                        I'm a {""}
+                                        I'm {""}
                                         <span className="text-orange-400 text-center ">
                                     <ReactTyped
-                                        strings={["Junior Software Engineer.", "Problem-Solver.", "Creative Developer.", "Tech Explorer."]}
+                                        strings={["a Junior Software Engineer.", "also a Creative Developer.", "a Tech Explorer.", "always Learning, always Building."]}
                                         typeSpeed={80}
                                         backSpeed={40}
                                         loop={true}
