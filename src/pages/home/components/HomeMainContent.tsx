@@ -59,15 +59,15 @@ export const HomeMainContent = () => {
                                     />
                                     </span>
                                     </p>
-                                    <p className="text-sm md:text-base text-gray-500 mx-auto text-center mt-2 max-w-2xl lg:max-w-4xl">
+                                    <p className="text-sm md:text-base text-gray-300 mx-auto text-center mt-2 max-w-2xl lg:max-w-4xl">
                                         Passionately building small projects to test ideas, learn and grow. I love exploring new tech and stacking knowledge like books on a shelf.
                                     </p>
                                 </div>
                                 <div className="flex flex-col justify-center mt-20 space-y-4">
-                                    <div className="flex justify-center text-gray-500">
+                                    <div className="flex justify-center text-gray-300">
                                         scroll down
                                     </div>
-                                    <div className="flex justify-center animate-pulse mt-2 mb-28 cursor-pointer">
+                                    <div className="flex justify-center animate-pulse mb-28 cursor-pointer">
                                         <ArrowDown size={32} className="rounded-full text-gray-400 border border-gray-400" />
                                     </div>
                                 </div>
@@ -77,12 +77,13 @@ export const HomeMainContent = () => {
 
                     {/*  Bridge Section - What this site is */}
                     <motion.section
-                        className="bg-gray-900 py-10 border-y border-gray-700/50"
+                        className="bg-gray-900 py-10 bg-gradient-to-b from-gray-900/10 via-gray-500/10 to-transparent  border-b border-gray-700/50"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         viewport={{ once: true, amount: 0.3 }}
                     >
+
                         <div className="container mx-auto px-6  max-w-3xl">
                             <div className="space-y-4 text-center">
                                 <div className="py-12">
