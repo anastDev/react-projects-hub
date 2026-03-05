@@ -1,4 +1,4 @@
-import {HashRouter as Router, Routes, Route} from "react-router";
+import {HashRouter as Router, Routes, Route, useLocation} from "react-router";
 import TaskManager from "@/projects/todo/TaskManager.tsx";
 import RiskCommuteApp from "@/projects/commute-risk-dashboard/RiskCommuteApp.tsx";
 import MovieSearch from "@/projects/movie-search-app/MovieSearch.tsx";
@@ -10,6 +10,21 @@ import {AuthProvider} from "@/context/AuthProvider.tsx";
 import ProfileEditPage from "@/pages/profile/ProfileEditPage.tsx";
 import {Toaster} from "sonner";
 import AboutPage from "@/pages/about/AboutPage.tsx";
+import { useLayoutEffect} from "react";
+
+interface WrapperProps {
+    children: React.ReactNode;
+}
+
+const Wrapper = ({children } : WrapperProps) => {
+    const location = useLocation();
+
+    useLayoutEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: "smooth"});
+    }, [location.pathname]);
+
+    return <>{children}</>;
+}
 
 function App() {
 
@@ -17,6 +32,7 @@ function App() {
     <>
         <AuthProvider>
             <Router>
+                <Wrapper>
                 <Routes>
                     {/* Home Route*/}
                     <Route index element={<Home/>} />
@@ -45,6 +61,7 @@ function App() {
                         <Route path=":userId" element={<ProfileEditPage/>} />
                     </Route>
                 </Routes>
+                </Wrapper>
             </Router>
             <Toaster
                 richColors
@@ -58,4 +75,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
