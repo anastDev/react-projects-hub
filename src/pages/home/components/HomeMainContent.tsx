@@ -111,7 +111,7 @@ export const HomeMainContent = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         viewport={{ amount: 0.3 }}
                     >
-                        <div className="px-6 lg:px-[1.6rem] h-full mt-12 lg:mt-20 mb-10">
+                        <div className="px-6 lg:px-[1.6rem] h-full mb-10 pt-12 lg:pt-20">
                             <div className="container mx-auto">
                                 <div className="grid grid-cols-2 items-center mb-6">
                                     <div>
