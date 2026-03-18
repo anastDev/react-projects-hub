@@ -31,5 +31,12 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/movie-search-app",
         status: "In Progress",
         img: "projects/movie-search.png",
+    },
+    {
+        projectName: "Python Projects",
+        description: "Collection of Python projects focused on data analysis and utilities. Includes tools like a job listings filter (shown) with data processing and visualization.",
+        path: "https://github.com/anastDev/python-projects",
+        status: "In Progress",
+        img: "projects/job-listing-filter.png",
     }
 ]
