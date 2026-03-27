@@ -1,4 +1,4 @@
-import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
+import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.ts";
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 

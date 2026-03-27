@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/input-group.tsx"
 import {Button} from "@/components/ui/button.tsx"
 import {useState} from "react";
-import type {WeatherInputProps} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
+import type {WeatherInputProps} from "@/projects/commute-risk-dashboard/types/typesWeather.ts";
 
 const SearchField = ({inputRef, onSearch} : WeatherInputProps) => {
     const [searchValue, setSearchValue] = useState("");

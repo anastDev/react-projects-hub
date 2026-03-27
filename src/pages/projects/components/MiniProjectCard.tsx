@@ -1,5 +1,5 @@
 import {Button} from "@/components/ui/button.tsx";
-import type { ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.tsx";
+import type { ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.ts";
 import {Link} from "react-router";
 import {Code2} from "lucide-react";
 

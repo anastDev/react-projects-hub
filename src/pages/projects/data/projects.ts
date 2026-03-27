@@ -1,4 +1,4 @@
-import type { ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.tsx";
+import type { ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.ts";
 
 export const projectData: ProjectCardTypes[] = [
     {

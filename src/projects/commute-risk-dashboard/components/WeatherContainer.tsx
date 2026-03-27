@@ -1,5 +1,5 @@
 import { Spinner} from "@radix-ui/themes";
-import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.tsx";
+import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.ts";
 import {
     Card,
     CardContent,
