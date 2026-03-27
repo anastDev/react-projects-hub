@@ -83,6 +83,9 @@ const MovieContainer = ({movie, loading, error} : MovieProps) => {
                                 <Button variant="outline" disabled={loading} onClick={()=> setIsVisible(!isVisible)}>
                                     More Details
                                 </Button>
+                                <Button>
+                                    Add to Favorites
+                                </Button>
                             </div>
                         </div>
                     </>
