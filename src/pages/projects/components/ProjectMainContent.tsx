@@ -1,10 +1,31 @@
 import MiniProjectCard from "@/pages/projects/components/MiniProjectCard.tsx";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 import {projectData} from "@/pages/projects/data/projects.ts";
 
 export const ProjectMainContent = () => {
     return (
         <>
             <main className="min-h-screen w-full mx-auto pt-10 lg:px-4 px-6 overflow-auto">
+                <div className="container mx-auto">
+                    <Breadcrumb>
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/" className="text-gray-400 hover:text-orange-400">Home</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator className="text-gray-400" />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage className="text-gray-400">My Projects</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                </div>
                 <div className="container mx-auto">
                     <div className="flex flex-col justify-center items-center">
                         <div className="lg:w-4xl w-full mb-10 text-gray-400 text-sm text-center">

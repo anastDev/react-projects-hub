@@ -1,11 +1,31 @@
 import {Button} from "@/components/ui/button.tsx";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 
 const AboutMainContent = () => {
 
     return (
         <main className="min-h-screen bg-gray-900 text-gray-100 px-6">
-            <section className="container mx-auto flex flex-col lg:flex-row gap-8 pt-20 pb-12">
-
+            <div className="container mx-auto pt-20">
+                <Breadcrumb >
+                    <BreadcrumbList>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href="/" className="text-gray-400 hover:text-orange-400">Home</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator className="text-gray-400" />
+                        <BreadcrumbItem>
+                            <BreadcrumbPage className="text-gray-400">About</BreadcrumbPage>
+                        </BreadcrumbItem>
+                    </BreadcrumbList>
+                </Breadcrumb>
+            </div>
+            <section className="container mx-auto flex flex-col lg:flex-row gap-8 pt-10 pb-12">
                 {/* Left Column - Image */}
                 <div className="lg:w-1/3 flex-shrink-0">
                     <div className="w-full h-84 bg-gray-800 rounded-lg overflow-hidden">
