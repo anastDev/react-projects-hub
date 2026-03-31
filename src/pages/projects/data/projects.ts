@@ -8,6 +8,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "https://github.com/anastDev/project-hub-backend",
         status: "Completed",
         img: "projects/weather-backend.png",
+        category: "main"
     },
     {
         projectName: "Commute Risk Dashboard",
@@ -16,6 +17,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/commute-risk-dashboard",
         status: "In Progress",
         img: "projects/commute-risk-dashboard.png",
+        category: "main"
     },
     {
         projectName: "Task Manager App",
@@ -24,6 +26,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/task-manager-app",
         status: "Completed",
         img: "projects/task-manager.png",
+        category: "main"
     },
     {
         projectName: "Movie Search App",
@@ -31,6 +34,16 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/movie-search-app",
         status: "In Progress",
         img: "projects/movie-search.png",
+        category: "main"
+    },
+    {
+        projectName: "Library Inventory Manager",
+        description: "A Java library inventory system demonstrating core OOP principles, 3-layer architecture, and the DAO/Service/DTO pattern with in-memory storage. Built to deepen understanding of structured backend design.",
+        tags: ["Java", "OOP", "DAO Pattern", "Architecture"],
+        path: "https://github.com/anastDev/library-inventory-manager",
+        status: "Completed",
+        img: "projects/library-inventory-manager.png",
+        category: "other"
     },
     {
         projectName: "Python Projects",
@@ -38,5 +51,6 @@ export const projectData: ProjectCardTypes[] = [
         path: "https://github.com/anastDev/python-projects",
         status: "In Progress",
         img: "projects/job-listing-filter.png",
-    }
+        category: "other"
+    },
 ]

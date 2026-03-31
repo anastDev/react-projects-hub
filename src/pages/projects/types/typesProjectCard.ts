@@ -5,4 +5,5 @@ export interface ProjectCardTypes  {
     img?: string;
     path?: string;
     tags?: string[];
+    category: "main" | "other";
 }
