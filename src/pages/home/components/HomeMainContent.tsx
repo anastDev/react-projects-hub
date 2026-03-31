@@ -208,9 +208,6 @@ export const HomeMainContent = () => {
                                         <span className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 active:border-orange-400 transition-colors text-sm">
                         TypeScript
                     </span>
-                                        <span className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 active:border-orange-400 transition-colors text-sm">
-                        JavaScript
-                    </span>
                                     </div>
                                 </motion.div>
 
@@ -225,6 +222,30 @@ export const HomeMainContent = () => {
                                     <div className="flex flex-wrap gap-2">
                                         {["Node.js", "MongoDB", "REST APIs", "JWT Auth"].map(tech => (
                                             <span key={tech} className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 transition-colors text-sm">
+                            {tech}
+                        </span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+
+                                {/* Data & Scripting */}
+                                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+                                    <h3 className="text-orange-300 font-medium mb-4 text-base lg:text-lg">Data & Scripting</h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {["Python", "Pandas", "Data Analysis", "Automation"].map(tech => (
+                                            <span key={tech} className="px-3 py-2 bg-gray-800/60 text-gray-400 border border-gray-700/60 rounded-lg hover:border-orange-400/60 transition-colors text-sm">
+                            {tech}
+                        </span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+
+                                {/* Also Explored */}
+                                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+                                    <h3 className="text-orange-300 font-medium mb-4 text-base lg:text-lg">Exploring</h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {["Java", "OOP", "DAO Pattern", "Layered Architecture"].map(tech => (
+                                            <span key={tech} className="px-3 py-2 bg-gray-800/60 text-gray-400 border border-gray-700/60 rounded-lg hover:border-orange-400/60 transition-colors text-sm">
                             {tech}
                         </span>
                                         ))}
