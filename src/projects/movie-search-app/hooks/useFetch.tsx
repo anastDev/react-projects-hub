@@ -8,7 +8,11 @@ export function useFetch(movieTitle: string) {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        if(movieTitle.trim() === "") return;
+        if(movieTitle.trim() === "") {
+            setMovie(null);
+            setError("");
+            return;
+        }
 
        async function fetchMovie() {
            setLoading(true);
