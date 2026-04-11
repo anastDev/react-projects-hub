@@ -30,7 +30,7 @@ const AboutMainContent = () => {
                 <div className="lg:w-1/3 flex-shrink-0">
                     <div className="w-full h-84 bg-gray-800 rounded-lg overflow-hidden">
                         <img
-                            src="public/profile-img.jpg"
+                            src="/profile-img.jpg"
                             alt="img"
                             className="w-full h-full object-cover rounded-lg text-center"
                         />
@@ -91,13 +91,14 @@ const AboutMainContent = () => {
                                 </Button>
                             </div>
                             <div>
-                                {/* TODO: Add download function for the button */}
-                                <Button
-                                    variant="outline"
-                                    className="w-full sm:w-auto border-2 border-orange-500 text-gray-900 bg-orange-500  hover:bg-gray-800 hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200"
-                                >
-                                    Download CV
-                                </Button>
+                                <a href="/cv.pdf" download="Mourouzidou_CV">
+                                    <Button
+                                        variant="outline"
+                                        className="w-full sm:w-auto border-2 border-orange-500 text-gray-900 bg-orange-500  hover:bg-gray-800 hover:text-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200"
+                                    >
+                                        Download CV
+                                    </Button>
+                                </a>
                             </div>
                         </div>
                     </div>
