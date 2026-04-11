@@ -23,6 +23,7 @@ export const projectData: ProjectCardTypes[] = [
         projectName: "Movie Search App",
         description: "An interactive movie database that lets users search and explore films using the OMDB API. Features dynamic search results, detailed movie information displays, a persistent favourites list powered by localStorage and a clean cinematic UI built with React, TypeScript and Tailwind CSS.",
         path: "/projects/movie-search-app",
+        tags: ["React", "TypeScript", "Tailwind CSS", "REST API", "localStorage"],
         status: "Completed",
         img: "projects/movie-search.png",
         category: "main"
