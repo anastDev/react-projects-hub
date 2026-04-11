@@ -1,15 +1,29 @@
 import type {TaskStatusProps} from "../types/typesTodos.tsx";
 
-const TaskStatus = ({total, active, completed} : TaskStatusProps) => {
+const TaskStatus = ({ total, active, completed }: TaskStatusProps) => {
+    const status = [
+        { label: "Total", value: total },
+        { label: "Active", value: active },
+        { label: "Done", value: completed },
+    ];
+
     return (
-        <>
-            <div className="flex justify-between pt-2 mt-4 text-gray-300">
-                <div>Total: <span className="text-sky-600 font-semibold">{total}</span></div>
-                <div>Active: <span className="text-sky-600 font-semibold">{active}</span></div>
-                <div>Completed: <span className="text-sky-600 font-semibold">{completed}</span></div>
-            </div>
-        </>
-    )
-}
+        <div className="grid grid-cols-3 gap-2.5">
+            {status.map(({ label, value }) => (
+                <div
+                    key={label}
+                    className="flex flex-col items-center py-3 px-4 rounded-lg bg-white/5 border border-slate-700/50"
+                >
+                    <span className="text-[11px] uppercase tracking-widest text-slate-500 font-medium mb-1">
+                        {label}
+                    </span>
+                    <span className="text-2xl font-semibold text-sky-400 tracking-tight">
+                        {value}
+                    </span>
+                </div>
+            ))}
+        </div>
+    );
+};
 
 export default TaskStatus;

@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import type {TaskProps} from "./types/typesTodos.tsx";
 import TasksList from "./components/TasksList.tsx";
 import TaskStatus from "./components/TaskStatus.tsx";
-import Button from "./ui/Button.tsx";
+import {Button} from "@/components/ui/button.tsx";
 import ShowDate from "./components/ShowDate.tsx";
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from "canvas-confetti";
@@ -89,7 +89,6 @@ const TaskManager = () => {
                     <ShowDate />
                 </motion.header>
 
-
                 {/* Main Container */}
                 <motion.main
                     initial={{ opacity: 0, scale: 0.90 }}
@@ -97,7 +96,7 @@ const TaskManager = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="mt-8"
                 >
-                    <div className="container bg-gray-100 shadow-lg max-w-md w-full px-4 sm:px-6 py-6 mx-auto rounded-xl">
+                    <div className="container bg-gray-100 max-w-lg w-full px-4 sm:px-6 py-6 mx-auto rounded-lg">
 
                         {/* Title */}
                         <motion.div
@@ -123,7 +122,7 @@ const TaskManager = () => {
                         </motion.div>
 
                         {/* Tasks List */}
-                        <div className="mt-4 max-h-[300px] sm:max-h-[400px] overflow-y-auto">
+                        <div className="mt-4 max-h-[18.7rem] sm:max-h-[25rem] overflow-y-auto">
                             <TasksList
                                 tasks={tasks}
                                 editTask={editTask}
@@ -144,17 +143,23 @@ const TaskManager = () => {
                             transition={{ duration: 0.2 }}
                             className="mt-6"
                         >
-                            <div className="container mx-auto max-w-md px-4">
+                            <div className="container mx-auto max-w-lg">
                                 <TaskStatus
                                     total={totalTasks}
                                     active={activeTasks}
                                     completed={completedTasks}
                                 />
                                 <div className="text-end mt-4">
-                                    <Button
-                                        label="Clear All"
-                                        onClick={clearTasks}
-                                    />
+                                    <div className="flex justify-end mt-4">
+                                        <Button
+                                            variant="ghost"
+                                            size="sm"
+                                            onClick={clearTasks}
+                                            className="border border-red-500/30 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-lg p-4"
+                                        >
+                                            Clear All
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                         </motion.footer>

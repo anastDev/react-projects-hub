@@ -20,6 +20,14 @@ export const projectData: ProjectCardTypes[] = [
         category: "main"
     },
     {
+        projectName: "Movie Search App",
+        description: "An interactive movie database that lets users search and explore films using the OMDB API. Features dynamic search results, detailed movie information displays, a persistent favourites list powered by localStorage and a clean cinematic UI built with React, TypeScript and Tailwind CSS.",
+        path: "/projects/movie-search-app",
+        status: "Completed",
+        img: "projects/movie-search.png",
+        category: "main"
+    },
+    {
         projectName: "Task Manager App",
         description: "A full-featured task management application with complete CRUD functionality and browser localStorage persistence. Users can create, edit, delete, and organize tasks with a clean interface built in React, demonstrating state management and local data handling.",
         tags: ["React", "localStorage", "CRUD"],
@@ -29,20 +37,12 @@ export const projectData: ProjectCardTypes[] = [
         category: "main"
     },
     {
-        projectName: "Movie Search App",
-        description: "An interactive movie database that lets users search and explore films using the OMDB API. Features dynamic search results, detailed movie information displays, a persistent favourites list powered by localStorage and a clean cinematic UI built with React, TypeScript and Tailwind CSS.",
-        path: "/projects/movie-search-app",
+        projectName: "Library App — Spring Boot",
+        description: "Refactoring a console-based Java library system into a production-ready Spring Boot REST API. Applies Controller–Service–Repository architecture with MySQL database integration, RESTful endpoints and scalable backend design principles.",
+        tags: ["Java", "Spring Boot", "MySQL", "REST API"],
+        path: "https://github.com/anastDev/library-app",
         status: "In Progress",
-        img: "projects/movie-search.png",
-        category: "main"
-    },
-    {
-        projectName: "Library Inventory Manager",
-        description: "A Java library inventory system demonstrating core OOP principles, 3-layer architecture, and the DAO/Service/DTO pattern with in-memory storage. Built to deepen understanding of structured backend design.",
-        tags: ["Java", "OOP", "DAO Pattern", "Architecture"],
-        path: "https://github.com/anastDev/library-inventory-manager",
-        status: "Completed",
-        img: "projects/library-inventory-manager.png",
+        img: "",
         category: "other"
     },
     {
