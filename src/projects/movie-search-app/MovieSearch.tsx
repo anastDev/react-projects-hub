@@ -7,18 +7,30 @@ import {Button} from "@/components/ui/button.tsx";
 import {ChevronLeft, Heart, Search, X} from "lucide-react";
 import type {MovieApiResponse} from "@/projects/movie-search-app/types/typesMovie.ts";
 
-const SUGGESTIONS = ["Inception", "Inside Out", "When Harry Met Sally"];
+const getInitialState = () : MovieApiResponse[] => {
+   try {
+       const storedMovies = localStorage.getItem("movies");
+       return storedMovies ? JSON.parse(storedMovies) : [];
+   } catch {
+       return [];
+   }
+}
+const SUGGESTIONS = ["Inception", "Inside Out", "When Harry Met Sally", "Harry Potter"];
 
 const MovieSearch = () => {
     const [title, setTitle] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
     const [showFavourites, setShowFavourites] = useState(false);
     const { movie, error, loading } = useFetch(searchTitle);
-    const [favorites, setFavorites] = useState<MovieApiResponse[]>([]);
+    const [favorites, setFavorites] = useState<MovieApiResponse[]>(getInitialState());
 
     useEffect(() => {
         document.title = "CineSearch";
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem("movies", JSON.stringify(movie));
+    }, [favorites, movie]);
 
     const handleSearch = () => {
         if (title.trim() !== "") {
@@ -107,7 +119,7 @@ const MovieSearch = () => {
                     </p>
 
                     {/* Search bar */}
-                    <div className="w-full max-w-xl flex items-center bg-white/5 rounded-xl pl-6 gap-3 border border-white/[0.18] focus-within:border-[#d4b84a]/60 transition-colors">
+                    <div className="w-full max-w-xl flex items-center bg-white/5 rounded-lg pl-6 gap-3 border border-white/[0.18] focus-within:border-[#d4b84a]/60 transition-colors">
                         <Search size={16} className="flex-shrink-0 text-[#f0ede8] opacity-35" />
 
                         <input
@@ -133,7 +145,7 @@ const MovieSearch = () => {
 
                         <Button
                             onClick={handleSearch}
-                            className="flex-shrink-0 h-[44px] p-6 rounded-l-none rounded-r-xl text-sm font-medium text-[#0d0d0f] border-none active:scale-[0.98]"
+                            className="flex-shrink-0 h-[44px] p-6 rounded-l-none rounded-r-lg text-sm font-medium text-[#0d0d0f] border-none active:scale-[0.98]"
                             style={{ background: "#d4b84a" }}
                             onMouseEnter={(e) => (e.currentTarget.style.background = "#e0ca6a")}
                             onMouseLeave={(e) => (e.currentTarget.style.background = "#d4b84a")}
@@ -163,9 +175,19 @@ const MovieSearch = () => {
             <main>
                 <div className="px-10 py-10 min-h-[280px] flex flex-col justify-center">
                     {showFavourites ? (
-                        <FavoritePlaceholder favorites={favorites} onRemoveFavorite={handleRemoveFavorite}/>
+                        <FavoritePlaceholder
+                            favorites={favorites}
+                            onRemoveFavorite={handleRemoveFavorite}/>
                     ) : (
-                        <MovieContainer movie={movie} loading={loading} error={error} onClear={handleReset} onAddFavourite={handleFavorites}/>
+                        <MovieContainer
+                            movie={movie}
+                            loading={loading}
+                            error={error}
+                            onClear={handleReset}
+                            favorites={favorites}
+                            onAddFavourite={handleFavorites}
+                            onRemoveFavourite={handleRemoveFavorite}
+                        />
                     )}
                 </div>
             </main>
