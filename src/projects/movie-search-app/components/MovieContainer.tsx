@@ -8,6 +8,8 @@ interface MovieContainerProps {
     error: string;
     onClear: () => void;
     onAddFavourite: (movie: MovieApiResponse) => void;
+    onRemoveFavourite: (id: string) => void;
+    favorites: MovieApiResponse[];
 }
 
 const LoadingSkeleton = () => (
@@ -47,12 +49,18 @@ const EmptyState = () => (
     </div>
 );
 
-const MovieContainer = ({ movie, loading, error, onClear, onAddFavourite }: MovieContainerProps) => {
+const MovieContainer = ({ movie, loading, error, onClear, favorites, onAddFavourite, onRemoveFavourite }: MovieContainerProps) => {
     if (loading) return <LoadingSkeleton />;
     if (error) return <p className="text-[#f09595] text-sm text-center py-8">{error}</p>;
     if (!movie) return <EmptyState />;
 
-    return <MovieCard movie={movie} onClear={onClear} onAddFavourite={onAddFavourite} />;
+    return <MovieCard
+        movie={movie}
+        onClear={onClear}
+        onAddFavourite={onAddFavourite}
+        onRemoveFavourite={onRemoveFavourite}
+        favorites={favorites}
+    />;
 };
 
 export default MovieContainer;

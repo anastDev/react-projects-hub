@@ -1,4 +1,4 @@
-import {Heart, X} from "lucide-react";
+import {Heart, Trash2} from "lucide-react";
 import type {MovieApiResponse} from "@/projects/movie-search-app/types/typesMovie.ts";
 import {Button} from "@/components/ui/button.tsx";
 
@@ -38,7 +38,6 @@ const FavoritePlaceholder = ({favorites, onRemoveFavorite} : FavoritePlaceholder
                        <p className="text-xs text-[#f0ede8]/40 mt-0.5">
                            {movie.Year} · {movie.Genre}
                        </p>
-                       {/* Show a truncated plot so the user remembers what the film is about */}
                        {movie.Plot && movie.Plot !== "N/A" && (
                            <p className="text-xs text-[#f0ede8]/30 mt-1 line-clamp-2">{movie.Plot}</p>
                        )}
@@ -48,8 +47,9 @@ const FavoritePlaceholder = ({favorites, onRemoveFavorite} : FavoritePlaceholder
                        size="icon"
                        onClick={() => onRemoveFavorite(movie.imdbID)}
                        className="text-[#f0ede8]/30 hover:text-[#f09595] hover:bg-white/5 flex-shrink-0"
+                       title="Remove from favourites"
                    >
-                       <X size={15} />
+                       <Trash2 size={15} />
                    </Button>
                </div>
            ))}

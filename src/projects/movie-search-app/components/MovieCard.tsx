@@ -1,16 +1,20 @@
 import type {MovieApiResponse} from "@/projects/movie-search-app/types/typesMovie.ts";
 import {Button} from "@/components/ui/button.tsx";
 import {useState} from "react";
-import {X} from "lucide-react";
+import {Heart, X} from "lucide-react";
 
 interface MovieCardProps {
     movie: MovieApiResponse;
     onClear: () => void;
     onAddFavourite: (movie: MovieApiResponse) => void;
+    onRemoveFavourite: (id: string) => void;
+    favorites: MovieApiResponse[];
 }
 
-const MovieCard = ({ movie, onClear, onAddFavourite }: MovieCardProps) => {
+const MovieCard = ({ movie, onClear, favorites, onAddFavourite, onRemoveFavourite }: MovieCardProps) => {
     const [isVisible, setIsVisible] = useState(false);
+
+    const isFavorite = favorites.some((f) => f.imdbID === movie.imdbID)
 
     const metaData = [movie.Genre, movie.Type, movie.Runtime, movie.Released].filter(
         (v) => v && v !== "N/A"
@@ -41,7 +45,7 @@ const MovieCard = ({ movie, onClear, onAddFavourite }: MovieCardProps) => {
                         <img
                             src={movie.Poster}
                             alt={`${movie.Title} poster`}
-                            className="w-[140px] rounded-md block"
+                            className="w-50 rounded-md block"
                         />
                     ) : (
                         // Poster placeholder when OMDB returns no image
@@ -79,7 +83,7 @@ const MovieCard = ({ movie, onClear, onAddFavourite }: MovieCardProps) => {
                         {metaData.map((pill) => (
                             <span
                                 key={pill}
-                                className="text-xs text-[#f0ede8]/50 border border-white/[0.12] rounded-full px-2.5 py-0.5"
+                                className="text-xs text-[#f0ede8]/50 border border-white/[0.12] rounded-md px-3 py-2"
                             >
                 {pill}
               </span>
@@ -87,7 +91,7 @@ const MovieCard = ({ movie, onClear, onAddFavourite }: MovieCardProps) => {
                         {ratings.map(({ label, value }) => (
                             <span
                                 key={label}
-                                className="text-xs text-[#d4b84a] border border-[#d4b84a]/25 rounded-full px-2.5 py-0.5"
+                                className="text-xs text-[#d4b84a] border border-[#d4b84a]/25 rounded-md px-3 py-2"
                             >
                 {label}: {value}
               </span>
@@ -109,13 +113,25 @@ const MovieCard = ({ movie, onClear, onAddFavourite }: MovieCardProps) => {
                                 {isVisible ? "Less details" : "More details"}
                             </Button>
                             <Button
-                                className="text-[13px] font-medium text-[#0d0d0f] border-none"
-                                style={{ background: "#d4b84a" }}
-                                onMouseEnter={(e) => (e.currentTarget.style.background = "#e0ca6a")}
-                                onMouseLeave={(e) => (e.currentTarget.style.background = "#d4b84a")}
-                                onClick={() => onAddFavourite(movie)}
+                                onClick={() => isFavorite ? onRemoveFavourite(movie.imdbID) : onAddFavourite(movie)}
+                                className="text-[13px] font-medium border-none flex items-center gap-2 disabled:opacity-80 disabled:cursor-not-allowed"
+                                style={{
+                                    background: isFavorite ? "#3a3020" : "#d4b84a",
+                                    color: isFavorite ? "#d4b84a" : "#0d0d0f",
+                                }}
+                                onMouseEnter={(e) => {
+                                    if (!isFavorite) e.currentTarget.style.background = "#e0ca6a";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = isFavorite ? "#3a3020" : "#d4b84a";
+                                }}
                             >
-                                Add to favourites
+                                <Heart
+                                    size={14}
+                                    fill={isFavorite ? "#d4b84a" : "none"}
+                                    stroke={isFavorite ? "#d4b84a" : "#0d0d0f"}
+                                />
+                                {isFavorite ? "In favourites" : "Add to favourites"}
                             </Button>
                         </div>
                     </div>
