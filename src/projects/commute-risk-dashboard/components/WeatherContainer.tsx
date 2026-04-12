@@ -1,249 +1,182 @@
 import { Spinner} from "@radix-ui/themes";
 import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.ts";
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-} from "@/components/ui/card"
-import {Separator} from "@/components/ui/separator.tsx";
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import {useState} from "react";
-import type {CommuteType, RiskResponse} from "@/projects/commute-risk-dashboard/types/typeRisk.ts";
+import {type RefObject, useState} from "react";
+import type {CommuteType} from "@/projects/commute-risk-dashboard/types/typeRisk.ts";
 import RiskDisplay from "@/projects/commute-risk-dashboard/components/RiskDisplay.tsx";
-import {Button} from "@/components/ui/button.tsx";
 import {useNavigate} from "react-router";
 import { motion } from 'framer-motion';
+import calculateRisk from "@/projects/commute-risk-dashboard/utils/calculateRisk.ts";
+import {ChevronLeft} from "lucide-react";
+import {useRoadConditions} from "@/projects/commute-risk-dashboard/hooks/useRoadConditions.ts";
+import RoadConditions from "@/projects/commute-risk-dashboard/components/RoadConditions.tsx";
 
 const WEATHER_ICON_API = import.meta.env.VITE_WEATHER_ICON_API;
 
 interface WeatherContainerProps {
     weatherData: WeatherApiResponse | null;
+    onSearch: (value: string) => void;
+    inputRef: RefObject<HTMLInputElement | null>;
+    city: string;
 }
 
+const commuteModes = [
+    { value: "walking", label: "Walking", icon: "🚶" },
+    { value: "bike",    label: "Cycling", icon: "🚴" },
+    { value: "car",     label: "Car",     icon: "🚗" },
+    { value: "bus",     label: "Commute", icon: "🚌" },
+] as const;
 
-const WeatherContainer = ({ weatherData }: WeatherContainerProps) => {
+const WeatherContainer = ({ weatherData, onSearch, inputRef, city }: WeatherContainerProps) => {
     const [commuteType, setCommuteType] = useState<CommuteType | "">("");
+    const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
+    const {conditions, loading, error} = useRoadConditions(city);
 
-    if(!weatherData) {
+    const handleSearch = () => {
+        if (searchValue.trim()) {
+            onSearch(searchValue.trim());
+            setSearchValue("");
+        }
+    };
+
+    if (!weatherData) {
         return (
-            <>
-                <div className="flex justify-center">
-                    <Spinner  size="3"/>
-                </div>
-            </>
-        )
+            <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+                <Spinner size="3" />
+            </div>
+        );
     }
 
-    const formatTemp = (temp: number): number => {
-        return Math.floor(temp);
+    const formatTemp = (temp: number) => Math.floor(temp);
+    const formatTime = (ts: number) =>
+        new Date(ts * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    const getWeatherIconUrl = (icon: string) => `${WEATHER_ICON_API}${icon}@2x.png`;
+
+    const risk = calculateRisk(weatherData, commuteType);
+
+    const riskStyles: Record<string, { text: string; card: string }> = {
+        Low:    { text: "text-emerald-400", card: "bg-emerald-500/8 border-emerald-500/20" },
+        Medium: { text: "text-amber-400",   card: "bg-amber-500/8 border-amber-500/20"   },
+        High:   { text: "text-red-400",     card: "bg-red-500/8 border-red-500/20"       },
     };
-
-    const formatTime = (timestamp: number): string => {
-        const date = new Date(timestamp * 1000);
-        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    };
-
-    const getWeatherIconUrl = (iconCode: string): string => {
-        return `${WEATHER_ICON_API}${iconCode}@2x.png`;
-    };
-
-    function calculateRisk(weather: WeatherApiResponse, commute: CommuteType) : RiskResponse {
-        let score = 0;
-        const reasons: string[] = [];
-        const recommendations: string[] = [];
-        const hasSnowOrIce = ["Snow", "Sleet", "Ice"].includes(weather.weather[0].description);
-
-        if(hasSnowOrIce) {
-            score +=2;
-            reasons.push("Snow or icy conditions detected!");
-        } else if (weather.weather[0].description.includes("Rain")) {
-            score += 1;
-            reasons.push("Rain increases road and sidewalk risk");
-        }
-
-        if(weather.main.temp < 0) {
-            score += 1;
-            reasons.push("Temperature below 0°C");
-        }
-
-        if (weather.wind.speed > 10) {
-            score += 1;
-            reasons.push("Strong wind conditions");
-        }
-
-        if (commute === "walking" && ["Snow", "Sleet", "Ice"].includes(weather.weather[0].description)) {
-            score += 1;
-            reasons.push("Walking surfaces may be slippery");
-        }
-
-        if (commute === "bike" && ["Snow", "Sleet", "Ice"].includes(weather.weather[0].description)) {
-            score += 3;
-            reasons.push("Biking is riskier on snow and ice");
-        }
-        if ((commute === "bus" || commute === "tram") && ["Snow", "Sleet", "Ice"].includes(weather.weather[0].description)) score += 1;
-
-        let level: "Low" | "Medium" | "High" | "";
-        if(score <= 1) level = "Low";
-        else if (score <= 3) level = "Medium";
-        else level = "High";
-
-        if(level == "Low") {
-            recommendations.push("No special precautions needed.")
-        }
-
-        if (level === "Medium") {
-            recommendations.push("Allow extra travel time and stay alert.");
-        }
-
-        if (level === "High") {
-            recommendations.push("Consider public transport or delaying your commute.");
-        }
-
-        if((commute === "bike" || commute === "walking") && level === "High") {
-            recommendations.push("Consider taking public transport instead.")
-        }
-
-        return {score, level, reasons, recommendations};
-    }
-
-    const risk =  calculateRisk(weatherData, commuteType);
+    const style = riskStyles[risk.level] ?? { text: "text-slate-400", card: "" };
 
     return (
-        <>
-            <main className="min-h-screen bg-gradient-to-b from-sky-50 to-blue-50 py-8 px-4">
-                <div className="container mx-auto max-w-2xl">
-                    {/* Weather Information Card */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+        <div className="min-h-screen bg-slate-950 text-gray-100">
+            {/* Sticky search header */}
+            <header className="sticky top-0 z-20 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60 px-4 py-3">
+                <div className=" max-w-2xl lg:max-w-4xl mx-auto flex items-center gap-3 px-2">
+                    <button
+                        onClick={() => navigate("/projects")}
+                        className="flex items-center gap-1 text-slate-500 hover:text-gray-100 text-sm transition-colors cursor-pointer border border-slate-800 rounded-lg px-3 py-2 shrink-0"
                     >
-                        <Card className="shadow-lg">
-                            <CardHeader>
-                                <div className="flex flex-col sm:flex-row justify-around items-center gap-4 sm:gap-6">
-                                    <div className="flex flex-col justify-center items-center text-center">
-                                        <div className="text-2xl md:text-3xl font-medium mb-2 text-gray-800">
-                                            {weatherData.name}
-                                        </div>
-                                        <h1 className="text-5xl md:text-6xl font-semibold mb-2 text-gray-900">
-                                            {formatTemp(weatherData.main.temp)}°C
-                                        </h1>
-                                        <p className="font-light text-slate-600 capitalize">
-                                            {weatherData.weather[0].description}
-                                        </p>
-                                    </div>
-                                    <div className="flex-shrink-0">
-                                        <img
-                                            src={getWeatherIconUrl(weatherData.weather[0].icon)}
-                                            alt={weatherData.weather[0].description}
-                                            className="h-24 sm:h-32 mx-auto"
-                                        />
-                                    </div>
-                                </div>
-                            </CardHeader>
-
-                            <Separator />
-
-                            <CardContent className="pt-6">
-                                <div className="space-y-4">
-                                    <div className="text-base font-medium text-gray-800">
-                                        Select your commute method:
-                                    </div>
-                                    <RadioGroup
-                                        value={commuteType || ""}
-                                        onValueChange={(value) => setCommuteType(value as CommuteType)}
-                                        className="space-y-3"
-                                    >
-                                        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer">
-                                            <RadioGroupItem value="walking" id="walking" />
-                                            <Label htmlFor="walking" className="cursor-pointer flex-1">
-                                                🚶 Walking
-                                            </Label>
-                                        </div>
-                                        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer">
-                                            <RadioGroupItem value="bike" id="bike" />
-                                            <Label htmlFor="bike" className="cursor-pointer flex-1">
-                                                🚴 Bike
-                                            </Label>
-                                        </div>
-                                        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer">
-                                            <RadioGroupItem value="car" id="car" />
-                                            <Label htmlFor="car" className="cursor-pointer flex-1">
-                                                🚗 Car
-                                            </Label>
-                                        </div>
-                                        <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-sky-50 transition-colors cursor-pointer">
-                                            <RadioGroupItem value="bus" id="bus" />
-                                            <Label htmlFor="bus" className="cursor-pointer flex-1">
-                                                🚌 Bus / Tram
-                                            </Label>
-                                        </div>
-                                    </RadioGroup>
-                                </div>
-                            </CardContent>
-
-                            {commuteType && risk && (
-                                <>
-                                    <Separator />
-                                    <CardFooter className="pt-6">
-                                        <RiskDisplay risk={risk} commute={commuteType} />
-                                    </CardFooter>
-                                </>
-                            )}
-                        </Card>
-                    </motion.div>
-
-                    {/* Sun Times - Additional Weather Info */}
-                    <motion.div
-                        className="mt-6 bg-white rounded-lg shadow-md p-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
+                        <ChevronLeft/>
+                        Projects
+                    </button>
+                    <input
+                        ref={inputRef}
+                        type="text"
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                        placeholder="Search another city..."
+                        className="flex-1 bg-slate-900 border border-slate-700 text-gray-100 placeholder:text-slate-500 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-amber-500/50 transition-all"
+                    />
+                    <button
+                        onClick={handleSearch}
+                        className="bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all cursor-pointer shrink-0"
                     >
-                        <div className="flex flex-col sm:flex-row justify-around items-center gap-4 text-center sm:text-left">
-                            <div className="flex items-center gap-2">
-                                <span className="text-2xl">🌅</span>
-                                <div>
-                                    <div className="text-sm text-slate-600">Sunrise</div>
-                                    <div className="font-semibold text-gray-800">
-                                        {formatTime(weatherData.sys.sunrise)}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-2xl">🌇</span>
-                                <div>
-                                    <div className="text-sm text-slate-600">Sunset</div>
-                                    <div className="font-semibold text-gray-800">
-                                        {formatTime(weatherData.sys.sunset)}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Navigation - Back Button */}
-                    <motion.div
-                        className="mt-8 flex justify-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                    >
-                        <Button
-                            variant="ghost"
-                            onClick={() => navigate("/projects")}
-                            className="bg-sky-500 text-gray-100 hover:bg-sky-600 active:bg-sky-600 border-sky-500  transition-colors w-full sm:w-auto cursor-pointer"
-                        >
-                            ← Back to Projects
-                        </Button>
-                    </motion.div>
+                        Search
+                    </button>
                 </div>
+            </header>
+
+            <main className="max-w-2xl lg:max-w-4xl mx-auto px-4 py-6 space-y-4">
+
+                {/* Weather hero card */}
+                <motion.div
+                    className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex items-center justify-between"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                >
+                    <div>
+                        <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-1">
+                            {weatherData.name}, {weatherData.sys.country}
+                        </p>
+                        <div className="text-7xl font-black tracking-tight leading-none">
+                            {formatTemp(weatherData.main.temp)}°
+                        </div>
+                        <p className="text-slate-400 capitalize text-sm mt-2">
+                            {weatherData.weather[0].description}
+                        </p>
+                        <div className="flex flex-wrap gap-x-4 mt-3 text-slate-600">
+                            <span>🌅 {formatTime(weatherData.sys.sunrise)}</span>
+                            <span>🌇 {formatTime(weatherData.sys.sunset)}</span>
+                            <span>🌬️ {Math.round(weatherData.wind.speed)} m/s</span>
+                            <span>💧 {weatherData.main.humidity}%</span>
+                        </div>
+                    </div>
+                    <img
+                        src={getWeatherIconUrl(weatherData.weather[0].icon)}
+                        alt={weatherData.weather[0].description}
+                        className="h-36 drop-shadow-lg shrink-0"
+                    />
+                </motion.div>
+
+                {/* Commute selector */}
+                <motion.div
+                    className="bg-slate-900 border border-slate-800 rounded-2xl p-6"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.08 }}
+                >
+                    <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">
+                        How are you commuting?
+                    </p>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        {commuteModes.map(({ value, label, icon }) => (
+                            <button
+                                key={value}
+                                onClick={() => setCommuteType(value)}
+                                className={`flex flex-col items-center gap-2 p-4 rounded-xl border text-sm font-medium transition-all cursor-pointer
+                                    ${commuteType === value
+                                    ? "bg-amber-500/10 border-amber-500/40 text-amber-400"
+                                    : "bg-slate-800/40 border-slate-700 text-slate-400 hover:border-slate-500 hover:text-slate-200"
+                                }`}
+                            >
+                                <span className="text-2xl">{icon}</span>
+                                {label}
+                            </button>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {conditions.length > 0 && (
+                    <motion.div
+                        className="bg-slate-900 border border-slate-800 rounded-2xl p-6"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.16 }}
+                    >
+                        <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">
+                            Road conditions nearby
+                        </p>
+                        <RoadConditions
+                            conditions={conditions}
+                            loading={loading}
+                            error={error}
+                        />
+                    </motion.div>
+                )}
+
+                {/* Risk display */}
+                {commuteType && risk.level && (
+                    <RiskDisplay risk={risk} commute={commuteType} riskTextClass={style.text} riskCardClass={style.card} />
+                )}
             </main>
-        </>
-    )
-}
+        </div>
+    );
+};
 
 export default WeatherContainer;
