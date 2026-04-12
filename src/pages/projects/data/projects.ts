@@ -16,7 +16,7 @@ export const projectData: ProjectCardTypes[] = [
         tags: ["React", "TypeScript", "OpenWeather API"],
         path: "/projects/commute-risk-dashboard",
         status: "In Progress",
-        img: "projects/commute-risk-dashboard.png",
+        img: "projects/commute-dashboard.png",
         category: "main"
     },
     {
