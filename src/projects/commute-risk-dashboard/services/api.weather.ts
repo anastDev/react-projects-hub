@@ -5,13 +5,13 @@ const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 export async function getCurrentWeather(cityName: string) : Promise<WeatherApiResponse> {
     try {
         if(!cityName || cityName.trim() === "") {
-            throw new Error("City name is required");
+           console.error("City name is required");
         }
 
         const res = await fetch(`${VITE_BASE_URL}/weather/${cityName}`);
 
         if (!res.ok) {
-            throw new Error(`Unable to get current weather for city ${cityName}`);
+          console.error(`Unable to get current weather for city ${cityName}`);
         }
 
        return await res.json();
