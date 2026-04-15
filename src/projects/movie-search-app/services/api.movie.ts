@@ -6,14 +6,14 @@ export async function getMovieByTitle(title: string) : Promise<MovieApiResponse>
     try {
 
         if (!title || title.trim() === "") {
-            throw new Error("Title is required");
+           throw new Error("Title is required");
         }
 
         const encodedTitle = encodeURIComponent(title);
         const res = await fetch(`${VITE_BASE_URL}/movies?title=${encodedTitle}`);
 
         if (!res.ok) {
-            throw new Error(`Unable to get movie: ${title}`);
+          throw new Error(`Unable to get movie: ${title}`);
         }
 
         return await res.json();

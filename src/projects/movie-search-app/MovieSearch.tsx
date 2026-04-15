@@ -9,8 +9,9 @@ import type {MovieApiResponse} from "@/projects/movie-search-app/types/typesMovi
 
 const getInitialState = () : MovieApiResponse[] => {
    try {
-       const storedMovies = localStorage.getItem("movies");
-       return storedMovies ? JSON.parse(storedMovies) : [];
+       const storedMovies = localStorage.getItem("favorites");
+       const parsed = storedMovies ? JSON.parse(storedMovies) : [];
+       return Array.isArray(parsed) ? parsed : [];
    } catch {
        return [];
    }
@@ -29,8 +30,8 @@ const MovieSearch = () => {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("movies", JSON.stringify(movie));
-    }, [favorites, movie]);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }, [favorites]);
 
     const handleSearch = () => {
         if (title.trim() !== "") {
