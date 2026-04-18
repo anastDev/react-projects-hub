@@ -28,9 +28,9 @@ const AboutMainContent = () => {
             <section className="container mx-auto flex flex-col lg:flex-row gap-8 pt-10 pb-12">
                 {/* Left Column - Image */}
                 <div className="lg:w-1/3 flex-shrink-0">
-                    <div className="w-full h-84 bg-gray-800 rounded-lg overflow-hidden">
+                    <div className="w-full h-100 lg:h-84 bg-gray-800 rounded-lg overflow-hidden">
                         <img
-                            src="/profile-img.jpg"
+                            src={`${import.meta.env.BASE_URL}profile-img.jpg`}
                             alt="img"
                             className="w-full h-full object-cover rounded-lg text-center"
                         />

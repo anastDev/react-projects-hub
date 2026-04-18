@@ -9,7 +9,7 @@ export const MiniProjectCard = ({projectName, description, img, path, status="In
             {img && img !== "TBA" && (
                 <div className="w-full aspect-video overflow-hidden rounded-lg">
                     <img
-                        src={img}
+                        src={`${import.meta.env.BASE_URL}${img}`}
                         alt={`${projectName} preview`}
                         className="w-full h-full object-cover transition-all duration-500"
                     />

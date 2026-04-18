@@ -16,7 +16,7 @@ const ProjectCard = ({projectName, img, path, tags}: ProjectCardTypes) => {
                     <div className="relative w-full h-40 lg:h-56 my-2 overflow-hidden rounded-lg">
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <img
-                            src={img}
+                            src={`${import.meta.env.BASE_URL}${img}`}
                             alt={`${projectName} preview`}
                             className="w-full h-full object-fit group-hover:scale-110 transition-all duration-500"
                         />
