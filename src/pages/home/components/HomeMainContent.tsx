@@ -1,17 +1,17 @@
 import ProjectCard from "@/pages/projects/components/ProjectCard.tsx";
 import {Button} from "@/components/ui/button.tsx"
 import {Link} from "react-router";
-import {ArrowDown, ArrowRight} from "lucide-react";
+import {ArrowDown} from "lucide-react";
 import {projectData} from "@/pages/projects/data/projects.ts";
 import {ReactTyped} from "react-typed";
 import {motion, useTransform, useScroll} from "framer-motion";
 import {ShaderGradient, ShaderGradientCanvas} from "@shadergradient/react";
+import {JourneyRoad} from "@/pages/home/components/JourneyRoad.tsx";
 
 export const HomeMainContent = () => {
     const { scrollY } = useScroll();
     const heroY = useTransform(scrollY, [0, 300], [0, 150]);
     const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
-
 
     return (
         <>
@@ -75,33 +75,7 @@ export const HomeMainContent = () => {
                         </div>
                     </motion.section>
 
-                    {/*  Bridge Section - What this site is */}
-                    <motion.section
-                        className="bg-gray-900 py-10 bg-gradient-to-b from-gray-900/10 via-gray-500/10 to-transparent  border-b border-gray-700/50"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        viewport={{ once: true, amount: 0.3 }}
-                    >
-
-                        <div className="container mx-auto px-6  max-w-3xl">
-                            <div className="space-y-4 text-center">
-                                <div className="py-12">
-                                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto"></div>
-                                </div>
-                                <p className="text-lg lg:text-2xl text-gray-100 font-light leading-relaxed">
-                                    This website is a collection of small projects I've built
-                                    while learning and exploring React and modern web development.
-                                </p>
-                                <Link to="/about">
-                                    <Button className="group my-4 border-2 border-orange-500 text-orange-400 bg-transparent hover:bg-orange-500 active:bg-orange-500 hover:text-gray-900 active:text-gray-900 transition-colors duration-300 cursor-pointer text-sm lg:text-base">
-                                        Learn more about my journey
-                                        <ArrowRight className="ml-2 group-hover:translate-x-1 active:translate-x-1 transition-transform" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                    </motion.section>
+                    <JourneyRoad/>
 
                     {/* Mini Preview of projects */}
                     <motion.section
