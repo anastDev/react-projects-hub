@@ -9,6 +9,7 @@ import calculateRisk from "@/projects/commute-risk-dashboard/utils/calculateRisk
 import {ChevronLeft} from "lucide-react";
 import {useRoadConditions} from "@/projects/commute-risk-dashboard/hooks/useRoadConditions.ts";
 import RoadConditions from "@/projects/commute-risk-dashboard/components/RoadConditions.tsx";
+import {Button} from "@/components/ui/button.tsx";
 
 const WEATHER_ICON_API = import.meta.env.VITE_WEATHER_ICON_API;
 
@@ -66,13 +67,13 @@ const WeatherContainer = ({ weatherData, onSearch, inputRef, city }: WeatherCont
             {/* Sticky search header */}
             <header className="sticky top-0 z-20 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60 px-4 py-3">
                 <div className=" max-w-2xl lg:max-w-4xl mx-auto flex items-center gap-3 px-2">
-                    <button
+                    <Button
                         onClick={() => navigate("/projects")}
                         className="flex items-center gap-1 text-slate-500 hover:text-gray-100 text-sm transition-colors cursor-pointer border border-slate-800 rounded-lg px-3 py-2 shrink-0"
                     >
                         <ChevronLeft/>
                         Projects
-                    </button>
+                    </Button>
                     <input
                         ref={inputRef}
                         type="text"

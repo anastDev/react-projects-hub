@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useFetch } from "./hooks/useFetch";
+import { useFetch } from "./hooks/useFetch.ts";
 import MovieContainer from "@/projects/movie-search-app/components/MovieContainer.tsx";
 import {Link} from "react-router";
 import FavoritePlaceholder from "@/projects/movie-search-app/components/FavoritePlaceholder.tsx";

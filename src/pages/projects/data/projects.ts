@@ -7,7 +7,7 @@ export const projectData: ProjectCardTypes[] = [
         tags: ["Node.js", "MongoDB", "JWT", "Zod", "Jest"],
         path: "https://github.com/anastDev/project-hub-backend",
         status: "Completed",
-        img: "projects/weather-backend.png",
+        img: "public/projects/weather-backend.png",
         category: "main"
     },
     {
@@ -16,7 +16,7 @@ export const projectData: ProjectCardTypes[] = [
         tags: ["React", "TypeScript", "OpenWeather API"],
         path: "/projects/commute-risk-dashboard",
         status: "In Progress",
-        img: "projects/commute-dashboard.png",
+        img: "/projects/commute-dashboard.png",
         category: "main"
     },
     {
@@ -25,7 +25,16 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/movie-search-app",
         tags: ["React", "TypeScript", "Tailwind CSS", "REST API", "localStorage"],
         status: "Completed",
-        img: "projects/movie-search.png",
+        img: "/projects/movie-search.png",
+        category: "main"
+    },
+    {
+        projectName: "Dev Tools",
+        description: "A full-stack AI-powered developer tool built with React and Node.js. Generates conventional commit messages by comparing old and new code, and explains code snippets with structured breakdowns. Integrates the Gemini API on a TypeScript Express backend with custom hooks, structured JSON prompting and a dark-themed responsive UI.",
+        tags: ["Gemini API", "React", "TypeScript", "Node.js", "Express" ],
+        path: "/projects/dev-tools",
+        status: "Completed",
+        img: "/projects/dev-tools.png",
         category: "main"
     },
     {
@@ -34,7 +43,7 @@ export const projectData: ProjectCardTypes[] = [
         tags: ["React", "localStorage", "CRUD"],
         path: "/projects/task-manager-app",
         status: "Completed",
-        img: "projects/task-manager.png",
+        img: "/projects/task-manager.png",
         category: "main"
     },
     {
@@ -51,7 +60,7 @@ export const projectData: ProjectCardTypes[] = [
         description: "Collection of Python projects focused on data analysis and utilities. Includes tools like a job listings filter (shown) with data processing and visualization.",
         path: "https://github.com/anastDev/python-projects",
         status: "In Progress",
-        img: "projects/job-listing-filter.png",
+        img: "/projects/job-listing-filter.png",
         category: "other"
     },
 ]

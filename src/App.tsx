@@ -11,6 +11,7 @@ import ProfileEditPage from "@/pages/profile/ProfileEditPage.tsx";
 import {Toaster} from "sonner";
 import AboutPage from "@/pages/about/AboutPage.tsx";
 import { useLayoutEffect} from "react";
+import DevTools from "@/projects/dev-tools/DevToolsLandingPage.tsx";
 
 interface WrapperProps {
     children: React.ReactNode;
@@ -45,6 +46,7 @@ function App() {
                         <Route path="task-manager-app" element={<TaskManager/>}/>
                         <Route path="commute-risk-dashboard" element={<RiskCommuteApp/>}/>
                         <Route path="movie-search-app" element={<MovieSearch/>}/>
+                        <Route path="dev-tools" element={<DevTools/>}/>
                     </Route>
 
                     {/* About Route */}
