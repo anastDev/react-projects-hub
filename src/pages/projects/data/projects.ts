@@ -7,7 +7,7 @@ export const projectData: ProjectCardTypes[] = [
         tags: ["Node.js", "MongoDB", "JWT", "Zod", "Jest"],
         path: "https://github.com/anastDev/project-hub-backend",
         status: "Completed",
-        img: "public/projects/weather-backend.png",
+        img: "/projects/weather-backend.png",
         category: "main"
     },
     {
