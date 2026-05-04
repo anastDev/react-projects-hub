@@ -20,21 +20,21 @@ export const projectData: ProjectCardTypes[] = [
         category: "main"
     },
     {
-        projectName: "Movie Search App",
-        description: "An interactive movie database that lets users search and explore films using the OMDB API. Features dynamic search results, detailed movie information displays, a persistent favourites list powered by localStorage and a clean cinematic UI built with React, TypeScript and Tailwind CSS.",
-        path: "/projects/movie-search-app",
-        tags: ["React", "TypeScript", "Tailwind CSS", "REST API", "localStorage"],
-        status: "Completed",
-        img: "/projects/movie-search.png",
-        category: "main"
-    },
-    {
         projectName: "Dev Tools",
         description: "A full-stack AI-powered developer tool built with React and Node.js. Generates conventional commit messages by comparing old and new code, and explains code snippets with structured breakdowns. Integrates the Gemini API on a TypeScript Express backend with custom hooks, structured JSON prompting and a dark-themed responsive UI.",
         tags: ["Gemini API", "React", "TypeScript", "Node.js", "Express" ],
         path: "/projects/dev-tools",
         status: "Completed",
         img: "/projects/dev-tools.png",
+        category: "main"
+    },
+    {
+        projectName: "Movie Search App",
+        description: "An interactive movie database that lets users search and explore films using the OMDB API. Features dynamic search results, detailed movie information displays, a persistent favourites list powered by localStorage and a clean cinematic UI built with React, TypeScript and Tailwind CSS.",
+        path: "/projects/movie-search-app",
+        tags: ["React", "TypeScript", "Tailwind CSS", "REST API", "localStorage"],
+        status: "Completed",
+        img: "/projects/movie-search.png",
         category: "main"
     },
     {
