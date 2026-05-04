@@ -15,7 +15,7 @@ export const projectData: ProjectCardTypes[] = [
         description: "A weather-based decision tool that helps users assess commute safety by fetching real-time weather data from the OpenWeather API. Features responsive design, TypeScript for type safety, and dynamic risk calculations based on current conditions.",
         tags: ["React", "TypeScript", "OpenWeather API"],
         path: "/projects/commute-risk-dashboard",
-        status: "In Progress",
+        status: "Completed",
         img: "/projects/commute-dashboard.png",
         category: "main"
     },
