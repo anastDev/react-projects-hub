@@ -1,6 +1,6 @@
 import {Theme} from "@radix-ui/themes";
 import {useCallback, useEffect, useRef, useState} from "react";
-import WeatherContainer from "@/projects/commute-risk-dashboard/components/WeatherContainer.tsx";
+import ConditionsContainer from "@/projects/commute-risk-dashboard/components/ConditionsContainer.tsx";
 import CenterSearchField from "@/projects/commute-risk-dashboard/components/CenterSearchField.tsx";
 import {useWeather} from "@/projects/commute-risk-dashboard/hooks/useWeather.ts";
 
@@ -10,7 +10,9 @@ const RiskCommuteApp = () => {
     const { weather, loading } = useWeather(city);
 
     const handleSearch = useCallback((value: string) => {
-        if (value.trim()) setCity(value.trim());
+        if (value.trim()) {
+            setCity(value.trim());
+        };
     }, []);
 
     useEffect(() => {
@@ -21,7 +23,7 @@ const RiskCommuteApp = () => {
     return (
         <Theme>
             {weather && !loading ? (
-                <WeatherContainer
+                <ConditionsContainer
                     city={city}
                     weatherData={weather}
                     onSearch={handleSearch}
