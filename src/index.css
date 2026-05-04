@@ -119,3 +119,53 @@
     @apply bg-background text-foreground;
   }
 }
+@keyframes pulse-blue {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+.marker {
+    position: relative;
+    width: 16px;
+    height: 16px;
+}
+
+.marker .dot {
+    width: 16px;
+    height: 16px;
+    background-color: #3b82f6;
+    border: 2px solid #1d4ed8;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.marker .ring {
+    width: 16px;
+    height: 16px;
+    background-color: #93c5fd;
+    border-radius: 50%;
+    position: absolute;
+    animation: pulse-blue 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2); }
+}
+
+.leaflet-accident-pulse path {
+    animation: pulse-ring 1.5s ease-out infinite;
+}
+
+.conditions-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.conditions-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.conditions-scroll::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 999px;
+}
