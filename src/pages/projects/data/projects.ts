@@ -38,6 +38,15 @@ export const projectData: ProjectCardTypes[] = [
         category: "main"
     },
     {
+        projectName: "Library App — Frontend",
+        description: "A React and TypeScript frontend for the Library App Spring Boot API. Features a dark-themed book browsing interface with real-time search, book detail modals and JWT-based authentication via a login dialog. Consumes REST endpoints for browsing and borrowing books with Axios handling API communication and cookie-based token storage for session persistence.",
+        tags: ["React", "TypeScript", "Tailwind CSS", "Axios", "JWT"],
+        path: "/projects/library-app",
+        status: "In Progress",
+        img: "/projects/library-app.png",
+        category: "main"
+    },
+    {
         projectName: "Task Manager App",
         description: "A full-featured task management application with complete CRUD functionality and browser localStorage persistence. Users can create, edit, delete, and organize tasks with a clean interface built in React, demonstrating state management and local data handling.",
         tags: ["React", "localStorage", "CRUD"],
@@ -47,7 +56,7 @@ export const projectData: ProjectCardTypes[] = [
         category: "main"
     },
     {
-        projectName: "Library App — Spring Boot",
+        projectName: "Library App — Backend",
         description: "Refactoring a console-based Java library system into a production-ready Spring Boot REST API. Applies Controller–Service–Repository architecture with MySQL database integration, RESTful endpoints and scalable backend design principles.",
         tags: ["Java", "Spring Boot", "MySQL", "REST API"],
         path: "https://github.com/anastDev/library-app",

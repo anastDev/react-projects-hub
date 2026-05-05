@@ -12,6 +12,8 @@ import {Toaster} from "sonner";
 import AboutPage from "@/pages/about/AboutPage.tsx";
 import { useLayoutEffect} from "react";
 import DevTools from "@/projects/dev-tools/DevToolsLandingPage.tsx";
+import BookPage from "@/projects/library-app/BookPage.tsx";
+import {LibraryAuthProvider} from "@/projects/library-app/context/LibraryAuthProvider.tsx";
 
 interface WrapperProps {
     children: React.ReactNode;
@@ -47,6 +49,7 @@ function App() {
                         <Route path="road-radar-dashboard" element={<DashBoardApp/>}/>
                         <Route path="movie-search-app" element={<MovieSearch/>}/>
                         <Route path="dev-tools" element={<DevTools/>}/>
+                        <Route path="library-app" element={<LibraryAuthProvider><BookPage/></LibraryAuthProvider>}/>
                     </Route>
 
                     {/* About Route */}

@@ -2,10 +2,7 @@ import Hamburger from 'hamburger-react'
 import {type ElementType,  useRef, useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 import {Link} from "react-router";
-import {
-    ButtonGroup,
-} from "@/components/ui/button-group"
-import {Button} from "@radix-ui/themes";
+import {Button} from "@/components/ui/button";
 
 export const NavMobile = ({ routes }: { routes: Array<{title: string, path: string, Icon: ElementType}> }) => {
     const [isOpen, setOpen] = useState<boolean>(false);
@@ -14,10 +11,9 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
 
     return (
         <div ref={ref} className="lg:hidden mt-2 relative">
-            <ButtonGroup onClick={() => setOpen((prev) => !prev)} className="px-2 bg-gray-100 hover:bg-gray-300 text-gray-900 rounded-md cursor-pointer">
-                <Button><Hamburger direction="right" toggled={isOpen} size={20} rounded /></Button>
-                <Button><div className="content-center font-semibold mx-2">{isOpen ? "Close" : "Menu"}</div></Button>
-            </ButtonGroup>
+            <Button onClick={() => setOpen((prev) => !prev)} className="px-2 bg-gray-100 hover:bg-gray-300 text-gray-900 rounded-md cursor-pointer">
+                <Hamburger direction="right" toggled={isOpen} size={20} rounded />
+            </Button>
 
             <AnimatePresence>
                 {isOpen && (
@@ -26,7 +22,7 @@ export const NavMobile = ({ routes }: { routes: Array<{title: string, path: stri
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed left-0 right-0 mx-auto container top-[5rem] shadow-xl p-3 pt-2 rounded-xl bg-transparent backdrop-blur-md z-50"
+                        className="fixed left-0 right-0 mx-auto container top-[4.5rem] shadow-xl p-3 pt-2 rounded-xl bg-transparent backdrop-blur-md z-50"
                     >
                         <ul className="grid gap-2">
                             {routes.map((route, idx) => {

@@ -7,7 +7,6 @@ import LogoutButton from "@/pages/auth/components/LogoutButton.tsx";
 import {staticRoutes} from "@/components/layout/header/staticRoutes.ts";
 import {IoPerson} from "react-icons/io5";
 
-
 const Header = () => {
     const {isAuthenticated, userId} = useAuth();
 

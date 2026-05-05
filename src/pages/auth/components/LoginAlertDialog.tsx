@@ -45,7 +45,7 @@ export const LoginAlertDialog = () => {
             navigate("/");
             reset();
         } catch(err) {
-            console.error('❌ onSubmit error:', err);
+            console.error("Error:", err);
            toast.error(
                err instanceof Error ? err.message : "Login failed"
            )
