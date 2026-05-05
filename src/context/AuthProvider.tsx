@@ -6,7 +6,6 @@ import {deleteCookie, getCookie, setCookie} from "@/pages/auth/utils/cookies.ts"
 import {AuthContext} from "@/context/AuthContext.ts";
 import {jwtDecode} from "jwt-decode";
 
-
 export const AuthProvider = ({children}: {children: React.ReactNode}) => {
     const [accessToken, setAccessToken] = useState<string | null>(null);
     const [userId, setUserId] = useState<string | null>(null);
@@ -34,7 +33,7 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
 
         setCookie( "access_token", res.token, {
             expires: 1,
-            sameSite: "Strict", // Strict on production env
+            sameSite: "Strict",
             secure: true,
             path: "/",
         });
