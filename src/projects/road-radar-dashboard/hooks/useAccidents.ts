@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import type {DeviationConditions} from "@/projects/commute-risk-dashboard/types/typesRoadConditions.ts";
+import type {DeviationConditions} from "@/projects/road-radar-dashboard/types/typesRoadConditions.ts";
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 

@@ -1,15 +1,15 @@
 import { Spinner} from "@radix-ui/themes";
-import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.ts";
+import type {WeatherApiResponse} from "@/projects/road-radar-dashboard/types/typesWeather.ts";
 import {type RefObject, useState} from "react";
 import {useNavigate} from "react-router";
 import { motion } from 'framer-motion';
 import {ChevronLeft} from "lucide-react";
-import {useRoadConditions} from "@/projects/commute-risk-dashboard/hooks/useRoadConditions.ts";
+import {useRoadConditions} from "@/projects/road-radar-dashboard/hooks/useRoadConditions.ts";
 import {Button} from "@/components/ui/button.tsx";
 import { Input } from "@/components/ui/input";
-import RoadConditionsMap from "@/projects/commute-risk-dashboard/components/RoadConditionsMap.tsx";
-import RoadConditions from "@/projects/commute-risk-dashboard/components/RoadConditions.tsx";
-import {useAccidents} from "@/projects/commute-risk-dashboard/hooks/useAccidents.ts";
+import RoadConditionsMap from "@/projects/road-radar-dashboard/components/RoadConditionsMap.tsx";
+import RoadConditions from "@/projects/road-radar-dashboard/components/RoadConditions.tsx";
+import {useAccidents} from "@/projects/road-radar-dashboard/hooks/useAccidents.ts";
 
 const WEATHER_ICON_API = import.meta.env.VITE_WEATHER_ICON_API;
 

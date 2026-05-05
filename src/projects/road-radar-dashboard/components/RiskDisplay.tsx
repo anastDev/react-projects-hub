@@ -1,4 +1,4 @@
-import type {CommuteType, RiskResponse} from "@/projects/commute-risk-dashboard/types/typeRisk.ts";
+import type {CommuteType, RiskResponse} from "@/projects/road-radar-dashboard/types/typeRisk.ts";
 import { motion } from 'framer-motion';
 
 interface RiskDisplayProps {

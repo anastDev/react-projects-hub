@@ -1,6 +1,6 @@
 import {HashRouter as Router, Routes, Route, useLocation} from "react-router";
 import TaskManager from "@/projects/todo/TaskManager.tsx";
-import RiskCommuteApp from "@/projects/commute-risk-dashboard/RiskCommuteApp.tsx";
+import DashBoardApp from "@/projects/road-radar-dashboard/DashBoardApp.tsx";
 import MovieSearch from "@/projects/movie-search-app/MovieSearch.tsx";
 import Home from "@/pages/home/Home.tsx";
 import ProjectsPage from "@/pages/projects/ProjectsPage.tsx";
@@ -44,7 +44,7 @@ function App() {
 
                         {/* Individual projects*/}
                         <Route path="task-manager-app" element={<TaskManager/>}/>
-                        <Route path="commute-risk-dashboard" element={<RiskCommuteApp/>}/>
+                        <Route path="road-radar-dashboard" element={<DashBoardApp/>}/>
                         <Route path="movie-search-app" element={<MovieSearch/>}/>
                         <Route path="dev-tools" element={<DevTools/>}/>
                     </Route>

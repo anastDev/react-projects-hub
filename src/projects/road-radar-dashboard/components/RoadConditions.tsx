@@ -1,7 +1,7 @@
 import {Spinner} from "@radix-ui/themes";
-import {translateCondition} from "@/projects/commute-risk-dashboard/utils/translations.ts";
-import {getSeverity, severityConfig} from "@/projects/commute-risk-dashboard/utils/roadConditionUtils.ts";
-import type {RoadConditions} from "@/projects/commute-risk-dashboard/types/typesRoadConditions.ts";
+import {translateCondition} from "@/projects/road-radar-dashboard/utils/translations.ts";
+import {getSeverity, severityConfig} from "@/projects/road-radar-dashboard/utils/roadConditionUtils.ts";
+import type {RoadConditions} from "@/projects/road-radar-dashboard/types/typesRoadConditions.ts";
 
 interface RoadConditionsProps {
     conditions: RoadConditions[];

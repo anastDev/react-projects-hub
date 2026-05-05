@@ -1,10 +1,10 @@
 import {Theme} from "@radix-ui/themes";
 import {useCallback, useEffect, useRef, useState} from "react";
-import ConditionsContainer from "@/projects/commute-risk-dashboard/components/ConditionsContainer.tsx";
-import CenterSearchField from "@/projects/commute-risk-dashboard/components/CenterSearchField.tsx";
-import {useWeather} from "@/projects/commute-risk-dashboard/hooks/useWeather.ts";
+import ConditionsContainer from "@/projects/road-radar-dashboard/components/ConditionsContainer.tsx";
+import CenterSearchField from "@/projects/road-radar-dashboard/components/CenterSearchField.tsx";
+import {useWeather} from "@/projects/road-radar-dashboard/hooks/useWeather.ts";
 
-const RiskCommuteApp = () => {
+const DashBoardApp = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [city, setCity] = useState("");
     const { weather, loading } = useWeather(city);
@@ -39,4 +39,4 @@ const RiskCommuteApp = () => {
     );
 };
 
-export default RiskCommuteApp;
+export default DashBoardApp;

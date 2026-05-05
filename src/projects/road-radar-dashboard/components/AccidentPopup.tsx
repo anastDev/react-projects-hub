@@ -1,5 +1,5 @@
-import type {DeviationConditions} from "@/projects/commute-risk-dashboard/types/typesRoadConditions.ts";
-import {useTranslation} from "@/projects/commute-risk-dashboard/hooks/useTranslate.ts";
+import type {DeviationConditions} from "@/projects/road-radar-dashboard/types/typesRoadConditions.ts";
+import {useTranslation} from "@/projects/road-radar-dashboard/hooks/useTranslate.ts";
 
 interface AccidentPopupProps {
     accident: DeviationConditions

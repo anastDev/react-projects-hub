@@ -2,8 +2,8 @@ import { MapContainer, TileLayer, Polyline, Marker, Popup, CircleMarker} from "r
 import L from "leaflet"
 import "leaflet/dist/leaflet.css"
 import * as wellknown from "wellknown";
-import type {DeviationConditions, RoadConditions} from "@/projects/commute-risk-dashboard/types/typesRoadConditions.ts";
-import AccidentPopup from "@/projects/commute-risk-dashboard/components/AccidentPopup.tsx";
+import type {DeviationConditions, RoadConditions} from "@/projects/road-radar-dashboard/types/typesRoadConditions.ts";
+import AccidentPopup from "@/projects/road-radar-dashboard/components/AccidentPopup.tsx";
 
 interface RoadConditionsMapProps {
     conditions: RoadConditions[]

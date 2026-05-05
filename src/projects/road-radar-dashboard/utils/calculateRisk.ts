@@ -1,5 +1,5 @@
-import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.ts";
-import type {CommuteType, RiskResponse} from "@/projects/commute-risk-dashboard/types/typeRisk.ts";
+import type {WeatherApiResponse} from "@/projects/road-radar-dashboard/types/typesWeather.ts";
+import type {CommuteType, RiskResponse} from "@/projects/road-radar-dashboard/types/typeRisk.ts";
 
 function calculateRisk(weather: WeatherApiResponse, commute: CommuteType): RiskResponse {
     const reasons: string[] = [];

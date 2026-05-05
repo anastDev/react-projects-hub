@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import type {WeatherApiResponse} from "@/projects/commute-risk-dashboard/types/typesWeather.ts";
-import {getCurrentWeather} from "@/projects/commute-risk-dashboard/services/api.weather.ts";
+import type {WeatherApiResponse} from "@/projects/road-radar-dashboard/types/typesWeather.ts";
+import {getCurrentWeather} from "@/projects/road-radar-dashboard/services/api.weather.ts";
 
 export function useWeather(city: string) {
     const [loading, setLoading] = useState(false);

@@ -11,12 +11,12 @@ export const projectData: ProjectCardTypes[] = [
         category: "main"
     },
     {
-        projectName: "Commute Risk Dashboard",
-        description: "A weather-based decision tool that helps users assess commute safety by fetching real-time weather data from the OpenWeather API. Features responsive design, TypeScript for type safety, and dynamic risk calculations based on current conditions.",
-        tags: ["React", "TypeScript", "OpenWeather API"],
-        path: "/projects/commute-risk-dashboard",
+        projectName: "Road Radar Dashboard",
+        description: "A real-time road awareness tool that combines OpenWeather API and Trafikverket's open API to display live weather, nearby road conditions, and active incidents based on the user's location. Features an interactive Leaflet map, location-based filtering, and Swedish-to-English translation for road reports.",
+        tags: ["React", "TypeScript", "Node.js", "Express", "OpenWeather API", "Trafikverket API", "MyMemory API", "Leaflet"],
+        path: "/projects/road-radar-dashboard",
         status: "Completed",
-        img: "/projects/commute-dashboard.png",
+        img: "/projects/road-radar-dashboard.png",
         category: "main"
     },
     {

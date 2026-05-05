@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import type {RoadConditions} from "@/projects/commute-risk-dashboard/types/typesRoadConditions.ts";
+import type {RoadConditions} from "@/projects/road-radar-dashboard/types/typesRoadConditions.ts";
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -39,6 +39,7 @@ export const useRoadConditions = (city: string) => {
             async (position) => {
 
                 const { latitude: lat, longitude: long } = position.coords
+
                 try {
                     const response = await fetch(`${VITE_BASE_URL}/conditions/${city}`, {
                         method: "POST",
@@ -49,7 +50,7 @@ export const useRoadConditions = (city: string) => {
                     setConditions(data);
                     setUserLocation({lat, long});
                     setLocationStatus({status: "success"});
-                } catch (err) {1
+                } catch (err) {
                     console.error("Error: ", err);
                     setError("Failed to fetch road conditions")
                 } finally {

@@ -12,7 +12,8 @@ export const conditionTranslations: Record<string, string> = {
     "Vägarbete":              "Roadworks",
     "Ingen information":      "No information available",
     "Torrt": "Dry road surface",
-    "Normalt": "Normal"
+    "Normalt": "Normal",
+    "Våt": "Wet road surface",
 };
 
 export function translateCondition(swedish: string): string {

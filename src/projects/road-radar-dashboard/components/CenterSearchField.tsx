@@ -1,5 +1,5 @@
 import { useState} from "react";
-import type {WeatherInputProps} from "@/projects/commute-risk-dashboard/types/typesWeather.ts";
+import type {WeatherInputProps} from "@/projects/road-radar-dashboard/types/typesWeather.ts";
 import {useNavigate} from "react-router";
 import {Button} from "@/components/ui/button.tsx";
 import { motion } from 'framer-motion';
@@ -30,14 +30,14 @@ const CenterSearchField = ({ inputRef, onSearch }: WeatherInputProps) => {
                 transition={{ duration: 0.55, ease: "easeOut" }}
             >
                 <div className="inline-flex items-center gap-2 bg-amber-400/15 text-amber-400 text-shadow-amber-500 text-xs font-semibold tracking-widest uppercase px-3 py-1.5 mb-8 rounded-full">
-                    Commute Risk Dashboard
+                    Road Radar Dashboard
                 </div>
                 <h1 className="text-5xl lg:text-6xl font-black text-gray-100 leading-tight tracking-tight mb-4">
                     Know before <span className="text-amber-400">you go.</span>
                 </h1>
 
                 <p className="text-slate-400 text-base mb-10 leading-relaxed">
-                    Real-time weather and road conditions for your commute.
+                    Real-time weather, road conditions and live incidents/ roadworks near you.
                 </p>
 
                 <div className="flex gap-2">
