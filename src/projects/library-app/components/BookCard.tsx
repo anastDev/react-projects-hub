@@ -28,7 +28,7 @@ const BookCard = ({ book, onBorrow, onClick }: BookCardProps)=>  {
     return (
         <article
             onClick={() => onClick(book)}
-            className="flex cursor-pointer flex-col gap-3 rounded-3xl border border-gray-800 bg-gray-900 p-4 transition-all duration-200 hover:border-blue-700/50 hover:shadow-lg hover:shadow-blue-950/50"
+            className="flex cursor-pointer flex-col gap-3 rounded-2xl border border-gray-800 bg-gray-900 p-4 transition-all duration-200 hover:border-blue-700/50 hover:shadow-lg hover:shadow-blue-950/50"
         >
             {/* Thumbnail */}
             <div className="h-45 w-full overflow-hidden rounded-xl bg-gray-800">

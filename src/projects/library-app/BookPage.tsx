@@ -56,6 +56,10 @@ const BooksPage = ()=>  {
         });
     }
 
+    const clearSearch = () => {
+        setSearch("");
+    }
+
     return (
         <div className="min-h-screen bg-black px-4 py-10 sm:px-6 lg:px-8">
             <div className="mx-auto lg:max-w-6xl max-w-3xl">
@@ -78,7 +82,7 @@ const BooksPage = ()=>  {
                                Library Inventory
                            </p>
                            <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl">
-                               Your next great <span className="text-blue-500">read</span>
+                               Your next great <span className="text-blue-500">Read</span>
                                <br />is waiting.
                            </h1>
                            <p className="mt-4 text-sm text-gray-500 max-w-md">
@@ -123,6 +127,7 @@ const BooksPage = ()=>  {
                 <div className="mb-6">
                     <BookSearch
                         search={search}
+                        clearSearch={clearSearch}
                         onSearchChange={setSearch}
                     />
                 </div>

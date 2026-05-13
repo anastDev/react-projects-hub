@@ -49,7 +49,7 @@ const LoginDialog = () => {
             <DialogTrigger asChild>
                 <Button
                     size="icon-lg"
-                    className=" hover:text-blue-700"
+                    className=" bg-gray-900 hover:text-blue-700 border border-gray-800 transition-colors hover:border-blue-700 hover:ring-blue-700/30"
                 >
                     <User />
                 </Button>
