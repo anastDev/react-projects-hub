@@ -29,21 +29,21 @@ export const projectData: ProjectCardTypes[] = [
         category: "main"
     },
     {
-        projectName: "Movie Search App",
-        description: "An interactive movie database that lets users search and explore films using the OMDB API. Features dynamic search results, detailed movie information displays, a persistent favourites list powered by localStorage and a clean cinematic UI built with React, TypeScript and Tailwind CSS.",
-        path: "/projects/movie-search-app",
-        tags: ["React", "TypeScript", "Tailwind CSS", "REST API", "localStorage"],
-        status: "Completed",
-        img: "/projects/movie-search.png",
-        category: "main"
-    },
-    {
         projectName: "Library App — Frontend",
         description: "A React and TypeScript frontend for the Library App Spring Boot API. Features a dark-themed book browsing interface with real-time search, book detail modals and JWT-based authentication via a login dialog. Consumes REST endpoints for browsing and borrowing books with Axios handling API communication and cookie-based token storage for session persistence.",
         tags: ["React", "TypeScript", "Tailwind CSS", "Axios", "JWT"],
         path: "/projects/library-app",
         status: "Completed",
         img: "/projects/library-app.png",
+        category: "main"
+    },
+    {
+        projectName: "Movie Search App",
+        description: "An interactive movie database that lets users search and explore films using the OMDB API. Features dynamic search results, detailed movie information displays, a persistent favourites list powered by localStorage and a clean cinematic UI built with React, TypeScript and Tailwind CSS.",
+        path: "/projects/movie-search-app",
+        tags: ["React", "TypeScript", "Tailwind CSS", "REST API", "localStorage"],
+        status: "Completed",
+        img: "/projects/movie-search.png",
         category: "main"
     },
     {
@@ -60,7 +60,7 @@ export const projectData: ProjectCardTypes[] = [
         description: "Refactoring a console-based Java library system into a production-ready Spring Boot REST API. Applies Controller–Service–Repository architecture with MySQL database integration, JWT-based authentication with Spring Security, paginated RESTful endpoints, and scalable backend design principles.",
         tags: ["Java", "Spring Boot", "MySQL", "REST API", "Railway"],
         path: "https://github.com/anastDev/library-app",
-        status: "Completed",
+        status: "In Progress",
         img: "",
         category: "other"
     },
