@@ -38,7 +38,7 @@ const BookSearch = ({
                 </InputGroup>
             </div>
             <div>
-                <Button className="rounded-lg border border-gray-800 bg-gray-900 text-sm text-gray-100 transition-colors hover:border-blue-600" onClick={clearSearch}>
+                <Button className="rounded-lg border border-gray-800 bg-gray-900 text-sm text-gray-100 transition-colors hover:border-blue-700 hover:text-blue-400" onClick={clearSearch}>
                     <X />
                 </Button>
             </div>

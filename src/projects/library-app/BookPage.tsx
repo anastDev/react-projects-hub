@@ -1,4 +1,4 @@
-import {useMemo, useState} from "react";
+import { useState} from "react";
 import {useAuth} from "@/projects/library-app/hooks/useAuth.ts";
 import type {Book} from "@/projects/library-app/types/typesBooks.ts";
 import BookGrid from "@/projects/library-app/components/BookGrid.tsx";
@@ -12,24 +12,12 @@ import {toast} from "sonner";
 import {useNavigate} from "react-router";
 
 const BooksPage = ()=>  {
-    const { books, loading, error, borrowBook } = useBooks();
+    const { books, loading, error, borrowBook, totalPages, currentPage, fetchBooks} = useBooks();
     const { username , logout, isAuthenticated} = useAuth();
     const [search, setSearch] = useState("");
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
     const [borrowMessage, setBorrowMessage] = useState<string | null>(null);
     const navigate = useNavigate();
-
-    const filteredBooks = useMemo(() => {
-        const q = search.toLowerCase();
-        return books.filter((book) => {
-            const matchSearch =
-                !q ||
-                book.title.toLowerCase().includes(q) ||
-                book.author.toLowerCase().includes(q) ||
-                book.isbn.includes(q);
-            return matchSearch;
-        });
-    }, [books, search]);
 
     const handleBorrow = async (book: Book) => {
         if (!username) {
@@ -134,18 +122,40 @@ const BooksPage = ()=>  {
 
                 {/* Results count */}
                 {!loading && (
-                    <p className="mb-5 text-xs text-gray-700">
-                        Showing {filteredBooks.length} of {books.length} books
-                    </p>
+                    <>
+                        {/* Book grid */}
+                        <BookGrid
+                            books={books}
+                            loading={loading}
+                            onBorrow={handleBorrow}
+                            onCardClick={setSelectedBook}
+                        />
+                    </>
                 )}
 
-                {/* Book grid */}
-                <BookGrid
-                    books={filteredBooks}
-                    loading={loading}
-                    onBorrow={handleBorrow}
-                    onCardClick={setSelectedBook}
-                />
+                {totalPages > 1 && (
+                    <div className="flex items-center justify-center gap-3 mt-8">
+                        <Button
+                            onClick={() => fetchBooks(currentPage - 1)}
+                            disabled={currentPage === 0}
+                            className="px-4 py-2 rounded-xl border border-gray-800 text-gray-400 text-sm disabled:opacity-30 hover:border-blue-700 hover:text-blue-400 transition-colors"
+                        >
+                            Previous
+                        </Button>
+
+                        <span className="text-xs text-gray-600">
+      Page {currentPage + 1} of {totalPages}
+    </span>
+
+                        <Button
+                            onClick={() => fetchBooks(currentPage + 1)}
+                            disabled={currentPage === totalPages - 1}
+                            className="px-4 py-2 rounded-xl border border-gray-800 text-gray-400 text-sm disabled:opacity-30 hover:border-blue-700 hover:text-blue-400 transition-colors"
+                        >
+                            Next
+                        </Button>
+                    </div>
+                )}
 
                 {/* Detail modal */}
                 <BookDetails
