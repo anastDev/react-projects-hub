@@ -18,7 +18,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/road-radar-dashboard",
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/road-radar-dashboard",
         status: "Completed",
-        img: "public/projects/road-radar-dashboard.png",
+        img: "/projects/road-radar-dashboard.png",
         category: "main"
     },
     {
@@ -28,7 +28,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/dev-tools",
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/dev-tools",
         status: "Completed",
-        img: "public/projects/dev-tools.png",
+        img: "/projects/dev-tools.png",
         category: "main"
     },
     {
@@ -38,7 +38,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/library-app",
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/library-app",
         status: "Completed",
-        img: "public/projects/library-app.png",
+        img: "/projects/library-app.png",
         category: "main"
     },
     {
@@ -48,7 +48,7 @@ export const projectData: ProjectCardTypes[] = [
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/movie-search-app",
         tags: ["React", "TypeScript", "Tailwind CSS", "REST API", "localStorage"],
         status: "Completed",
-        img: "public/projects/movie-search.png",
+        img: "/projects/movie-search.png",
         category: "main"
     },
     {
@@ -58,7 +58,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/task-manager-app",
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/todo",
         status: "Completed",
-        img: "public/projects/task-manager.png",
+        img: "/projects/task-manager.png",
         category: "main"
     },
     {
@@ -69,7 +69,7 @@ export const projectData: ProjectCardTypes[] = [
         githubRepo: "",
         status: "Completed",
         img: "",
-        category: "other"
+        category: "main"
     },
     {
         projectName: "Python Projects",
@@ -77,7 +77,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "https://github.com/anastDev/python-projects",
         githubRepo: "",
         status: "In Progress",
-        img: "public/projects/job-listing-filter.png",
+        img: "/projects/job-listing-filter.png",
         category: "other"
     },
 ]
