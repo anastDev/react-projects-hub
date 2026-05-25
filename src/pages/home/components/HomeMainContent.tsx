@@ -8,6 +8,7 @@ import {ShaderGradient, ShaderGradientCanvas} from "@shadergradient/react";
 import {JourneyRoad} from "@/pages/home/components/JourneyRoad.tsx";
 import FlipProjectCard from "@/pages/projects/components/FlipProjectCard.tsx";
 import {stagger} from "motion";
+import {TechnicalSkillsSection} from "@/pages/home/components/TechnicalSkillsSection.tsx";
 
 export const HomeMainContent = () => {
     const { scrollY } = useScroll();
@@ -185,90 +186,7 @@ export const HomeMainContent = () => {
                     </div>
 
                     {/* Tech Stack Section */}
-                    <motion.section
-                        className="bg-gray-900 py-12 lg:py-20 container mx-auto"
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        viewport={{ once: true, amount: 0.3 }}
-                    >
-                        <div className="container mx-auto">
-                            <h2 className="text-xl font-semibold text-gray-100 mb-10">Technical Skills</h2>
-
-                            <motion.div
-                                className="grid grid-cols-2 gap-8"
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={{
-                                    visible: {
-                                        transition: {
-                                            delay: 0.2
-                                        }
-                                    }
-                                }}
-                            >
-                                {/* Frontend */}
-                                <motion.div
-                                    variants={{
-                                        hidden: { opacity: 0, y: 20 },
-                                        visible: { opacity: 1, y: 0 }
-                                    }}
-                                >
-                                    <h3 className="text-orange-400 font-medium mb-4 text-base lg:text-lg">Frontend</h3>
-                                    <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 active:border-orange-400 transition-colors text-sm">
-                        React
-                    </span>
-                                        <span className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 active:border-orange-400 transition-colors text-sm">
-                        TypeScript
-                    </span>
-                                    </div>
-                                </motion.div>
-
-                                {/* Backend */}
-                                <motion.div
-                                    variants={{
-                                        hidden: { opacity: 0, y: 20 },
-                                        visible: { opacity: 1, y: 0 }
-                                    }}
-                                >
-                                    <h3 className="text-orange-400 font-medium mb-4 text-base lg:text-lg">Backend</h3>
-                                    <div className="flex flex-wrap gap-2">
-                                        {["Node.js", "MongoDB", "REST APIs", "JWT Auth"].map(tech => (
-                                            <span key={tech} className="px-3 py-2 bg-gray-800 text-gray-300 border border-gray-700 rounded-lg hover:border-orange-400 transition-colors text-sm">
-                            {tech}
-                        </span>
-                                        ))}
-                                    </div>
-                                </motion.div>
-
-                                {/* Data & Scripting */}
-                                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-                                    <h3 className="text-orange-300 font-medium mb-4 text-base lg:text-lg">Data & Scripting</h3>
-                                    <div className="flex flex-wrap gap-2">
-                                        {["Python", "Pandas", "Data Analysis", "Automation"].map(tech => (
-                                            <span key={tech} className="px-3 py-2 bg-gray-800/60 text-gray-400 border border-gray-700/60 rounded-lg hover:border-orange-400/60 transition-colors text-sm">
-                            {tech}
-                        </span>
-                                        ))}
-                                    </div>
-                                </motion.div>
-
-                                {/* Also Explored */}
-                                <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
-                                    <h3 className="text-orange-300 font-medium mb-4 text-base lg:text-lg">Exploring</h3>
-                                    <div className="flex flex-wrap gap-2">
-                                        {["Java", "OOP", "DAO Pattern", "Layered Architecture"].map(tech => (
-                                            <span key={tech} className="px-3 py-2 bg-gray-800/60 text-gray-400 border border-gray-700/60 rounded-lg hover:border-orange-400/60 transition-colors text-sm">
-                            {tech}
-                        </span>
-                                        ))}
-                                    </div>
-                                </motion.div>
-                            </motion.div>
-                        </div>
-                    </motion.section>
+                    <TechnicalSkillsSection/>
 
                     {/* Divider */}
                     <div className="bg-gray-900 py-8 lg:py-15 mt-10">
