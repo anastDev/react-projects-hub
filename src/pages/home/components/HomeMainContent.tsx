@@ -1,4 +1,3 @@
-import ProjectCard from "@/pages/projects/components/ProjectCard.tsx";
 import {Button} from "@/components/ui/button.tsx"
 import {Link} from "react-router";
 import {ArrowDown} from "lucide-react";
@@ -7,11 +6,15 @@ import {ReactTyped} from "react-typed";
 import {motion, useTransform, useScroll} from "framer-motion";
 import {ShaderGradient, ShaderGradientCanvas} from "@shadergradient/react";
 import {JourneyRoad} from "@/pages/home/components/JourneyRoad.tsx";
+import FlipProjectCard from "@/pages/projects/components/FlipProjectCard.tsx";
+import {stagger} from "motion";
 
 export const HomeMainContent = () => {
     const { scrollY } = useScroll();
     const heroY = useTransform(scrollY, [0, 300], [0, 150]);
     const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+    const mainProjects = projectData.filter((p) => p.category === "main");
 
     return (
         <>
@@ -51,7 +54,7 @@ export const HomeMainContent = () => {
                                         I'm {""}
                                         <span className="text-orange-400 text-center ">
                                     <ReactTyped
-                                        strings={["a Junior Software Engineer.", "also a Creative Developer.", "a Tech Explorer.", "always Learning, always Building."]}
+                                        strings={["a Junior Software Engineer.", "a Tech Explorer.", "always Learning, always Building."]}
                                         typeSpeed={80}
                                         backSpeed={40}
                                         loop={true}
@@ -77,7 +80,7 @@ export const HomeMainContent = () => {
 
                     <JourneyRoad/>
 
-                    {/* Mini Preview of projects */}
+                    {/* Project Section */}
                     <motion.section
                         className="bg-gray-900"
                         initial={{ opacity: 0, y: 30 }}
@@ -85,55 +88,93 @@ export const HomeMainContent = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         viewport={{ amount: 0.3 }}
                     >
-                        <div className="px-6 lg:px-[1.6rem] h-full mb-10 pt-12 lg:pt-20">
+                        <div className="mb-10 h-full px-6 pt-12 lg:px-[1.6rem] lg:pt-20">
                             <div className="container mx-auto">
-                                <div className="grid grid-cols-2 items-center mb-6">
+                                <div className="mb-6 flex items-center justify-between">
                                     <div>
-                                        <h2 className="text-lg lg:text-xl font-medium text-gray-100">Projects</h2>
+                                        <h2 className="text-lg font-medium text-gray-100 lg:text-xl">
+                                            Projects
+                                        </h2>
                                     </div>
                                     <div className="flex justify-end">
-                                        <Link
-                                            to="/projects"
-                                        >
-                                            <Button variant="outline"
-                                                    className="border-2 border-orange-500 text-orange-400 bg-gray-800 hover:bg-orange-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-300 text-sm lg:text-base cursor-pointer"
-                                            >More
+
+                                        {/* Button for Project Page */}
+                                        <Link to="/projects">
+                                            <Button
+                                                variant="outline"
+                                                className="cursor-pointer rounded-lg border border-orange-500 bg-orange-500/10 px-3 py-1.5 font-medium text-orange-400 backdrop-blur-sm transition-colors hover:bg-orange-500 hover:text-gray-900 sm:text-sm"
+                                            >
+                                                View All
                                             </Button>
                                         </Link>
                                     </div>
                                 </div>
 
-                                {/* Container of Project Cards - Mini Previews */}
+                                {/* Featured Project Card */}
                                 <motion.div
-                                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 py-4"
+                                    className="mb-6 lg:mb-8"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut", delay: 0.15 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <div className="h-[24rem] sm:h-[22rem]">
+                                        <FlipProjectCard
+                                            {...mainProjects[0]}
+                                            isFeatured={true}
+                                            gridArea="h-full"
+                                        />
+                                    </div>
+                                </motion.div>
+
+                                {/* Grid Container with staggered animations */}
+                                <motion.div
+                                    className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
                                     initial="hidden"
                                     whileInView="visible"
                                     viewport={{ once: true }}
                                     variants={{
                                         visible: {
                                             transition: {
-                                                delay: 0.15
-                                            }
-                                        }
+                                                delay: 0.3,
+                                                delayChildren: stagger(0.15),
+                                            },
+                                        },
                                     }}
                                 >
-                                    {projectData.slice(0,3).map((project, index) => {
-                                        return (
-                                            <motion.div
-                                                key={index}
-                                                variants={{
-                                                    hidden: { opacity: 0, y: 30 },
-                                                    visible: {
-                                                        opacity: 1,
-                                                        y: 0,
-                                                        transition: { duration: 0.5, ease: "easeInOut" }
-                                                    }
-                                                }}
-                                            >
-                                                <ProjectCard {...project}/>
-                                            </motion.div>
-                                        )
-                                    })}
+                                    {/* Remaining projects */}
+                                    {mainProjects.slice(1, 4).map((project, index) => (
+                                        <motion.div
+                                            key={index}
+                                            variants={{
+                                                hidden: { opacity: 0, y: 30 },
+                                                visible: {
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: { duration: 0.5, ease: "easeInOut" },
+                                                },
+                                            }}
+                                            className="h-[23rem] lg:h-[21rem]"
+                                        >
+                                            <FlipProjectCard {...project} gridArea="h-full" />
+                                        </motion.div>
+                                    ))}
+
+                                    {mainProjects[5] && (
+                                        <motion.div
+                                            variants={{
+                                                hidden: { opacity: 0, y: 30 },
+                                                visible: {
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    transition: { duration: 0.5, ease: "easeInOut" },
+                                                },
+                                            }}
+                                            className="h-[23rem] lg:h-[21rem] lg:hidden"
+                                        >
+                                            <FlipProjectCard {...mainProjects[5]} gridArea="h-full" />
+                                        </motion.div>
+                                    )}
                                 </motion.div>
                             </div>
                         </div>
@@ -151,7 +192,7 @@ export const HomeMainContent = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         viewport={{ once: true, amount: 0.3 }}
                     >
-                        <div className="container mx-auto ">
+                        <div className="container mx-auto">
                             <h2 className="text-xl font-semibold text-gray-100 mb-10">Technical Skills</h2>
 
                             <motion.div
