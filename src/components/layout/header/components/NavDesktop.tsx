@@ -1,34 +1,34 @@
-import {Link} from "react-router";
+import {Link, useLocation} from "react-router";
 import type {ElementType} from "react";
-import {Separator } from "@/components/ui/separator";
 
-export const NavDesktop = ({ routes }: { routes: Array<{title: string, path: string,  Icon: ElementType}> }) => {
+export const NavDesktop = ({ routes }: { routes: Array<{ title: string; path: string; Icon: ElementType }> }) => {
+    const { pathname } = useLocation();
+
     return (
-        <ul className="hidden lg:flex flex-row space-x-6 mt-2">
-            {routes.map((route , index) => {
-                const {title, path, Icon} = route;
+        <ul className="hidden lg:flex items-center bg-gray-800/80 border border-white/[0.08] rounded-full px-1.5 py-1 gap-0.5 backdrop-blur-md">
+            {routes.map(({ title, path, Icon }) => {
+                const isActive = pathname === path;
                 return (
-                    <>
-                        <li key={title} className="flex item-center">
-                            <Link to={path}
-                                  className="flex flex-row items-center gap-2 hover:text-orange-400 group transition-all">
-                                <Icon/>
-                                <div className="relative overflow-hidden inline-block h-6">
-                                    <div className="inline-block transition-transform duration-300 group-hover:-translate-y-full">
-                                        {title}
-                                    </div>
-                                    <div className="absolute left-0 top-full inline-block transition-transform duration-300 group-hover:-translate-y-full text-orange-400">
-                                        {title}
-                                    </div>
-                                </div>
-                            </Link>
-                            {index  < routes.length -1  && (
-                                <Separator orientation="vertical" className="ml-4"/>
-                            )}
-                        </li>
-                    </>
-                )
+                    <li key={title} className="relative">
+                        <Link
+                            to={path}
+                            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] transition-all duration-200 ${
+                                isActive
+                                    ? "text-orange-400"
+                                    : "text-gray-400 hover:text-orange-400 hover:bg-orange-500/10"
+                            }`}
+                        >
+                            <Icon className="w-3.5 h-3.5" />
+                            {title}
+                        </Link>
+
+                        {/* Active dot indicator */}
+                        {isActive && (
+                            <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-orange-400" />
+                        )}
+                    </li>
+                );
             })}
         </ul>
-    )
-}
+    );
+};
