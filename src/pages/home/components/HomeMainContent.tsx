@@ -86,7 +86,7 @@ export const HomeMainContent = () => {
                         className="bg-gray-900"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 0.8, ease: "easeIn" }}
                         viewport={{ amount: 0.3 }}
                     >
                         <div className="mb-10 h-full px-6 pt-12 lg:px-[1.6rem] lg:pt-20">
