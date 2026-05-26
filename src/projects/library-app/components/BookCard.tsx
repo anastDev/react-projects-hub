@@ -63,7 +63,10 @@ const BookCard = ({ book, onBorrow, onClick }: BookCardProps)=>  {
 
             {/* Title */}
             <h2 className="line-clamp-2 text-sm font-semibold leading-snug text-gray-100">
-                {book.title}
+                {book.title
+                    .replace(/\^[A-Z]/g, "")
+                    .replace(/[^a-zA-Z0-9\s]/g, " ")
+                    .trim()}
             </h2>
 
             <p className="text-xs text-gray-500">

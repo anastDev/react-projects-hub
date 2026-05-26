@@ -66,7 +66,7 @@ const BookDetails = ({
                     {/* Info */}
                     <div className="flex flex-col gap-1 overflow-hidden">
                         <h2 className="text-lg font-semibold leading-tight text-gray-100">
-                            {book.title}
+                            {book.title.replace(/\^[A-Z]/g, " ")}
                         </h2>
                         <p className="text-sm text-gray-400">{book.author}</p>
                         <p className="text-xs text-gray-600">ISBN: {book.isbn}</p>
