@@ -13,6 +13,7 @@ interface PaginatedResponse {
 
 export function useBooks() {
     const [books, setBooks] = useState<Book[]>([]);
+    const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [currentPage, setCurrentPage] = useState(0);
@@ -22,21 +23,32 @@ export function useBooks() {
         try {
             setLoading(true);
             setError(null);
-            const response = await axios.get<PaginatedResponse>((`${VITE_LIBRARY_BACKEND_URL}/books?page=${page}&size=${size}`));
-            setBooks(response.data.content ?? []);
-            setTotalPages(response.data.totalPages);
-            setCurrentPage(response.data.number);
+            if (search.trim()) {
+                const response = await axios.get<Book[]>(
+                    `${VITE_LIBRARY_BACKEND_URL}/books/title?bookName=${encodeURIComponent(search)}`
+                );
+                setBooks(response.data ?? []);
+                setTotalPages(1);
+                setCurrentPage(0);
+            } else {
+                const response = await axios.get<PaginatedResponse>(
+                    `${VITE_LIBRARY_BACKEND_URL}/books?page=${page}&size=${size}`
+                );
+                setBooks(response.data.content ?? []);
+                setTotalPages(response.data.totalPages);
+                setCurrentPage(response.data.number);
+            }
         } catch (e : any) {
             console.error("Fetch error:", e);
             setError("Failed to load books. Please try again.");
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [search]);
 
     useEffect(() => {
-        fetchBooks(0);
-    }, [fetchBooks]);
+        fetchBooks(0, 5);
+    }, [fetchBooks, search]);
 
     const borrowBook = async (dto: BorrowedInsertDTO): Promise<boolean> => {
         try {
@@ -60,5 +72,8 @@ export function useBooks() {
         currentPage,
         totalPages,
         fetchBooks,
-        borrowBook, };
+        borrowBook,
+       search,
+        setSearch
+    };
 }

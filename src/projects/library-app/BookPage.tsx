@@ -12,9 +12,8 @@ import {toast} from "sonner";
 import {useNavigate} from "react-router";
 
 const BooksPage = ()=>  {
-    const { books, loading, error, borrowBook, totalPages, currentPage, fetchBooks} = useBooks();
+    const { books, loading, error, borrowBook, totalPages, currentPage, fetchBooks, search, setSearch} = useBooks();
     const { username , logout, isAuthenticated} = useAuth();
-    const [search, setSearch] = useState("");
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
     const [borrowMessage, setBorrowMessage] = useState<string | null>(null);
     const navigate = useNavigate();
@@ -46,6 +45,10 @@ const BooksPage = ()=>  {
 
     const clearSearch = () => {
         setSearch("");
+    }
+
+    const handleSearch = (value: string) => {
+        setSearch(value);
     }
 
     return (
@@ -116,7 +119,7 @@ const BooksPage = ()=>  {
                     <BookSearch
                         search={search}
                         clearSearch={clearSearch}
-                        onSearchChange={setSearch}
+                        onSearchChange={handleSearch}
                     />
                 </div>
 
@@ -133,7 +136,7 @@ const BooksPage = ()=>  {
                     </>
                 )}
 
-                {totalPages > 1 && (
+                {totalPages > 1 && !search.trim() && (
                     <div className="flex items-center justify-center gap-3 mt-8">
                         <Button
                             onClick={() => fetchBooks(currentPage - 1)}
