@@ -23,27 +23,33 @@ export const JourneyRoad = () => {
     return (
         <motion.section
             ref={sectionRef}
-            className="bg-gray-900 py-16 lg:py-24 relative"
+            className="pt-12 pb-16 lg:pb-24 relative"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, amount: 0.1 }}
         >
-            <div className="container mx-auto px-6 max-w-4xl">
+
+            <div className="container mx-auto relative z-10">
 
                 {/* Section intro */}
-                <div className="text-center mb-16 lg:mb-20">
-                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto mb-8" />
-                    <h2 className="text-2xl lg:text-3xl font-medium text-gray-100 mb-4">
+                <div className="text-left mb-16 lg:mb-20">
+                    <span className="font-mono text-xs text-orange-400 tracking-[0.15em] uppercase mb-6 flex items-center gap-3">
+                        Journey
+                    </span>
+                    <h2
+                        className="text-2xl lg:text-3xl font-medium text-gray-100 mb-4"
+                        style={{ fontFamily: "'DM Serif Display', serif" }}
+                    >
                         How my software engineering journey started
                     </h2>
-                    <p className="text-gray-400 text-sm lg:text-base max-w-2xl mx-auto">
+                    <p className="text-gray-400 text-sm lg:text-base max-w-2xl">
                         Spoiler alert: It started with a translation degree and a lot of Google.
                     </p>
                 </div>
 
                 <div className="relative">
-                    <div className="absolute left-1/2 top-0 -translate-x-1/2 w-0.5 h-full bg-gray-700" />
+                    <div className="absolute left-1/2 top-0 -translate-x-1/2 w-0.5 h-full bg-white/10" />
 
                     <motion.div
                         className="absolute left-1/2 top-0 -translate-x-1/2 w-0.5 bg-orange-400"
@@ -56,11 +62,10 @@ export const JourneyRoad = () => {
                     >
                         <div className="relative -translate-y-1/2">
                             <div className="absolute inset-0 w-5 h-5 rounded-full bg-orange-400/40 blur-md" />
-                            <div className="relative w-5 h-5 rounded-full bg-orange-400 border-2 border-gray-900 shadow-lg shadow-orange-400/50" />
+                            <div className="relative w-5 h-5 rounded-full bg-orange-400 border-2 border-transparent shadow-lg shadow-orange-400/50" />
                         </div>
                     </motion.div>
 
-                    {/* Milestone stops */}
                     <div className="relative space-y-20 lg:space-y-24">
                         {journey.map((stop, index) => (
                             <JourneyStop

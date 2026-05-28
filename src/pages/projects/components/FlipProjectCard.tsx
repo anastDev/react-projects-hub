@@ -77,6 +77,7 @@ const FlipProjectCard = ({
                                 className={`mb-4 font-semibold text-gray-200 pr-24 ${
                                     isFeatured ? "text-2xl lg:text-3xl xl:text-4xl" : "text-xl"
                                 }`}
+                                style={{ fontFamily: "'DM Serif Display', serif" }}
                             >
                                 {projectName}
                             </h3>
@@ -156,6 +157,7 @@ const FlipProjectCard = ({
                                             ? "text-2xl sm:text-3xl lg:text-4xl"
                                             : "text-lg sm:text-xl"
                                     }`}
+                                    style={{ fontFamily: "'DM Serif Display', serif" }}
                                 >
                                     {projectName}
                                 </h3>

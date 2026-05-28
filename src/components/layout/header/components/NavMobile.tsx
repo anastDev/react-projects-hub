@@ -15,7 +15,7 @@ export const NavMobile = ({ routes }: { routes: Array<{ title: string; path: str
 
                         {/* Divider between items */}
                         {index > 0 && (
-                            <span className="w-px h-4 bg-white/[0.07] mx-0.5 flex-shrink-0" />
+                            <span className="w-px h-4 bg-white/[0.07] mx-3 flex-shrink-0" />
                         )}
                         <Link
                             to={path}

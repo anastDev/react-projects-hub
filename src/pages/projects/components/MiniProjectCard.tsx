@@ -28,7 +28,7 @@ export const MiniProjectCard = ({
             {img && img !== "" ? (
                 <div className="w-full aspect-video overflow-hidden">
                     <img
-                        src={`${import.meta.env.BASE_URL}${img}`}
+                        src={img}
                         alt={`${projectName} preview`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
