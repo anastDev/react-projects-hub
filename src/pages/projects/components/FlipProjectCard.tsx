@@ -44,7 +44,7 @@ const FlipProjectCard = ({
                     {img && (
                         <div className="relative h-full w-full">
                             <img
-                                src={img}
+                                src={`${import.meta.env.BASE_URL}${img}`}
                                 alt={`${projectName} preview`}
                                 className="absolute inset-0 h-full w-full object-center transition-transform duration-500 group-hover:scale-105"
                             />
