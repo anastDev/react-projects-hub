@@ -1,8 +1,9 @@
 import {type ReactNode, useEffect, useState} from "react";
-import { LibraryAuthContext } from "./LibraryAuthContext.ts";
+import {LibraryAuthContext, type RegisterPayload} from "./LibraryAuthContext.ts";
 import {deleteCookie, getCookie, setCookie} from "@/pages/auth/utils/cookies.ts";
 import {jwtDecode} from "jwt-decode";
 import {loginUser} from "@/projects/library-app/service/api.login.ts";
+import {registerUser} from "@/projects/library-app/service/api.register.ts";
 
 type JwtPayload = {
     sub?: string;
@@ -57,6 +58,11 @@ export function LibraryAuthProvider({ children }: { children: ReactNode }) {
         setToken(null);
         setUsername(null);
     };
+
+    const register = async (payload: RegisterPayload) => {
+        await registerUser(payload);
+        await login(payload.username, payload.password);
+    };
     return (
         <LibraryAuthContext.Provider
             value={{
@@ -66,6 +72,7 @@ export function LibraryAuthProvider({ children }: { children: ReactNode }) {
             login,
             logout,
             isAuthenticated: !!token,
+                register
     }}
 >
     {children}
