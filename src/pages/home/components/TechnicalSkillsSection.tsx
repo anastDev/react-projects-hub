@@ -28,8 +28,8 @@ export const TechnicalSkillsSection = () =>  {
                     hidden: { opacity: 0, y: 20 },
                     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeInOut" } },
                 }} className="mb-10">
-                    <h2 className="text-xl font-semibold text-gray-100">Technical Skills</h2>
-                    <p className="mt-1 text-sm text-gray-500">Technologies I build with from UI to API to database.</p>
+                    <h2 className="font-mono text-xs text-orange-400 tracking-[0.15em] uppercase mb-2">Technical Skills</h2>
+                    <p className="text-lg font-medium text-gray-100 lg:text-xl">Technologies I build with from UI to API to database</p>
                 </motion.div>
 
                 <div className="flex flex-col gap-10">

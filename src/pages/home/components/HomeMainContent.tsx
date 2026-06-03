@@ -107,7 +107,7 @@ export const HomeMainContent = () => {
                                             Projects
                                         </span>
                                         <h2 className="text-lg font-medium text-gray-100 lg:text-xl">
-                                            What I've been building.
+                                            What I've been building
                                         </h2>
                                     </div>
                                     <div className="flex justify-end">
