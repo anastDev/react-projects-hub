@@ -52,6 +52,7 @@ const RegisterSheet = ({open, onOpenChange}: RegisterSheetProps) => {
             await registerUser(data);
             try {
                await loginUser({username: data.username, password: data.password});
+               onOpenChange?.(false);
                 toast.success("User created successfully.");
                 reset();
             } catch (err) {
