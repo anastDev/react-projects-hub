@@ -61,7 +61,7 @@ export function LibraryAuthProvider({ children }: { children: ReactNode }) {
 
     const register = async (payload: RegisterPayload) => {
         await registerUser(payload);
-        await login(payload.username, payload.password);
+        await loginUser({username:payload.username, password: payload.password});
     };
     return (
         <LibraryAuthContext.Provider

@@ -14,7 +14,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {toast} from "sonner";
 import {registerSchema, type RegisterUser} from "@/projects/library-app/schema/user.schema.ts";
 import {useState} from "react";
-import {login} from "@/services/api.login.ts";
+import {loginUser} from "@/projects/library-app/service/api.login.ts";
 import {registerUser} from "@/projects/library-app/service/api.register.ts";
 import FormInput from "@/pages/auth/components/FormInput.tsx";
 import {registerFields} from "@/projects/library-app/utils/registerFields.ts";
@@ -53,7 +53,7 @@ const RegisterSheet = () => {
         try{
             await registerUser(data);
             try {
-               await login({username: data.username, password: data.password});
+               await loginUser({username: data.username, password: data.password});
                 toast.success("User created successfully.");
                 navigate("/");
                 reset();
