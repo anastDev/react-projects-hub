@@ -1,16 +1,18 @@
 import type {FormInputProps} from "@/pages/auth/types/typesForm.ts";
+import type {FieldValues} from "react-hook-form";
 
-export const FormInput = ({
+export const FormInput = <T extends FieldValues,> ({
                               type,
                               name,
                               placeholder,
                               register,
                               label,
                               options = [],
-                          }: FormInputProps) => {
+    className,
+                          }: FormInputProps<T>) => {
     const baseStyles = `
     w-full rounded-md px-4 py-2 border bg-white text-gray-900 border-gray-300
-    hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400
+    hover:border-gray-400 
   `;
 
 
@@ -43,7 +45,7 @@ export const FormInput = ({
                 type={type}
                 {...register(name)}
                 placeholder={placeholder}
-                className={baseStyles}
+                className={`${baseStyles} ${className ?? ""}`}
             />
         </div>
     );

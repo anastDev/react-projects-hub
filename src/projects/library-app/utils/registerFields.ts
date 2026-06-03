@@ -1,0 +1,56 @@
+export const registerFields = [
+    {
+        name: "firstname",
+        displayName: "Firstname",
+        type: "text",
+        placeholder: "First name",
+        required: true,
+    },
+    {
+        name: "lastname",
+        displayName: "Lastname",
+        type: "text",
+        placeholder: "Last name",
+        required: true,
+    },
+    {
+        name: "username",
+        displayName: "Username",
+        type: "text",
+        placeholder: "Choose a username",
+        required: true,
+    },
+    {
+        name: "email",
+        displayName: "Email",
+        type: "email",
+        placeholder: "you@example.com",
+        required: true,
+    },
+    {
+        name: "password",
+        displayName: "Password",
+        type: "password",
+        placeholder: "Create a password",
+        required: true,
+    },
+    {
+        name: "dateOfBirth",
+        displayName: "Date of birth",
+        type: "date",
+        placeholder: "",
+        required: true,
+    },
+    {
+        name: "gender",
+        displayName: "Gender",
+        type: "select",
+        placeholder: "Select gender",
+        required: true,
+        options: [
+            { value: "MALE", label: "Male" },
+            { value: "FEMALE", label: "Female" },
+            { value: "OTHER", label: "Other" },
+        ],
+    },
+];

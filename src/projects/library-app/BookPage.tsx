@@ -5,13 +5,13 @@ import BookGrid from "@/projects/library-app/components/BookGrid.tsx";
 import BookDetails from "@/projects/library-app/components/BookDetails.tsx";
 import BookSearch from "@/projects/library-app/components/BookSearch.tsx";
 import {useBooks} from "@/projects/library-app/hooks/useBook.ts";
-import LoginDialog from "@/projects/library-app/components/LoginDialog.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {ChevronLeft, LogOut} from "lucide-react";
 import {toast} from "sonner";
 import {useNavigate} from "react-router";
+import RegisterSheet from "@/projects/library-app/components/RegisterSheet.tsx";
 
-const BooksPage = ()=>  {
+const BooksPage = () =>  {
     const { books, loading, error, borrowBook, totalPages, currentPage, fetchBooks, search, setSearch} = useBooks();
     const { username , logout, isAuthenticated} = useAuth();
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
@@ -82,7 +82,8 @@ const BooksPage = ()=>  {
                        </div>
                        <div>
                            {!isAuthenticated && (
-                               <LoginDialog/>
+                               // <LoginDialog/>
+                               <RegisterSheet/>
                            )}
                            {isAuthenticated && (
                                <>

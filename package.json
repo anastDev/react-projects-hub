@@ -64,6 +64,7 @@
     "@types/three": "^0.183.1",
     "@types/wellknown": "^0.5.8",
     "@vitejs/plugin-react": "^5.1.0",
+    "baseline-browser-mapping": "^2.10.33",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.24",

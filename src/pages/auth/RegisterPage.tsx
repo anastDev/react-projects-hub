@@ -88,6 +88,7 @@ export const RegisterPage = () => {
                                         placeholder={field.placeholder}
                                         options={field.options}
                                         required={field.required}
+                                        className="focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400"
                                     />
                                     {error && (
                                         <p className="text-red-400  text-sm">{error.message}</p>

@@ -1,5 +1,4 @@
-import type {UseFormRegister} from "react-hook-form";
-import type {User} from "@/schemas/user.schema.ts";
+import type {FieldValues, UseFormRegister, Path} from "react-hook-form";
 
 export interface FormErrors {
     username?: string;
@@ -21,12 +20,13 @@ export interface Options {
     label: string;
 }
 
-export interface FormInputProps {
+export interface FormInputProps <T extends FieldValues>{
     type: string;
     label?: string;
-    name: keyof User;
+    name: Path<T>;
     placeholder: string;
     options?: Options[];
     required: boolean;
-    register: UseFormRegister<User>;
+    register: UseFormRegister<T>;
+    className?: string;
 }
