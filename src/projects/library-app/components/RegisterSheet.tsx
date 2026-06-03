@@ -4,20 +4,21 @@ import {
     SheetHeader,
     SheetTitle,
     SheetDescription,
-    SheetTrigger,
 } from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button.tsx";
-import {User} from "lucide-react";
-import {useNavigate} from "react-router";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {toast} from "sonner";
 import {registerSchema, type RegisterUser} from "@/projects/library-app/schema/user.schema.ts";
-import {useState} from "react";
 import {loginUser} from "@/projects/library-app/service/api.login.ts";
 import {registerUser} from "@/projects/library-app/service/api.register.ts";
 import FormInput from "@/pages/auth/components/FormInput.tsx";
 import {registerFields} from "@/projects/library-app/utils/registerFields.ts";
+
+interface RegisterSheetProps {
+    open: boolean;
+    onOpenChange?: (open: boolean) => void
+}
 
 const initialValues: RegisterUser = {
     firstname: "",
@@ -30,10 +31,7 @@ const initialValues: RegisterUser = {
     role: "MEMBER"
 }
 
-const RegisterSheet = () => {
-    const navigate = useNavigate();
-    const [open, setOpen] = useState(false);
-
+const RegisterSheet = ({open, onOpenChange}: RegisterSheetProps) => {
     const {
         register,
         handleSubmit,
@@ -55,7 +53,6 @@ const RegisterSheet = () => {
             try {
                await loginUser({username: data.username, password: data.password});
                 toast.success("User created successfully.");
-                navigate("/");
                 reset();
             } catch (err) {
                 console.warn(err);
@@ -68,16 +65,7 @@ const RegisterSheet = () => {
     }
 
     return (
-        <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-                <Button
-                    size="icon-lg"
-                    className="bg-gray-900 border border-gray-800 transition-colors hover:border-blue-700 hover:text-blue-400"
-                >
-                    <User />
-                </Button>
-            </SheetTrigger>
-
+        <Sheet open={open} onOpenChange={onOpenChange}>
             <SheetContent className="bg-gray-900 border-gray-800 w-full sm:max-w-lg overflow-y-auto [&>button]:text-gray-100">
                 <SheetHeader>
                     <SheetTitle className="text-gray-100">Sign up</SheetTitle>

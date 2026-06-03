@@ -9,6 +9,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {ChevronLeft, LogOut} from "lucide-react";
 import {toast} from "sonner";
 import {useNavigate} from "react-router";
+import LoginDialog from "@/projects/library-app/components/LoginDialog.tsx";
 import RegisterSheet from "@/projects/library-app/components/RegisterSheet.tsx";
 
 const BooksPage = () =>  {
@@ -16,6 +17,7 @@ const BooksPage = () =>  {
     const { username , logout, isAuthenticated} = useAuth();
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
     const [borrowMessage, setBorrowMessage] = useState<string | null>(null);
+    const [registerOpen, setRegisterOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleBorrow = async (book: Book) => {
@@ -82,8 +84,10 @@ const BooksPage = () =>  {
                        </div>
                        <div>
                            {!isAuthenticated && (
-                               // <LoginDialog/>
-                               <RegisterSheet/>
+                              <>
+                                  <LoginDialog onRegisterClick={() => setRegisterOpen(true)}/>
+                                  <RegisterSheet open={registerOpen} onOpenChange={setRegisterOpen}/>
+                              </>
                            )}
                            {isAuthenticated && (
                                <>

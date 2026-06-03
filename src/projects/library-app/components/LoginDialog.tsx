@@ -14,7 +14,11 @@ import { Label } from "@/components/ui/label"
 import {Input} from "@/components/ui/input.tsx";
 import {toast} from "sonner";
 
-const LoginDialog = () => {
+interface LoginDialogProps {
+    onRegisterClick: () => void;
+}
+
+const LoginDialog = ({onRegisterClick}: LoginDialogProps) => {
     const { login } = useAuth();
     const [open, setOpen] = useState(false);
     const [username_input, setUsernameInput] = useState("");
@@ -100,6 +104,23 @@ const LoginDialog = () => {
                                {error}
                            </p>
                        )}
+
+                       <p className="text-xs text-center text-gray-500">
+                           Don't have an account?
+                           <span>
+                               <Button
+                               type="button"
+                               variant="link"
+                               onClick={() => {
+                                   setOpen(false);
+                                   onRegisterClick();
+                               }}
+                               className="bg-transparent text-blue-400"
+                           >
+                               Sign up
+                           </Button>
+                           </span>
+                       </p>
 
                        <Button
                            type="submit"
