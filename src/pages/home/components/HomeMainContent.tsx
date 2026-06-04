@@ -36,32 +36,33 @@ export const HomeMainContent = () => {
                     />
                 </ShaderGradientCanvas>
 
-                <main className="flex-grow w-full pt-30 relative z-10">
+                <main className="flex-grow w-full pt-32 relative z-10">
 
                     {/* Hero Section */}
                     <motion.section
-                        className="relative min-h-[70vh] flex flex-col justify-between pt-15"
+                        className="relative min-h-[75vh] flex flex-col justify-between pt-15"
                         style={{ y: heroY, opacity: heroOpacity }}
                     >
                         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-gray-900/40 pointer-events-none z-10" />
 
                         <div className="lg:px-[1.5rem] px-6 relative z-20">
-                            <div className="container mx-auto">
+                            <div className="container mx-auto pt-12">
                                 <div className="flex flex-col justify-start max-w-2xl">
                                     <span className="font-mono text-xs text-orange-400 tracking-[0.15em] uppercase mb-4 flex items-center gap-3">
                                         Hi, I'm Anastasia
                                     </span>
                                     <h1
-                                        className="text-gray-100 font-medium text-left mb-4 text-4xl lg:text-6xl leading-tight"
+                                        className="text-gray-100 font-medium text-left mb-4 text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight"
                                         style={{ fontFamily: "'DM Serif Display', serif" }}
                                     >
-                                        Building things to figure out{" "}
-                                        <em className="text-orange-400 not-italic">
-                                            how things work.
+                                        Turning ideas into{" "}
+                                        <em className="text-orange-400 not-italic font-medium">
+                                            clean, working systems.
                                         </em>
                                     </h1>
+
                                     <p className="text-sm md:text-base text-gray-300 text-left mt-2 max-w-xl leading-relaxed">
-                                        Full-stack developer with a background in translation and languages, working with Java, Spring Boot, Node.js, TypeScript and React.
+                                        Full-stack developer building reliable, scalable applications with Java and Spring Boot on the backend, and React and TypeScript on the frontend, focused on clean architecture, APIs and smooth user experiences.
                                     </p>
 
                                     {/* CTA Button */}
@@ -82,7 +83,6 @@ export const HomeMainContent = () => {
                                             </Button>
                                         </Link>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
