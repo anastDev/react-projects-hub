@@ -23,7 +23,7 @@ export const JourneyRoad = () => {
     return (
         <motion.section
             ref={sectionRef}
-            className="pt-12 pb-16 lg:pb-24 relative"
+            className="bg-gray-900 px-6 py-12 lg:px-[1.6rem] lg:py-20"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}

@@ -70,12 +70,12 @@ const FlipProjectCard = ({
                     </div>
 
                     {/* Content */}
-                    <div className="absolute inset-x-1.5 bottom-2 flex flex-col justify-end p-5 sm:p-6 lg:p-8 ">
+                    <div className="absolute inset-x-1.5 bottom-2 flex flex-col justify-end p-5 sm:p-4 lg:p-8">
 
                         <div className="relative">
                             <h3
-                                className={`mb-4 font-semibold text-gray-200 pr-24 ${
-                                    isFeatured ? "text-2xl lg:text-3xl xl:text-4xl" : "text-xl"
+                                className={`mb-4 font-semibold text-gray-200 ${
+                                    isFeatured ? "text-2xl lg:text-3xl xl:text-4xl pr-10" : "text-xl pr-24"
                                 }`}
                                 style={{ fontFamily: "'DM Serif Display', serif" }}
                             >
@@ -126,7 +126,7 @@ const FlipProjectCard = ({
                                     {tags!.slice(0, isFeatured ? 4 : 3).map((tag) => (
                                         <span
                                             key={tag}
-                                            className="rounded-md border border-gray-700 bg-gray-800 px-2.5 py-1  text-gray-300 sm:text-sm text-base"
+                                            className="rounded-md border border-gray-700 bg-gray-800 px-2.5 py-1  text-gray-300 text-sm sm:text-xs"
                                         >
                     {tag}
                   </span>

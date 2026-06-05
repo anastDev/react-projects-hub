@@ -36,7 +36,7 @@ export const HomeMainContent = () => {
                     />
                 </ShaderGradientCanvas>
 
-                <main className="flex-grow w-full pt-32 relative z-10">
+                <main className="flex-grow w-full lg:pt-32 pt-10 relative z-10">
 
                     {/* Hero Section */}
                     <motion.section
@@ -46,7 +46,7 @@ export const HomeMainContent = () => {
                         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-gray-900/40 pointer-events-none z-10" />
 
                         <div className="lg:px-[1.5rem] px-6 relative z-20">
-                            <div className="container mx-auto pt-12">
+                            <div className="container mx-auto pt-8">
                                 <div className="flex flex-col justify-start max-w-2xl">
                                     <span className="font-mono text-xs text-orange-400 tracking-[0.15em] uppercase mb-4 flex items-center gap-3">
                                         Hi, I'm Anastasia
@@ -91,13 +91,14 @@ export const HomeMainContent = () => {
                     {/* JourneyRoad  */}
                     <JourneyRoad />
 
+                    {/* Project Section */}
                     <motion.section
                         id="projects"
                         className="bg-gray-900/90"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeIn" }}
-                        viewport={{ amount: 0.3 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true, amount: 0.1 }}
                     >
                         <div className="mb-10 h-full px-6 pt-12 lg:px-[1.6rem] lg:pt-20">
                             <div className="container mx-auto">
