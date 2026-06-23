@@ -14,6 +14,7 @@ import { useLayoutEffect} from "react";
 import DevTools from "@/projects/dev-tools/DevToolsLandingPage.tsx";
 import BookPage from "@/projects/library-app/BookPage.tsx";
 import {LibraryAuthProvider} from "@/projects/library-app/context/LibraryAuthProvider.tsx";
+import VeganFinderApp from "@/projects/vegan-finder/VeganFinderApp.tsx";
 
 interface WrapperProps {
     children: React.ReactNode;
@@ -50,6 +51,7 @@ function App() {
                         <Route path="movie-search-app" element={<MovieSearch/>}/>
                         <Route path="dev-tools" element={<DevTools/>}/>
                         <Route path="library-app" element={<LibraryAuthProvider><BookPage/></LibraryAuthProvider>}/>
+                        <Route path="vegan-finder-app" element={<VeganFinderApp/>}/>
                     </Route>
 
                     {/* About Route */}

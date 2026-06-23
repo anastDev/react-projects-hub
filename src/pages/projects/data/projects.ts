@@ -32,9 +32,19 @@ export const projectData: ProjectCardTypes[] = [
         category: "main"
     },
     {
-        projectName: "Library App — Frontend",
+        projectName: "Vegan Finder App",
+        description: "Location-aware vegan restaurant finder with AI-powered menu filtering via Gemini API. Built with Java, Spring Boot, React, and TypeScript",
+        tags: ["React", "TypeScript", "Java", "Google API"],
+        path: "/projects/vegan-finder-app",
+        githubRepo: "https://github.com/anastDev/vegan-finder",
+        status: "In Progress",
+        img: "",
+        category: "main"
+    },
+    {
+        projectName: "Library App",
         description: "A React and TypeScript frontend for the Library App Spring Boot API. Features a dark-themed book browsing interface with real-time search, book detail modals and JWT-based authentication via a login dialog. Consumes REST endpoints for browsing and borrowing books with Axios handling API communication and cookie-based token storage for session persistence.",
-        tags: ["React", "TypeScript", "Tailwind CSS", "Axios", "JWT"],
+        tags: ["React", "TypeScript", "Java", "Tailwind CSS", "Axios", "JWT"],
         path: "/projects/library-app",
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/library-app",
         status: "Completed",
@@ -59,16 +69,6 @@ export const projectData: ProjectCardTypes[] = [
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/todo",
         status: "Completed",
         img: "/projects/task-manager.png",
-        category: "main"
-    },
-    {
-        projectName: "Library App — Backend",
-        description: "Refactoring a console-based Java library system into a production-ready Spring Boot REST API. Applies Controller–Service–Repository architecture with MySQL database integration, JWT-based authentication with Spring Security, paginated RESTful endpoints, and scalable backend design principles.",
-        tags: ["Java", "Spring Boot", "MySQL", "REST API", "Railway"],
-        path: "https://github.com/anastDev/library-app",
-        githubRepo: "",
-        status: "Completed",
-        img: "",
         category: "main"
     },
     {
