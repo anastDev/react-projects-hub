@@ -38,7 +38,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "/projects/vegan-finder-app",
         githubRepo: "https://github.com/anastDev/vegan-finder",
         status: "In Progress",
-        img: "",
+        img: "/projects/vegan-finder.png",
         category: "main"
     },
     {
