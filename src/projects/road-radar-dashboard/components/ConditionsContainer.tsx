@@ -9,7 +9,7 @@ import {Button} from "@/components/ui/button.tsx";
 import { Input } from "@/components/ui/input";
 import RoadConditionsMap from "@/projects/road-radar-dashboard/components/RoadConditionsMap.tsx";
 import RoadConditions from "@/projects/road-radar-dashboard/components/RoadConditions.tsx";
-import {useAccidents} from "@/projects/road-radar-dashboard/hooks/useAccidents.ts";
+import {useDeviations} from "@/projects/road-radar-dashboard/hooks/useDeviations.ts";
 
 const WEATHER_ICON_API = import.meta.env.VITE_WEATHER_ICON_API;
 
@@ -23,8 +23,10 @@ interface ConditionsContainerProps {
 const ConditionsContainer = ({ weatherData, onSearch, inputRef, city }: ConditionsContainerProps) => {
     const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
-    const {conditions, userLocation, locationStatus, loading, error} = useRoadConditions(city);
-    const {deviations} = useAccidents(city);
+    const {conditions, userLocation, locationStatus,loading, error} = useRoadConditions(city);
+    const {deviations, isLoading} = useDeviations(city);
+
+    const displayConditions = conditions.filter(c => c.ConditionText);
 
     const handleSearch = () => {
         if (searchValue.trim()) {
@@ -48,6 +50,7 @@ const ConditionsContainer = ({ weatherData, onSearch, inputRef, city }: Conditio
 
     return (
         <div className="min-h-screen bg-slate-950 text-gray-100">
+
             {/* Sticky search header */}
             <header className="sticky top-0 z-20 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60 px-4 py-3">
                 <div className="max-w-2xl lg:max-w-6xl mx-auto flex items-center gap-3 px-2">
@@ -114,7 +117,7 @@ const ConditionsContainer = ({ weatherData, onSearch, inputRef, city }: Conditio
                         </motion.div>
 
                         {/* Road conditions list */}
-                        {conditions.length > 0 && (
+                        {displayConditions.length > 0 ? (
                             <motion.div
                                 className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex-1"
                                 initial={{ opacity: 0, y: 16 }}
@@ -125,10 +128,21 @@ const ConditionsContainer = ({ weatherData, onSearch, inputRef, city }: Conditio
                                     Road conditions nearby
                                 </p>
                                 <RoadConditions
-                                    conditions={conditions}
+                                    conditions={displayConditions}
                                     loading={loading}
                                     error={error}
                                 />
+                            </motion.div>
+                        ) : !loading && locationStatus.status === "success" && (
+                            <motion.div
+                                className="bg-slate-900 border border-slate-800 rounded-2xl p-6"
+                                initial={{ opacity: 0, y: 16 }}
+                                animate={{ opacity: 1, y: 0 }}
+                            >
+                                <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2">
+                                    Road conditions nearby
+                                </p>
+                                <p className="text-sm text-slate-500">No road surface conditions reported for this area.</p>
                             </motion.div>
                         )}
                     </div>
@@ -172,8 +186,9 @@ const ConditionsContainer = ({ weatherData, onSearch, inputRef, city }: Conditio
                                     Map view
                                 </p>
                                 <RoadConditionsMap
-                                    conditions={conditions}
+                                    conditions={displayConditions}
                                     accidents={deviations}
+                                    loading={isLoading}
                                     userLat={userLocation.lat}
                                     userLong={userLocation.long}
                                 />

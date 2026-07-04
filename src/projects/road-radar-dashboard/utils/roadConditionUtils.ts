@@ -1,4 +1,5 @@
-export function getSeverity(conditionText: string): "High" | "Medium" | "Low" {
+export function getSeverity(conditionText: string | undefined): "High" | "Medium" | "Low" {
+    if(!conditionText) return "Low";
     const text = conditionText.toLowerCase();
 
     if (["is", "halt", "halka", "frost", "frys", "sleet"].some(w => text.includes(w))) {
