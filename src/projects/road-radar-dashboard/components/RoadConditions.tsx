@@ -28,7 +28,7 @@ const RoadCondition = ({ conditions, loading, error }: RoadConditionsProps) => {
     return (
         <div className="space-y-4">
 
-            {/* Summary grid — always visible above the scroll area */}
+            {/* Summary grid */}
             <div className="grid grid-cols-3 gap-2">
                 {(["High", "Medium", "Low"] as const).map((level, i) => (
                     <div
@@ -67,7 +67,7 @@ const RoadCondition = ({ conditions, loading, error }: RoadConditionsProps) => {
                                             Road {condition.RoadNumber}
                                         </span>
                                         <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${severityConfig[level].card} ${severityConfig[level].text}`}>
-                                            {translateCondition(condition.ConditionText)}
+                                            {translateCondition(condition.ConditionText!)}
                                         </span>
                                     </div>
 
@@ -75,10 +75,6 @@ const RoadCondition = ({ conditions, loading, error }: RoadConditionsProps) => {
                                         {condition.LocationText}
                                     </p>
 
-                                    {/*
-                                        ConditionInfo can come back as an array from the API,
-                                        so we join it into a readable string before translating.
-                                    */}
                                     {condition.ConditionInfo && (
                                         <p className="text-xs text-slate-600 mt-1">
                                             {translateCondition(
