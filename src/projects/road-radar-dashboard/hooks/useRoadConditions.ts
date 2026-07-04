@@ -1,7 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import type {RoadConditions} from "@/projects/road-radar-dashboard/types/typesRoadConditions.ts";
-
-const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+import {getAllConditions} from "@/projects/road-radar-dashboard/services/api.conditions.ts";
 
 interface LocationStatus {
     status: "idle" | "detecting" | "success" | "failed";
@@ -28,27 +27,23 @@ export const useRoadConditions = (city: string) => {
         setLoading(true)
 
         timeoutRef.current = setTimeout(() => {
-           if (locationStatus.status === "detecting" || locationStatus.status === "failed") {
+           if (locationStatus.status === "failed") {
                setLocationStatus({status: "failed"});
                setError("Location request timed out. Please enable location access and try again.")
                setLoading(false);
            }
-        }, 10000);
+        }, 4000);
 
         navigator.geolocation.getCurrentPosition(
             async (position) => {
 
-                const { latitude: lat, longitude: long } = position.coords
+                const { latitude: lat, longitude: lng } = position.coords;
 
                 try {
-                    const response = await fetch(`${VITE_BASE_URL}/conditions/${city}`, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ lat, long }),
-                    })
-                    const data = await response.json()
+                   const data = await getAllConditions(city, lat, lng);
                     setConditions(data);
-                    setUserLocation({lat, long});
+                    console.log("conditions data:", data)
+                    setUserLocation({lat: lat, long: lng});
                     setLocationStatus({status: "success"});
                 } catch (err) {
                     console.error("Error: ", err);
@@ -65,7 +60,7 @@ export const useRoadConditions = (city: string) => {
                 setLoading(false);
             }
         )
-    }, [city])
+    }, [city]);
 
     return {conditions, loading, error, userLocation, locationStatus};
 
