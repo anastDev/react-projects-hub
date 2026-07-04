@@ -3,7 +3,9 @@ import {useTranslation} from "@/projects/road-radar-dashboard/hooks/useTranslate
 
 interface AccidentPopupProps {
     accident: DeviationConditions
-}const AccidentPopup = ({ accident }: AccidentPopupProps) => {
+}
+
+const AccidentPopup = ({ accident }: AccidentPopupProps) => {
     const { display, loading, toggle, showingEnglish } = useTranslation({
         header: accident.Header ?? "",
         messageType: accident.MessageType ?? "",
@@ -13,10 +15,8 @@ interface AccidentPopupProps {
     return (
         <div style={{ minWidth: "180px", fontFamily: "sans-serif" }}>
 
-            {/* Each field reads from display, which automatically switches
-                between Swedish and English depending on toggle state */}
             <strong style={{ fontSize: "13px", color: "#dc2626", display: "block", marginBottom: "4px" }}>
-                {display.header}
+                ⚠️  {display.header}
             </strong>
 
             <span style={{
