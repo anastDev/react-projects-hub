@@ -6,6 +6,7 @@ const RoadWorkPopup = ({ deviation }: { deviation: DeviationConditions }) => {
         header: deviation.Header ?? "",
         messageType: deviation.MessageType ?? "",
         message: deviation.Message ?? "",
+        impact: deviation.SeverityText ?? "",
     })
 
     return (
@@ -29,7 +30,7 @@ const RoadWorkPopup = ({ deviation }: { deviation: DeviationConditions }) => {
 
             {deviation.SeverityText && (
                 <p className="" style={{ fontSize: "11px", color: "#94a3b8", marginBottom: "3px" }}>
-                    Impact: {deviation.SeverityText}
+                    Impact: {display.impact}
                 </p>
             )}
 

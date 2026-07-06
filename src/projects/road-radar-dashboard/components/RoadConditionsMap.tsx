@@ -68,9 +68,9 @@ const RoadConditionsMap = ({ conditions, accidents, userLat, userLong, loading }
 
                 {/* Road condition lines */}
                 {conditions.map((condition, index) => {
-                    if (!condition.Geometry?.WGS84) return null;
+                    if (!condition.Geometry?.WGS84) return [];
                     const geoJson = wellknown.parse(condition.Geometry.WGS84);
-                    if (!geoJson || geoJson.type !== "LineString") return null;
+                    if (!geoJson || geoJson.type !== "LineString") return [];
 
                     const positions = (geoJson.coordinates as [number, number][]).map(
                         ([lng, lat]) => [lat, lng] as [number, number]
@@ -118,12 +118,12 @@ const RoadConditionsMap = ({ conditions, accidents, userLat, userLong, loading }
                 })}
 
                 {roadWorks.map((work, index) => {
-                    if (!work.Geometry?.WGS84) return null;
+                    if (!work.Geometry?.WGS84) return [];
                     const raw = work.Geometry?.WGS84;
-                    if (!raw) return null
+                    if (!raw) return [];
 
-                    const geoJson = wellknown.parse(raw as string)
-                    if (!geoJson) return null
+                    const geoJson = wellknown.parse(raw as string);
+                    if (!geoJson) return [];
 
                     if (geoJson.type === "Polygon") {
                         const positions = (geoJson.coordinates[0] as [number, number][]).map(
@@ -155,6 +155,7 @@ const RoadConditionsMap = ({ conditions, accidents, userLat, userLong, loading }
                         )
                     }
 
+
                     if (geoJson.type === "Point") {
                         const [lng, lat] = geoJson.coordinates as [number, number]
                         return (
@@ -172,7 +173,7 @@ const RoadConditionsMap = ({ conditions, accidents, userLat, userLong, loading }
                             </CircleMarker>
                         )
                     }
-                    return null
+                    return []
                 })}
             </MapContainer>
 
