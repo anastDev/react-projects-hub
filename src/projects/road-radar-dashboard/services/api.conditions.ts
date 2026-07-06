@@ -9,19 +9,20 @@ export async function getAllConditions(city: string, lat: number, lng:number): P
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ lat, lng }),
         })
-        return await response.json();
+
+      return await response.json();
     } catch (err) {
         console.error("Error fetching conditions: ",err);
         throw err;
     }
 }
 
-export async function getAllDeviations(city: string, lat: number, long:number): Promise<DeviationConditions[]> {
+export async function getAllDeviations(city: string, lat: number, lng:number): Promise<DeviationConditions[]> {
     try {
         const response = await fetch(`${VITE_BASE_URL}/conditions/deviations/${city}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ lat, long }),
+            body: JSON.stringify({ lat, lng }),
         })
 
         return await response.json();

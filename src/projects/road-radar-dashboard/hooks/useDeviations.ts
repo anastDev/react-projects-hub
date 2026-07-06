@@ -8,7 +8,7 @@ interface LocationStatus {
 
 export const useDeviations = (city: string) => {
     const [deviations, setDeviations] = useState<DeviationConditions[]>([]);
-    const [userLocation, setUserLocation] = useState<{lat: number; long:number} | null>(null);
+    const [userLocation, setUserLocation] = useState<{lat: number; lng:number} | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [locationStatus, setLocationStatus] = useState<LocationStatus>({status: "idle"});
     const [error, setError] = useState<string | null>(null);
@@ -37,12 +37,11 @@ export const useDeviations = (city: string) => {
         navigator.geolocation.getCurrentPosition(
             async (position) => {
 
-                const { latitude: lat, longitude: long } = position.coords
+                const { latitude: lat, longitude: lng } = position.coords
                 try {
-                    const data = await getAllDeviations(city, lat, long);
+                    const data = await getAllDeviations(city, lat, lng);
                     setDeviations(data);
-                    console.log(data);
-                    setUserLocation({lat, long: long});
+                    setUserLocation({lat, lng});
                     setLocationStatus({status: "success"});
                 } catch (err) {
                     console.error("Error: ", err);

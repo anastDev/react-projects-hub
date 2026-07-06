@@ -190,7 +190,7 @@ const ConditionsContainer = ({ weatherData, onSearch, inputRef, city }: Conditio
                                     accidents={deviations}
                                     loading={isLoading}
                                     userLat={userLocation.lat}
-                                    userLong={userLocation.long}
+                                    userLong={userLocation.lng}
                                 />
                             </motion.div>
                         )}

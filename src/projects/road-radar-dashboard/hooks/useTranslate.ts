@@ -10,11 +10,11 @@ export const useTranslation = (original: Record<string, string>) => {
     const toggle = async () => {
         if (showingEnglish) {
             setShowingEnglish(false)
-            return
+            return;
         }
 
         if (!translated) {
-            setLoading(true)
+            setLoading(true);
             try {
                 const entries = await Promise.all(
                     Object.entries(original).map(async ([key, value]) => {

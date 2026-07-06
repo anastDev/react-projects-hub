@@ -8,7 +8,7 @@ interface LocationStatus {
 
 export const useRoadConditions = (city: string) => {
     const [conditions, setConditions] = useState<RoadConditions[]>([]);
-    const [userLocation, setUserLocation] = useState<{lat: number; long:number} | null>(null);
+    const [userLocation, setUserLocation] = useState<{lat: number; lng:number} | null>(null);
     const [loading, setLoading] = useState(false);
     const [locationStatus, setLocationStatus] = useState<LocationStatus>({status: "idle"});
     const [error, setError] = useState<string | null>(null);
@@ -43,7 +43,7 @@ export const useRoadConditions = (city: string) => {
                    const data = await getAllConditions(city, lat, lng);
                     setConditions(data);
                     console.log("conditions data:", data)
-                    setUserLocation({lat: lat, long: lng});
+                    setUserLocation({ lat,lng});
                     setLocationStatus({status: "success"});
                 } catch (err) {
                     console.error("Error: ", err);
