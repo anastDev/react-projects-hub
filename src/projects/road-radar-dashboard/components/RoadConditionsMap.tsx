@@ -1,5 +1,4 @@
-import { MapContainer, TileLayer, Polyline, Marker, Popup, CircleMarker} from "react-leaflet"
-import L from "leaflet"
+import { MapContainer, TileLayer, Polyline, Popup, CircleMarker} from "react-leaflet"
 import {Polygon } from "react-leaflet";
 import "leaflet/dist/leaflet.css"
 import * as wellknown from "wellknown";
@@ -25,19 +24,8 @@ const getColor = (conditionText: string) => {
     return "orange"
 }
 
-const customIcon = L.divIcon({
-    className: "",
-    html: `
-        <div class="marker">
-            <div class="ring"></div>  
-            <div class="dot"></div>  
-        </div>
-    `,
-    iconSize: [16, 16],
-    iconAnchor: [8, 8],
-})
 
-const RoadConditionsMap = ({ conditions, accidents, userLat, userLong, loading }: RoadConditionsMapProps) => {
+const RoadConditionsMap = ({ conditions, accidents, loading }: RoadConditionsMapProps) => {
     const roadWorks = accidents.filter(d =>
         d.MessageTypeValue === "MaintenanceWorks" ||
         d.MessageTypeValue === "RoadOrCarriagewayOrLaneManagement"
@@ -52,8 +40,7 @@ const RoadConditionsMap = ({ conditions, accidents, userLat, userLong, loading }
     return (
         <div style={{ position: "relative", height: "100%", width: "100%", minHeight: "500px" }}>
             <MapContainer
-                center={[userLat, userLong]}
-                zoom={13}
+                zoom={15}
                 style={{ height: "100%", width: "100%", minHeight: "500px" }}
             >
                 <TileLayer
@@ -61,10 +48,6 @@ const RoadConditionsMap = ({ conditions, accidents, userLat, userLong, loading }
                     attribution='&copy; OpenStreetMap contributors'
                 />
 
-                {/* User location marker */}
-                <Marker position={[userLat, userLong]} icon={customIcon}>
-                    <Popup>You are here!</Popup>
-                </Marker>
 
                 {/* Road condition lines */}
                 {conditions.map((condition, index) => {

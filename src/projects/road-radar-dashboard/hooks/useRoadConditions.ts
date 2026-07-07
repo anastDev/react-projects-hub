@@ -42,7 +42,6 @@ export const useRoadConditions = (city: string) => {
                 try {
                    const data = await getAllConditions(city, lat, lng);
                     setConditions(data);
-                    console.log("conditions data:", data)
                     setUserLocation({ lat,lng});
                     setLocationStatus({status: "success"});
                 } catch (err) {

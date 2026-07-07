@@ -37,7 +37,8 @@ export const useDeviations = (city: string) => {
         navigator.geolocation.getCurrentPosition(
             async (position) => {
 
-                const { latitude: lat, longitude: lng } = position.coords
+                const { latitude: lat, longitude: lng } = position.coords;
+
                 try {
                     const data = await getAllDeviations(city, lat, lng);
                     setDeviations(data);
@@ -58,6 +59,7 @@ export const useDeviations = (city: string) => {
                 setIsLoading(false);
             }
         )
+
     }, [city])
 
     return {deviations, isLoading, error, userLocation, locationStatus};
