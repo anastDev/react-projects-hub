@@ -3,6 +3,8 @@ import { X } from "lucide-react";
 import type {Restaurant} from "@/projects/vegan-finder/types/typesRestaurant.ts";
 import {Button} from "@/components/ui/button.tsx";
 import {usePhotos} from "@/projects/vegan-finder/hooks/usePhotos.ts";
+import {RestaurantMap} from "@/projects/vegan-finder/components/RestaurantMap.tsx";
+import {PhotoCarousel} from "@/projects/vegan-finder/components/PhotoCarousel.tsx";
 
 interface RestaurantDetailsProps {
     restaurant: Restaurant | null;
@@ -13,7 +15,7 @@ export const RestaurantDetails = ({
                                               restaurant,
                                               onClose,
                                           }: RestaurantDetailsProps)=>  {
-    const {photoUri, loading, fetchPhotoUri}= usePhotos();
+    const {fetchPhotoUri}= usePhotos();
 
     useEffect(() => {
         const handleKey = (e: KeyboardEvent) => {
@@ -24,12 +26,15 @@ export const RestaurantDetails = ({
     }, [onClose]);
 
     useEffect(() => {
-        if (restaurant?.photoName) {
-            fetchPhotoUri(restaurant.photoName).then((uri) => {
-                console.log("photo uri:", uri);
-            });
+        const restaurantPhoto = restaurant?.photos?.[0]?.name;
+
+        console.log("restaurant:", restaurant);
+        console.log("photo name:", restaurantPhoto);
+
+        if(restaurantPhoto) {
+            fetchPhotoUri(restaurantPhoto);
         }
-    }, [restaurant?.photoName]);
+    }, [restaurant]);
 
     if (!restaurant) return null;
 
@@ -64,31 +69,24 @@ export const RestaurantDetails = ({
                 <Button
                     onClick={onClose}
                     variant="outline"
-                    className="absolute right-4 top-4 z-10 rounded-lg p-1.5 mr-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-800 dark:hover:text-gray-200 sm:right-4 sm:top-6 cursor-pointer"
+                    className="absolute right-2 top-2 z-10 rounded-lg p-1.5 mr-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-800 dark:hover:text-gray-200 sm:right-4 sm:top-6 cursor-pointer"
                 >
-                    <X size={22} aria-hidden="true" />
+                    <X size={22} />
                 </Button>
-
-                <section className="mb-6 pt-12">
-                    <div className="relative flex h-56 w-full items-center justify-center rounded-2xl border border-dashed border-gray-300 bg-gray-50 text-center shadow-md dark:border-gray-600 dark:bg-gray-800 sm:h-64">
-                        <div className="flex flex-col items-center gap-1 px-4">
-              <span className="text-4xl">
-                📍
-              </span>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">
-                                Embedded map goes here
-                            </p>
-                            <p className="text-xs text-gray-400 dark:text-gray-500">
-                                {restaurant.latitude.toFixed(4)}, {restaurant.longitude.toFixed(4)}
-                            </p>
-                        </div>
-                    </div>
-                </section>
 
                 {/* Details */}
                 <section>
                     <div className="mb-3 flex items-start justify-between gap-3 sm:gap-4">
                         <div className="min-w-0 flex-1">
+                            {/* Img Placeholder */}
+                            {restaurant.photos && restaurant.photos.length > 1 && (
+                                <div className="mt-6 py-4 dark:border-gray-700">
+                                    <PhotoCarousel
+                                        photoNames={restaurant.photos.map(p => p.name)}
+                                        altText={restaurant.name}
+                                    />
+                                </div>
+                            )}
                             <h1 className="text-xl font-bold leading-tight sm:text-2xl">
                                 {restaurant.name}
                             </h1>
@@ -105,21 +103,6 @@ export const RestaurantDetails = ({
                             >
                 {isVegetarian ? "Vegetarian-Friendly" : "Vegan"}
               </span>
-                        </div>
-
-                        {/* Img Placeholder */}
-                        <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-700 sm:h-24 sm:w-24">
-                            {loading ? (
-                                <span className="text-xs text-gray-400">...</span>
-                            ) : photoUri ? (
-                                <img
-                                    src={photoUri}
-                                    alt={restaurant.name}
-                                    className="h-full w-full object-cover"
-                                />
-                            ) : (
-                                <span></span>
-                            )}
                         </div>
 
                     </div>
@@ -191,6 +174,9 @@ export const RestaurantDetails = ({
                         </div>
                     )}
                 </section>
+
+                {/* Embedded Map */}
+                <RestaurantMap restaurant={restaurant} />
             </div>
         </div>
     );

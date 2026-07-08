@@ -1,7 +1,8 @@
 import {useState} from "react";
+import {fetchPhoto} from "@/projects/vegan-finder/services/api.restaurants.ts";
 
 export const usePhotos = () => {
-    const [photoUri, setPhotoUri] = useState<string | null>(null);
+    const [photoUri, setPhotoUri] = useState<string >("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -9,8 +10,8 @@ export const usePhotos = () => {
         setLoading(true);
         setError(null);
         try {
-           const uri = await fetchPhotoUri(photoName);
-           setPhotoUri(uri ?? null);
+           const uri = await fetchPhoto(photoName);
+           setPhotoUri(uri ?? "");
         }  catch (err) {
             console.error(err);
             setError("Failed to fetch restaurants");
@@ -19,5 +20,14 @@ export const usePhotos = () => {
         }
     };
 
-    return { photoUri, loading, fetchPhotoUri, error};
+    const getPhotoUri = async (photoName: string): Promise<string | null> => {
+        try {
+            return await fetchPhoto(photoName);
+        } catch {
+            return null;
+        }
+    };
+
+    return { photoUri, loading, fetchPhotoUri, getPhotoUri, error }
 }
+

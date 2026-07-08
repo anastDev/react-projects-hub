@@ -15,7 +15,6 @@ export const useRestaurants = () => {
 
             const data = await getRestaurants(lat, lng);
             setRestaurants(data.map(mapRestaurant));
-            console.log("raw api response:", data);
         } catch (err) {
             console.error(err);
             setError("Failed to fetch restaurants");

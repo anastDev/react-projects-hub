@@ -1,5 +1,11 @@
 export type DietType = "vegan" | "vegetarian";
 
+export interface RestaurantPhoto{
+    name: string;
+    widthPx: number;
+    heightPx: number;
+}
+
 export interface Restaurant {
     id: string;
     name: string;
@@ -9,7 +15,7 @@ export interface Restaurant {
     rating: number;
     userRatingCount: number;
     websiteUri?: string;
-    photoName?: string;
+    photos?: RestaurantPhoto[];
     priceLevel?: string;
     openNow?: boolean;
     phoneNumber?: string;

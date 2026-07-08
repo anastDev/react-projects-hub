@@ -19,15 +19,20 @@ export async function getRestaurants(lat: number, lng:number) : Promise<Restaura
 }
 
 
-export async function fetchPhotoUri (photoName: string): Promise<string | null> {
+export async function fetchPhoto(photoName: string): Promise<string | null> {
     try {
         const response = await fetch(
-            `${VITE_VEGAN_FINDER_BACKEND_URL}/places/photo?photoName=${encodeURIComponent(photoName)}&maxWidth=400`
-        );
-        if (!response.ok) return null;
+            `${VITE_VEGAN_FINDER_BACKEND_URL}/restaurants/photo?photoName=${encodeURIComponent(photoName)}`);
+
+        if (!response.ok) {
+            console.error("Unable to retrieve restaurant photos.");
+            return null;
+        }
+
         return await response.text();
-    } catch {
-        return null;
+    } catch (err) {
+        console.error("Error fetching photos: ",err);
+        throw err;
     }
 }
 

@@ -11,7 +11,7 @@ export function mapRestaurant(api: RestaurantApiResponse): Restaurant {
         rating: api.rating,
         userRatingCount: api.userRatingCount,
         websiteUri: api.websiteUri || undefined,
-        photoName: api.photos?.[0].name ?? undefined,
+        photos: api.photos ?? [],
         priceLevel: api.priceLevel || undefined,
         openNow: api.currentOpeningHours?.openNow,
         phoneNumber: api.nationalPhoneNumber,
