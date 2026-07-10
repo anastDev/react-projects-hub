@@ -9,6 +9,7 @@ export function mapRestaurant(api: RestaurantApiResponse): Restaurant {
         latitude: api.location.latitude,
         longitude: api.location.longitude,
         rating: api.rating,
+        reviews: api.reviews ?? [],
         userRatingCount: api.userRatingCount,
         websiteUri: api.websiteUri || undefined,
         photos: api.photos ?? [],
