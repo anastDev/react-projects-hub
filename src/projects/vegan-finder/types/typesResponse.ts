@@ -9,6 +9,7 @@ export interface RestaurantApiResponse {
         longitude: number;
     };
     rating: number;
+    reviews?: Review[];
     userRatingCount: number;
     websiteUri: string;
     priceLevel: string;
@@ -23,6 +24,22 @@ export interface RestaurantApiResponse {
     servesCocktails: boolean;
     servesDinner: boolean;
     photos?: Photo[];
+}
+
+export interface Review {
+    name: string;
+    rating: number;
+    text: LocalizedText | null;
+    originalText: LocalizedText | null;
+    authorAttribution: AuthorAttribution;
+    relativePublishTimeDescription: string;
+    publishTime: string;
+    googleMapsUri: string;
+}
+
+export interface LocalizedText {
+    text: string;
+    languageCode: string;
 }
 
 export interface Photo {

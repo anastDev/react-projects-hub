@@ -17,7 +17,7 @@ export default function RestaurantCard({ restaurant, onRestaurantClick }: Restau
                     <h2 className="text-base font-semibold leading-tight break-words sm:text-lg">
                         {restaurant.name}
                     </h2>
-                    <span className="shrink-0 text-2xl" aria-hidden="true">
+                    <span className="shrink-0 text-2xl">
           {isVegeterian ? "🥗" : "🌱" }
         </span>
                 </div>
@@ -26,7 +26,7 @@ export default function RestaurantCard({ restaurant, onRestaurantClick }: Restau
 
                 <div className="flex items-center justify-between">
                     {restaurant.rating ? (
-                        <span className="inline-flex items-center gap-1 text-sm font-medium text-amber-600">
+                        <span className="inline-flex items-center gap-2 text-sm font-medium text-amber-600">
           ⭐ {restaurant.rating.toFixed(1)}
         </span>
                     ) : (

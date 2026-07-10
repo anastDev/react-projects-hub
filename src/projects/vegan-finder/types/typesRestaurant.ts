@@ -1,3 +1,5 @@
+import type {Review} from "@/projects/vegan-finder/types/typesResponse.ts";
+
 export type DietType = "vegan" | "vegetarian";
 
 export interface RestaurantPhoto{
@@ -13,6 +15,7 @@ export interface Restaurant {
     latitude: number;
     longitude: number;
     rating: number;
+    reviews: Review[];
     userRatingCount: number;
     websiteUri?: string;
     photos?: RestaurantPhoto[];

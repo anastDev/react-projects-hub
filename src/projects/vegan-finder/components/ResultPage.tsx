@@ -148,9 +148,12 @@ export default function ResultsPage({ restaurants }: ResultsPageProps) {
                             <TileLayer
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 attribution='&copy; OpenStreetMap contributors'
-                            />
+                            />2
                             {restaurants.map((r) => (
-                                <Marker key={r.id} position={[r.latitude, r.longitude]} icon={pinIcon}>
+                                <Marker key={r.id}
+                                        position={[r.latitude, r.longitude]}
+                                        icon={pinIcon(r.openNow)}
+                                >
                                     <Popup>
                                         <div className="min-w-[10rem]">
                                             <div className="font-semibold mb-2">{r.name}</div>

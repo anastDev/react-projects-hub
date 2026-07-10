@@ -7,7 +7,7 @@ interface MapContainerProps {
 
 export const RestaurantMap = ({restaurant}: MapContainerProps) => {
     return (
-        <section className="mb-6 pt-12">
+        <section className="mb-6 pt-8">
             <div className="relative h-56 w-full overflow-hidden rounded-2xl shadow-md sm:h-70">
                 <MapContainer
                     center={[restaurant.latitude, restaurant.longitude]}
