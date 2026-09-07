@@ -1,12 +1,13 @@
-export interface ProjectCardTypes  {
+export interface ProjectCardTypes {
     projectName: string;
     description: string;
-    status: "In Progress" | "Completed";
-    img?: string;
-    path?: string;
-    tags?: string[];
-    category: "main" | "other";
+    tags: string[];
+    path: string;
     githubRepo: string;
-    isFeatured?: boolean;
-    gridArea?: string;
+    status: "Completed" | "In Progress";
+    img: string;
+    category: "main" | "other";
+    featured?: boolean;
+    featuredOrder?: number;
+    liveUrl?: string;
 }

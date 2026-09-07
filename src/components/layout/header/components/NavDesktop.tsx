@@ -5,7 +5,7 @@ export const NavDesktop = ({ routes }: { routes: Array<{ title: string; path: st
     const { pathname } = useLocation();
 
     return (
-        <ul className="hidden lg:flex items-center bg-gray-800/80 border border-white/[0.08] rounded-full px-1.5 py-1 gap-0.5 backdrop-blur-md">
+        <ul className="hidden lg:flex items-center bg-gray-900/60 border border-white/10 rounded-full px-1.5 py-1 gap-0.5 backdrop-blur-md">
             {routes.map(({ title, path, Icon }) => {
                 const isActive = pathname === path;
                 return (
@@ -14,8 +14,8 @@ export const NavDesktop = ({ routes }: { routes: Array<{ title: string; path: st
                             to={path}
                             className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] transition-all duration-200 ${
                                 isActive
-                                    ? "text-orange-400"
-                                    : "text-gray-400 hover:text-orange-400 hover:bg-orange-500/10"
+                                    ? "text-orange-300"
+                                    : "text-gray-400 hover:text-orange-300 hover:bg-orange-500/10"
                             }`}
                         >
                             <Icon className="w-3.5 h-3.5" />
@@ -24,7 +24,7 @@ export const NavDesktop = ({ routes }: { routes: Array<{ title: string; path: st
 
                         {/* Active dot indicator */}
                         {isActive && (
-                            <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-orange-400" />
+                            <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-orange-300" />
                         )}
                     </li>
                 );

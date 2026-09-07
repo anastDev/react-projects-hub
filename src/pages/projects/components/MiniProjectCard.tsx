@@ -22,7 +22,7 @@ export const MiniProjectCard = ({
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeInOut" } },
             }}
-            className="group flex flex-col border border-gray-700 bg-gray-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-400/40 hover:shadow-xl hover:shadow-orange-400/10"
+            className="group flex flex-col border border-white/10 bg-gray-900/50 backdrop-blur rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-300/40 hover:shadow-xl hover:shadow-orange-300/10"
         >
             {/* Image / fallback */}
             {img && img !== "" ? (
@@ -34,20 +34,21 @@ export const MiniProjectCard = ({
                     />
                 </div>
             ) : (
-                <div className="w-full aspect-video flex items-center justify-center bg-gradient-to-br from-gray-800 via-gray-900 to-gray-900">
-                    <Code2 className="w-12 h-12 text-orange-400/30 transition-colors group-hover:text-orange-400/50" />
+                <div className="w-full aspect-video flex items-center justify-center bg-gradient-to-br from-gray-800/60 via-gray-900/60 to-gray-900/60">
+                    <Code2 className="w-12 h-12 text-orange-300/30 transition-colors group-hover:text-orange-300/50" />
                 </div>
             )}
 
             {/* Content */}
             <div className="flex flex-col flex-1 p-5 sm:p-6">
+
                 {/* Title + status */}
                 <div className="flex items-start justify-between gap-3 mb-3">
                     <h4 className="font-semibold text-gray-100 text-lg leading-snug">{projectName}</h4>
                     <span className={`shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-medium ${
                         status === "Completed"
-                            ? "bg-green-500/20 text-green-400 border-green-500/50"
-                            : "bg-blue-500/20 text-blue-400 border-blue-500/50"
+                            ? "bg-green-500/15 text-green-400 border-green-500/40"
+                            : "bg-white/5 text-gray-400 border-white/15"
                     }`}>
                         {status}
                     </span>
@@ -60,7 +61,7 @@ export const MiniProjectCard = ({
                 {tags && tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-5">
                         {tags.slice(0, 4).map((tag) => (
-                            <span key={tag} className="rounded-md bg-gray-700/50 px-2.5 py-1 text-xs text-gray-300">
+                            <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-gray-300">
                                 {tag}
                             </span>
                         ))}
@@ -74,7 +75,7 @@ export const MiniProjectCard = ({
                             href={githubRepo!}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-gray-700 bg-gray-900 px-4 py-2.5 text-sm font-semibold text-gray-300 transition-colors hover:border-orange-400 hover:text-orange-400"
+                            className="flex flex-1 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-medium text-gray-300 transition-colors hover:border-orange-300 hover:text-orange-300"
                         >
                             <IoLogoGithub className="h-4 w-4" />
                             Code
@@ -83,7 +84,7 @@ export const MiniProjectCard = ({
                     {hasLiveDemo && (
                         <Link
                             to={path!}
-                            className="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-orange-500 bg-gray-800 px-4 py-2.5 text-sm font-semibold text-orange-400 transition-colors hover:bg-orange-500 hover:text-gray-900"
+                            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-orange-400 px-4 py-2.5 text-sm font-medium text-gray-900 transition-colors hover:bg-orange-300"
                         >
                             <ExternalLink className="h-4 w-4" />
                             Live Demo

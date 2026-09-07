@@ -18,12 +18,12 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-gray-900 border-t border-gray-800 text-gray-100 w-full mt-auto text-center lg:text-left">
+        <footer className="border-t border-gray-100/20 text-gray-100 w-full mt-auto text-center lg:text-left">
             <div className="container mx-auto px-6 py-12">
                 <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
 
                     <div>
-                        <h3 className="text-lg font-semibold mb-4 text-orange-400">Navigation</h3>
+                        <h3 className="text-lg font-semibold my-4 text-orange-400">Navigation</h3>
                         <ul className="space-y-2">
                             {routes.map((route) => (
                                 <li key={route.title}>

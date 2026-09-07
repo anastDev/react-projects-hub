@@ -60,6 +60,10 @@ export const useDeviations = (city: string) => {
             }
         )
 
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+
     }, [city])
 
     return {deviations, isLoading, error, userLocation, locationStatus};

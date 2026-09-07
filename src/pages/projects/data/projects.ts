@@ -10,6 +10,20 @@ export const projectData: ProjectCardTypes[] = [
         status: "Completed",
         img: "",
         category: "main",
+        featured: true,
+        featuredOrder: 2,
+    },
+    {
+        projectName: "CARlimera Services",
+        description: "A full-stack web app running live for a Coventry-based car dealership. FastAPI backend with an admin panel for managing vehicle listings, and a two-sided appointment system: customers book, admins accept or decline, and both sides get transactional emails via Resend. Customers can cancel up to two hours before their slot.",
+        tags: ["Python", "FastAPI", "React", "TypeScript", "Firebase", "Resend", "MongoDB"],
+        path: "https://www.carlimeraservices.co.uk/",
+        githubRepo: "",
+        status: "Completed",
+        img: "",
+        category: "main",
+        featured: true,
+        featuredOrder: 1,
     },
     {
         projectName: "Road Radar Dashboard",
@@ -19,7 +33,9 @@ export const projectData: ProjectCardTypes[] = [
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/road-radar-dashboard",
         status: "Completed",
         img: "/projects/road-radar-dashboard.png",
-        category: "main"
+        category: "main",
+        featured: true,
+        featuredOrder: 3,
     },
     {
         projectName: "Dev Tools",
@@ -29,7 +45,9 @@ export const projectData: ProjectCardTypes[] = [
         githubRepo: "https://github.com/anastDev/react-projects-hub/tree/main/src/projects/dev-tools",
         status: "Completed",
         img: "/projects/dev-tools.png",
-        category: "main"
+        category: "main",
+        featured: true,
+        featuredOrder: 4,
     },
     {
         projectName: "Vegan Finder App",
@@ -39,7 +57,8 @@ export const projectData: ProjectCardTypes[] = [
         githubRepo: "https://github.com/anastDev/vegan-finder",
         status: "In Progress",
         img: "/projects/vegan-finder.png",
-        category: "main"
+        category: "main",
+        featured: true,
     },
     {
         projectName: "Library App",
@@ -70,14 +89,5 @@ export const projectData: ProjectCardTypes[] = [
         status: "Completed",
         img: "/projects/task-manager.png",
         category: "main"
-    },
-    {
-        projectName: "Python Projects",
-        description: "Collection of Python projects focused on data analysis and utilities. Includes tools like a job listings filter (shown) with data processing and visualization.",
-        path: "https://github.com/anastDev/python-projects",
-        githubRepo: "",
-        status: "In Progress",
-        img: "/projects/job-listing-filter.png",
-        category: "other"
     },
 ]

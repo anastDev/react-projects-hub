@@ -23,7 +23,7 @@ export const JourneyRoad = () => {
     return (
         <motion.section
             ref={sectionRef}
-            className="bg-gray-900 px-6 py-12 lg:px-[1.6rem] lg:py-20"
+            className="px-6 py-12 lg:px-[1.6rem] lg:py-20"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -34,11 +34,11 @@ export const JourneyRoad = () => {
 
                 {/* Section intro */}
                 <div className="text-left mb-16 lg:mb-20">
-                    <span className="font-mono text-xs text-orange-400 tracking-[0.15em] uppercase mb-6 flex items-center gap-3">
+                    <span className="font-mono text-xs text-orange-400 tracking-[0.15em] uppercase mb-4 flex items-center gap-3">
                         Journey
                     </span>
                     <h2
-                        className="text-2xl lg:text-3xl font-medium text-gray-100 mb-4"
+                        className="text-2xl lg:text-3xl font-medium text-gray-100 mb-2"
                         style={{ fontFamily: "'DM Serif Display', serif" }}
                     >
                         How my software engineering journey started
