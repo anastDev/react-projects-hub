@@ -20,16 +20,12 @@ export const PhotoCarousel = ({ photoNames, altText }: PhotoCarouselProps) => {
         usePrevNextButtons(emblaApi);
     const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
 
-    const photoKey = photoNames.join(",");
-
     useEffect(() => {
         let cancelled = false;
 
         const fetchAll = async () => {
             setLoading(true);
-            const uris = await Promise.all(
-                photoNames.map(name => getPhotoUri(name))
-            );
+            const uris = await Promise.all(photoNames.map(name => getPhotoUri(name)));
             if (cancelled) return;
             setPhotoUris(uris.filter(Boolean) as string[]);
             setLoading(false);
@@ -42,10 +38,8 @@ export const PhotoCarousel = ({ photoNames, altText }: PhotoCarouselProps) => {
             setLoading(false);
         }
 
-        return () => {
-            cancelled = true;
-        };
-    }, [photoKey, getPhotoUri]);
+        return () => { cancelled = true; };
+    }, [photoNames, getPhotoUri]);
 
 
     if (loading) {

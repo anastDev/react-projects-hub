@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import {useEffect, useMemo} from "react";
 import { X } from "lucide-react";
 import type {Restaurant} from "@/projects/vegan-finder/types/typesRestaurant.ts";
 import {Button} from "@/components/ui/button.tsx";
@@ -18,6 +18,11 @@ export const RestaurantDetails = ({
                                               onClose,
                                           }: RestaurantDetailsProps)=>  {
     const {reviews, loading} = useRestaurantDetails(restaurant?.id ?? null);
+
+    const photoNames = useMemo(
+        () => restaurant?.photos?.map(p => p.name) ?? [],
+        [restaurant]
+    );
 
     useEffect(() => {
         const handleKey = (e: KeyboardEvent) => {
@@ -68,10 +73,10 @@ export const RestaurantDetails = ({
                 {/* Details */}
                 <section>
                     {/* Photo Carousel */}
-                    {restaurant.photos && restaurant.photos.length > 1 && (
+                    {photoNames.length > 0 && (
                         <div className="mt-6 py-4">
                             <PhotoCarousel
-                                photoNames={restaurant.photos.map(p => p.name)}
+                                photoNames={photoNames}
                                 altText={restaurant.name}
                             />
                         </div>
