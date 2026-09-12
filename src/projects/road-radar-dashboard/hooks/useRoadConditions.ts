@@ -13,6 +13,7 @@ export const useRoadConditions = (city: string) => {
     const [locationStatus, setLocationStatus] = useState<LocationStatus>({status: "idle"});
     const [error, setError] = useState<string | null>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const settledRef = useRef(false);
 
     useEffect(() => {
         if (!city) return;
@@ -27,7 +28,7 @@ export const useRoadConditions = (city: string) => {
         setLoading(true)
 
         timeoutRef.current = setTimeout(() => {
-           if (locationStatus.status === "failed") {
+           if (!settledRef.current) {
                setLocationStatus({status: "failed"});
                setError("Location request timed out. Please enable location access and try again.")
                setLoading(false);
@@ -36,7 +37,8 @@ export const useRoadConditions = (city: string) => {
 
         navigator.geolocation.getCurrentPosition(
             async (position) => {
-
+                settledRef.current = true;
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
                 const { latitude: lat, longitude: lng } = position.coords;
 
                 try {
@@ -52,6 +54,7 @@ export const useRoadConditions = (city: string) => {
                 }
             },
             (err) => {
+                settledRef.current = true;
                 console.error("Geolocation error code:", err.code, err.message);
                 clearTimeout(timeoutRef.current!);
                 setLocationStatus({status: "failed"});
@@ -59,6 +62,9 @@ export const useRoadConditions = (city: string) => {
                 setLoading(false);
             }
         )
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
     }, [city]);
 
     return {conditions, loading, error, userLocation, locationStatus};

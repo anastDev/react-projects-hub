@@ -38,7 +38,7 @@ export function useBooks() {
                 setTotalPages(response.data.totalPages);
                 setCurrentPage(response.data.number);
             }
-        } catch (e : any) {
+        } catch (e) {
             console.error("Fetch error:", e);
             setError("Failed to load books. Please try again.");
         } finally {

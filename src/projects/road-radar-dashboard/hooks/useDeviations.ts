@@ -13,9 +13,11 @@ export const useDeviations = (city: string) => {
     const [locationStatus, setLocationStatus] = useState<LocationStatus>({status: "idle"});
     const [error, setError] = useState<string | null>(null);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const settledRef = useRef(false);
 
     useEffect(() => {
         if (!city) return;
+        settledRef.current = false;
 
         if (!navigator.geolocation) {
             setLocationStatus({status: "failed"});
@@ -27,7 +29,7 @@ export const useDeviations = (city: string) => {
         setIsLoading(true)
 
         timeoutRef.current = setTimeout(() => {
-            if (locationStatus.status === "detecting" || locationStatus.status === "failed") {
+            if (!settledRef.current) {
                 setLocationStatus({status: "failed"});
                 setError("Location request timed out. Please enable location access and try again.")
                 setIsLoading(false);
@@ -36,6 +38,8 @@ export const useDeviations = (city: string) => {
 
         navigator.geolocation.getCurrentPosition(
             async (position) => {
+                settledRef.current = true;
+                if(timeoutRef.current) clearTimeout(timeoutRef.current);
 
                 const { latitude: lat, longitude: lng } = position.coords;
 
@@ -53,6 +57,7 @@ export const useDeviations = (city: string) => {
             },
             (err) => {
                 console.error("Geolocation error code:", err.code, err.message);
+                settledRef.current = true;
                 clearTimeout(timeoutRef.current!);
                 setLocationStatus({status: "failed"});
                 setError("Unable to retrieve your location");
@@ -63,7 +68,6 @@ export const useDeviations = (city: string) => {
         return () => {
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
         };
-
     }, [city])
 
     return {deviations, isLoading, error, userLocation, locationStatus};

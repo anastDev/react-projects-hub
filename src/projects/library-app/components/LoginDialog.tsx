@@ -38,8 +38,9 @@ const LoginDialog = ({onRegisterClick}: LoginDialogProps) => {
             toast.success("Login successful", {
                 duration: 2000,
             });
-        } catch (err: any) {
-            setError(err.message ?? "Login failed. Please try again.");
+        } catch (err) {
+            const message = err instanceof Error ? err.message  : "Login failed. Please try again!";
+            setError(message);
             toast.error(
                 err instanceof Error ? err.message : "Login failed"
             )

@@ -20,8 +20,10 @@ export async function loginUser({ username, password }: LoginFields): Promise<Lo
             { username, password }
         );
         return response.data;
-    } catch (error: any) {
-        const description = error.response?.data?.description ?? "Login failed";
-        throw new Error(description);
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            throw new Error(error.response?.data?.description ?? "Login failed");
+        }
+        throw new Error("Login failed");
     }
 }

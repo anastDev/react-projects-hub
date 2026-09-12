@@ -9,8 +9,10 @@ export const registerUser = async (payload: RegisterPayload)  => {
             `${VITE_LIBRARY_BACKEND_URL}/members`,
             { userInsertDTO: payload }
         );
-    } catch (error: any) {
-        const description = error.response?.data?.description ?? "Registration failed";
-        throw new Error(description);
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            throw new Error(error.response?.data?.description ?? "Registration failed");
+        }
+        throw new Error("Registration failed");
     }
 }

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { X } from "lucide-react";
 import type {Restaurant} from "@/projects/vegan-finder/types/typesRestaurant.ts";
 import {Button} from "@/components/ui/button.tsx";
-import {usePhotos} from "@/projects/vegan-finder/hooks/usePhotos.ts";
 import {RestaurantMap} from "@/projects/vegan-finder/components/RestaurantMap.tsx";
 import {PhotoCarousel} from "@/projects/vegan-finder/components/PhotoCarousel.tsx";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -18,7 +17,6 @@ export const RestaurantDetails = ({
                                               restaurant,
                                               onClose,
                                           }: RestaurantDetailsProps)=>  {
-    const {fetchPhotoUri}= usePhotos();
     const {reviews, loading} = useRestaurantDetails(restaurant?.id ?? null);
 
     useEffect(() => {
@@ -28,14 +26,6 @@ export const RestaurantDetails = ({
         document.addEventListener("keydown", handleKey);
         return () => document.removeEventListener("keydown", handleKey);
     }, [onClose]);
-
-    useEffect(() => {
-        const restaurantPhoto = restaurant?.photos?.[0]?.name;
-
-        if(restaurantPhoto) {
-            fetchPhotoUri(restaurantPhoto);
-        }
-    }, [restaurant]);
 
     if (!restaurant) return null;
 
@@ -210,7 +200,7 @@ export const RestaurantDetails = ({
                                 </a>
                             )}
                             {restaurant.websiteUri && (
-                                <a href={restaurant.websiteUri} target="_blank"
+                                <a href={restaurant.websiteUri} target="_blank" rel="noopener noreferrer"
                                    className="inline-flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400">
                                     <span aria-hidden="true">🌐</span> Visit website
                                 </a>

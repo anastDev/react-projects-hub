@@ -20,17 +20,33 @@ export const PhotoCarousel = ({ photoNames, altText }: PhotoCarouselProps) => {
         usePrevNextButtons(emblaApi);
     const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
 
+    const photoKey = photoNames.join(",");
+
     useEffect(() => {
+        let cancelled = false;
+
         const fetchAll = async () => {
             setLoading(true);
             const uris = await Promise.all(
                 photoNames.map(name => getPhotoUri(name))
             );
+            if (cancelled) return;
             setPhotoUris(uris.filter(Boolean) as string[]);
             setLoading(false);
         };
-        if (photoNames.length > 0) fetchAll();
-    }, [photoNames]);
+
+        if (photoNames.length > 0) {
+            fetchAll();
+        } else {
+            setPhotoUris([]);
+            setLoading(false);
+        }
+
+        return () => {
+            cancelled = true;
+        };
+    }, [photoKey, getPhotoUri]);
+
 
     if (loading) {
         return (
@@ -47,7 +63,7 @@ export const PhotoCarousel = ({ photoNames, altText }: PhotoCarouselProps) => {
             <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
                 <div className="flex">
                     {photoUris.map((uri, index) => (
-                        <div key={index} className="relative min-w-full">
+                        <div key={uri} className="relative min-w-full">
                             <img
                                 src={uri}
                                 alt={`${altText} ${index + 1}`}
@@ -65,6 +81,7 @@ export const PhotoCarousel = ({ photoNames, altText }: PhotoCarouselProps) => {
                     <button
                         onClick={onPrevButtonClick}
                         disabled={prevBtnDisabled}
+                        aria-label="Previous photo"
                         className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-md transition hover:bg-white disabled:opacity-30 dark:bg-gray-800/80 dark:hover:bg-gray-800"
                     >
                         <ChevronLeft size={18} />
@@ -72,6 +89,7 @@ export const PhotoCarousel = ({ photoNames, altText }: PhotoCarouselProps) => {
                     <button
                         onClick={onNextButtonClick}
                         disabled={nextBtnDisabled}
+                        aria-label="Next photo"
                         className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-md transition hover:bg-white disabled:opacity-30 dark:bg-gray-800/80 dark:hover:bg-gray-800"
                     >
                         <ChevronRight size={18} />
@@ -86,6 +104,7 @@ export const PhotoCarousel = ({ photoNames, altText }: PhotoCarouselProps) => {
                         <button
                             key={index}
                             onClick={() => onDotButtonClick(index)}
+                            aria-label={`Go to photo ${index + 1}`}
                             className={
                                 "h-1.5 rounded-full transition-all " +
                                 (index === selectedIndex
