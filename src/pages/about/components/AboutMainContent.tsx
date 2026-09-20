@@ -35,7 +35,7 @@ const AboutMainContent = () => {
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/" className="text-gray-400 hover:text-orange-300">
+                            <BreadcrumbLink href="/react-projects-hub/#/" className="text-gray-400 hover:text-orange-300">
                                 Home
                             </BreadcrumbLink>
                         </BreadcrumbItem>

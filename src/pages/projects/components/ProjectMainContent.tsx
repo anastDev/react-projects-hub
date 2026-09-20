@@ -22,7 +22,7 @@ export const ProjectMainContent = () => {
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="/" className="text-gray-400 hover:text-orange-400">
+                            <BreadcrumbLink href="/react-projects-hub/#/" className="text-gray-400 hover:text-orange-400">
                                 Home
                             </BreadcrumbLink>
                         </BreadcrumbItem>
