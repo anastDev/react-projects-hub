@@ -8,13 +8,13 @@ export const MiniProjectCard = ({
                                     projectName,
                                     description,
                                     img,
-                                    path,
-                                    githubRepo,
+                                    demo,
+                                    github,
                                     tags,
                                     status = "In Progress",
                                 }: ProjectCardTypes) => {
-    const hasLiveDemo = !!path && !path.startsWith("https://github.com");
-    const hasGitHubRepo = !!githubRepo;
+    const hasLiveDemo = !!demo && !demo.startsWith("https://github.com");
+    const hasGitHubRepo = !!github;
 
     return (
         <motion.div
@@ -72,7 +72,7 @@ export const MiniProjectCard = ({
                 <div className="flex gap-3 mt-auto">
                     {hasGitHubRepo && (
                         <a
-                            href={githubRepo!}
+                            href={github!}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex flex-1 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-medium text-gray-300 transition-colors hover:border-orange-300 hover:text-orange-300"
@@ -83,7 +83,7 @@ export const MiniProjectCard = ({
                     )}
                     {hasLiveDemo && (
                         <Link
-                            to={path!}
+                            to={demo!}
                             className="flex flex-1 items-center justify-center gap-2 rounded-full bg-orange-400 px-4 py-2.5 text-sm font-medium text-gray-900 transition-colors hover:bg-orange-300"
                         >
                             <ExternalLink className="h-4 w-4" />

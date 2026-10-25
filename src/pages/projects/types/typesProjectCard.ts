@@ -2,8 +2,8 @@ export interface ProjectCardTypes {
     projectName: string;
     description: string;
     tags: string[];
-    path: string;
-    githubRepo: string;
+    demo: string;
+    github: string;
     status: "Completed" | "In Progress";
     img: string;
     category: "main" | "other";

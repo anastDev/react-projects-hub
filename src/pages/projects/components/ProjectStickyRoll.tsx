@@ -1,5 +1,6 @@
 import { useRef, useState, type ReactNode } from "react";
 import { motion, useScroll, useMotionValueEvent, useReducedMotion } from "motion/react";
+import ProjectLinks from "@/pages/projects/components/ProjectLinks.tsx";
 
 export interface StickyItem {
     title: string;
@@ -7,13 +8,14 @@ export interface StickyItem {
     stack: string[];
     content: ReactNode;
     badge?: string;
-    liveUrl?: string;
-    githubRepo?: string;
+    demo?: string;
+    github?: string;
 }
 
 interface Props {
     items: StickyItem[];
 }
+
 
 export const ProjectsStickyScroll = ({ items }: Props) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -32,7 +34,7 @@ export const ProjectsStickyScroll = ({ items }: Props) => {
 
     return (
         <>
-            {/* Mobile - Stacked cards */}
+            {/* Mobile */}
             <div className="space-y-12 lg:hidden">
                 {items.map((item) => (
                     <motion.article
@@ -43,9 +45,7 @@ export const ProjectsStickyScroll = ({ items }: Props) => {
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         viewport={{ once: true, amount: 0.2 }}
                     >
-                        <div className="aspect-video w-full overflow-hidden">
-                            {item.content}
-                        </div>
+                        <div className="aspect-video w-full overflow-hidden">{item.content}</div>
 
                         <div className="p-6">
                             {item.badge && (
@@ -76,21 +76,23 @@ export const ProjectsStickyScroll = ({ items }: Props) => {
                                     </span>
                                 ))}
                             </div>
+
+                            <ProjectLinks demo={item.demo} github={item.github} />
                         </div>
                     </motion.article>
                 ))}
             </div>
 
-            {/* Desktop Panel */}
+            {/* Desktop */}
             <div ref={ref} className="relative hidden lg:block">
                 <div className="grid grid-cols-2 gap-16">
-
                     <div className="py-[10vh]">
                         {items.map((item, i) => (
                             <div key={item.title} className="flex min-h-[70vh] flex-col justify-center">
                                 <motion.div
                                     animate={{ opacity: active === i ? 1 : 0.35 }}
                                     transition={{ duration: 0.35 }}
+                                    style={{ pointerEvents: active === i ? "auto" : "none" }}
                                 >
                                     {item.badge && (
                                         <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-orange-400/15 px-3 py-1 font-mono text-xs text-orange-300">
@@ -120,6 +122,8 @@ export const ProjectsStickyScroll = ({ items }: Props) => {
                                             </span>
                                         ))}
                                     </div>
+
+                                    <ProjectLinks demo={item.demo} github={item.github} />
                                 </motion.div>
                             </div>
                         ))}

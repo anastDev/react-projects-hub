@@ -4,13 +4,15 @@ import type {ProjectCardTypes} from "@/pages/projects/types/typesProjectCard.ts"
 import {getFeaturedProjects} from "@/pages/projects/projectUtils.ts";
 import {ProjectsStickyScroll, type StickyItem} from "@/pages/projects/components/ProjectStickyRoll.tsx";
 
+
 const toStickyItem = (project: ProjectCardTypes): StickyItem => ({
     title: project.projectName,
     description: project.description,
-    stack: project.tags.slice(0, 4),
+    stack: project.tags,
     badge: project.status === "In Progress" ? "In progress" : undefined,
-    liveUrl: project.liveUrl,
-    githubRepo: project.githubRepo || undefined,
+    demo: project.demo || undefined,
+    github: project.github || undefined,
+
     content: project.img ? (
         <img
             src={`${import.meta.env.BASE_URL}${project.img.replace(/^\//, "")}`}
@@ -19,12 +21,12 @@ const toStickyItem = (project: ProjectCardTypes): StickyItem => ({
         />
     ) : (
         <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,#1f2937,#111827)]">
-            <span className="font-mono text-sm text-orange-300/70">
-                {project.projectName}
-            </span>
+            <span className="font-mono text-sm text-orange-300/70">{project.projectName}</span>
         </div>
     ),
 });
+
+
 
 export const ProjectsSection = () => {
     const featured = getFeaturedProjects().map(toStickyItem);
@@ -35,10 +37,9 @@ export const ProjectsSection = () => {
             className="scroll-mt-20 bg-gray-950/50 px-6 py-20 backdrop-blur-[2px] lg:px-[1.6rem] lg:py-24"
         >
             <div className="container mx-auto max-w-6xl">
-
                 <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
                     <div>
-                        <span className="mb-4 block font-mono text-xs text-orange-400 tracking-[0.15em] uppercase">
+                        <span className="mb-4 block font-mono text-xs uppercase tracking-[0.15em] text-orange-400">
                             Projects
                         </span>
                         <h2
