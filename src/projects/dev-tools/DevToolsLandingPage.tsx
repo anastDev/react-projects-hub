@@ -17,7 +17,7 @@ const DevToolsLandingPage = () => {
                        <div className="pt-6">
                            <Button
                                variant="ghost"
-                               onClick={() => navigate("/projects")}
+                               onClick={() => navigate(-1)}
                                className="flex items-center gap-1.5 text-xs text-slate-100 tracking-widest uppercase  transition-colors no-underline"
                            >
                                <ChevronLeft />

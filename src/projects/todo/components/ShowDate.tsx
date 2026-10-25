@@ -23,7 +23,7 @@ const ShowDate = () => {
             <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => navigate("/projects")}
+                onClick={() => navigate(-1)}
                 className="bg-transparent hover:bg-white/5 border border-slate-600 text-slate-200 hover:text-white gap-1.5 rounded-lg px-4 py-2"
             >
                 <ChevronLeft />

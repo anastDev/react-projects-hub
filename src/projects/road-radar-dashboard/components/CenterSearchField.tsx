@@ -59,7 +59,7 @@ const CenterSearchField = ({ inputRef, onSearch }: WeatherInputProps) => {
                 </div>
 
                 <Button
-                    onClick={() => navigate("/projects")}
+                    onClick={() => navigate(-1)}
                     className="mt-8 text-slate-600 hover:text-gray-100 hover:border hover:border-amber-500 text-sm transition-colors cursor-pointer"
                 >
                    <ChevronLeft/> Back to projects

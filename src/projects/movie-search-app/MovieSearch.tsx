@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "./hooks/useFetch.ts";
 import MovieContainer from "@/projects/movie-search-app/components/MovieContainer.tsx";
-import {Link} from "react-router";
+import { useNavigate} from "react-router";
 import FavoritePlaceholder from "@/projects/movie-search-app/components/FavoritePlaceholder.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {ChevronLeft, Heart, Search, X} from "lucide-react";
@@ -24,6 +24,7 @@ const MovieSearch = () => {
     const [showFavourites, setShowFavourites] = useState(false);
     const { movie, error, loading } = useFetch(searchTitle);
     const [favorites, setFavorites] = useState<MovieApiResponse[]>(getInitialState());
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.title = "CineSearch";
@@ -71,13 +72,13 @@ const MovieSearch = () => {
             {/* Nav */}
             <nav className="relative z-10 flex items-center justify-between px-10 py-6 border-b border-white/[0.08]">
                 {/* Back button */}
-                <Link
-                    to="/projects"
+                <Button
+                    onClick={() => navigate(-1)}
                     className="flex items-center gap-1.5 text-xs text-[#f0ede8]/40 tracking-widest uppercase hover:text-[#f0ede8] transition-colors no-underline"
                 >
                     <ChevronLeft />
                     Projects
-                </Link>
+                </Button>
 
                 {/* Logo */}
                 <span

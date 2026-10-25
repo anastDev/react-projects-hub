@@ -59,7 +59,7 @@ const BooksPage = () =>  {
                 <div className="mb-6">
                     <Button
                         size="sm"
-                        onClick={() => navigate("/projects")}
+                        onClick={() => navigate(-1)}
                         className="flex items-center gap-1 bg-slate-900 border-slate-700 text-gray-100 hover:text-gray-200 hover:border-blue-500 text-xs transition-colors cursor-pointer border rounded-lg px-3 py-2 shrink-0"
                     >
                         <ChevronLeft />
