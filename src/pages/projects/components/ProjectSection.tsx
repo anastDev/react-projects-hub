@@ -13,7 +13,7 @@ const toStickyItem = (project: ProjectCardTypes): StickyItem => ({
     githubRepo: project.githubRepo || undefined,
     content: project.img ? (
         <img
-            src={project.img}
+            src={`${import.meta.env.BASE_URL}${project.img.replace(/^\//, "")}`}
             alt={`${project.projectName} screenshot`}
             className="h-full w-full object-cover"
         />

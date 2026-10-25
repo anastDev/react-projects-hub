@@ -20,7 +20,7 @@ export const projectData: ProjectCardTypes[] = [
         path: "https://www.carlimeraservices.co.uk/",
         githubRepo: "",
         status: "Completed",
-        img: "",
+        img: "/projects/carlimera-services.png",
         category: "main",
         featured: true,
         featuredOrder: 1,
